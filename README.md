@@ -1,51 +1,73 @@
+<p align="center">
+  <img src="./apps/preview/public/og.png" alt="rblez-ui" width="720" />
+</p>
+
 # rblez-ui
 
-Sistema de componentes web propio en TypeScript, con documentación tipo docs y sidebar. Solo web: un mismo componente en **Svelte** y **React**, con tokens de diseño compartidos.
+[![CI](https://github.com/rblez/designs/actions/workflows/ci.yml/badge.svg)](https://github.com/rblez/designs/actions/workflows/ci.yml)
+[![Pages](https://github.com/rblez/designs/actions/workflows/pages.yml/badge.svg)](https://github.com/rblez/designs/actions/workflows/pages.yml)
+[![Release](https://img.shields.io/github/v/release/rblez/designs?label=release&color=f54e00)](https://github.com/rblez/designs/releases)
+![License](https://img.shields.io/badge/license-proprietary-26251e)
 
-Preview: https://www.rblez.com/designs/ (también en GitHub Pages)
+**ES** · Componentes web en TypeScript para **Svelte 5** y **React 18+**, con una sola API, un único CSS y tokens compartidos.
+**EN** · TypeScript web components for **Svelte 5** and **React 18+** — one API, one stylesheet, shared tokens.
 
-## Componentes
+Docs: **[www.rblez.com/designs](https://www.rblez.com/designs/)** · [GitHub Pages](https://rblez.github.io/designs/) · [Changelog](./CHANGELOG.md) · [Releases](https://github.com/rblez/designs/releases)
+
+## Componentes / Components
 
 | Grupo | Componentes |
 |---|---|
-| IA | `PromptInput` |
-| Formularios | `Button`, `Input`, `Textarea`, `Switch` |
-| Layout | `Card`, `Sidebar` |
+| IA / AI | `PromptInput` |
+| Formularios / Forms | `Button`, `Input`, `Textarea`, `Switch` |
+| Layout | `Card`, `Sidebar`, `Footer` |
 | Feedback | `Badge`, `Kbd` |
+| Base | `Icon` (Heroicons micro), tokens |
 
-Todos en Svelte 5 y React 18+ con la misma API. Estilos en `@rblez-ui/tokens` (`css`, `components.css`, `prompt-input.css`).
+## Paquetes / Packages
+
+| Paquete | Contenido |
+|---|---|
+| `@rblez-ui/tokens` | `tokens.css`, `components.css`, `prompt-input.css`, iconos y tipos |
+| `@rblez-ui/svelte` | Componentes Svelte 5 (runes) |
+| `@rblez-ui/react` | Componentes React 18+ |
+
+```ts
+import "@rblez-ui/tokens/css";
+import "@rblez-ui/tokens/components.css";
+import { Button } from "@rblez-ui/svelte"; // o "@rblez-ui/react"
+```
 
 ## Estructura
 
 ```
-packages/
-  tokens/        colores, espacios, radios, tipografía (TS) + tokens.css para web
-  svelte/        componentes Svelte 5 (runes, TS)
-  react/         componentes React 18+ (TSX)
-apps/
-  preview/       docs (Vite + Svelte, demos en vivo de Svelte y React), base /designs/
+packages/tokens   tokens, CSS e iconos
+packages/svelte   Svelte 5
+packages/react    React 18+
+apps/preview      docs (Vite + Svelte), base /designs/
+scripts/og        plantilla de la imagen Open Graph
 ```
 
-## Comandos
+## Desarrollo
 
-| Acción | Comando |
-|---|---|
-| Instalar | `pnpm install` |
-| Preview local | `pnpm dev` |
-| Build del preview | `pnpm build` → `apps/preview/dist` |
-| Typecheck | `pnpm typecheck` |
+```bash
+pnpm install
+pnpm dev      # http://localhost:5173/designs/
+pnpm build    # apps/preview/dist
+```
 
-## Publicación
+## Versiones y releases
 
-- **GitHub Pages**: rama `gh-pages` con el build de `apps/preview` (Settings → Pages → Deploy from branch `gh-pages`).
-- **www.rblez.com/designs/**: copiar `apps/preview/dist/*` a `designs/` en `rblez/www.rblez.com` y `npx wrangler deploy` (igual que asciidot y terminal).
+- [SemVer](https://semver.org/lang/es/) y [Keep a Changelog](./CHANGELOG.md).
+- Cada tag `vX.Y.Z` lanza el workflow **Release**: build, notas desde el changelog y zip de las docs.
+- La cabecera de las docs muestra la versión y el commit del build.
+- Flujo de issues, ramas y PRs en [CONTRIBUTING.md](./CONTRIBUTING.md).
 
-## Añadir un componente
+## Despliegue
 
-1. Tipos y tokens compartidos en `packages/tokens`.
-2. Implementación en `svelte/` y `react/` con la misma API.
-3. Demo en `apps/preview`.
+- **GitHub Pages**: automático en cada push a `main`.
+- **www.rblez.com/designs/**: `apps/preview/dist` se copia a `designs/` en `rblez/www.rblez.com` y se publica con `npx wrangler deploy`.
 
 ## Licencia
 
-Propietaria. © 2026 rblez. Todos los derechos reservados. El código es visible pero no puede copiarse, modificarse, distribuirse ni usarse sin permiso escrito. Ver [LICENSE](./LICENSE).
+Propietaria. © 2026 rblez. Todos los derechos reservados. Ver [LICENSE](./LICENSE). Fuentes Inter y SUSE Mono bajo SIL OFL 1.1; iconos Heroicons (MIT).

@@ -87,7 +87,7 @@
     <ul class="list">
       <li><strong>{c.a.author}.</strong> <a href="https://www.rblez.com" target="_blank" rel="noreferrer">rblez</a> · <a href="mailto:hello@rblez.com">hello@rblez.com</a></li>
       <li><strong>{c.a.code}.</strong> <a href="https://github.com/rblez/designs" target="_blank" rel="noreferrer">github.com/rblez/designs</a></li>
-      <li><strong>{c.a.version}.</strong> v0.1</li>
+      <li><strong>{c.a.version}.</strong> v{__VERSION__}{__COMMIT__ ? ` (${__COMMIT__})` : ""} · {__BUILD_DATE__} · <a href="https://github.com/rblez/designs/releases" target="_blank" rel="noreferrer">Releases</a></li>
       <li><strong>{c.a.type}.</strong> {c.a.typeV}</li>
       <li><strong>{c.a.license}.</strong> {c.a.licV}</li>
     </ul>
