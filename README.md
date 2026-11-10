@@ -1,4 +1,4 @@
-# designs
+# rblez-ui
 
 Sistema de componentes web propio en TypeScript, con documentación tipo docs y sidebar. Solo web: un mismo componente en **Svelte** y **React**, con tokens de diseño compartidos.
 
@@ -13,7 +13,7 @@ Preview: https://www.rblez.com/designs/ (también en GitHub Pages)
 | Layout | `Card`, `Sidebar` |
 | Feedback | `Badge`, `Kbd` |
 
-Todos en Svelte 5 y React 18+ con la misma API. Estilos en `@designs/tokens` (`css`, `components.css`, `prompt-input.css`).
+Todos en Svelte 5 y React 18+ con la misma API. Estilos en `@rblez-ui/tokens` (`css`, `components.css`, `prompt-input.css`).
 
 ## Estructura
 

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Textarea } from "@designs/svelte";
+  import { Textarea } from "@rblez-ui/svelte";
   let bio = $state("");
 </script>
 

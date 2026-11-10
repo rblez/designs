@@ -4,14 +4,14 @@
   import CodeBlock from "./CodeBlock.svelte";
   import FrameworkSwitch from "./FrameworkSwitch.svelte";
   import Code from "./Code.svelte";
-  import { Badge } from "@designs/svelte";
+  import { Badge } from "@rblez-ui/svelte";
 
   let { doc, framework = $bindable() }: { doc: ComponentDoc; framework: "svelte" | "react" } = $props();
   let copied = $state(false);
   const Demo = $derived(doc.svelte);
   const src = $derived((framework === "svelte" ? doc.svelteSrc : doc.reactSrc).trim());
   const file = $derived(`${doc.name}Demo.${framework === "svelte" ? "svelte" : "tsx"}`);
-  const importLine = $derived(`import { ${doc.name} } from "@designs/${framework}";`);
+  const importLine = $derived(`import { ${doc.name} } from "@rblez-ui/${framework}";`);
   async function copy() { await navigator.clipboard?.writeText(src); copied = true; setTimeout(() => (copied = false), 1400); }
 </script>
 

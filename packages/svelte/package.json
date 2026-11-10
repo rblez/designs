@@ -1,5 +1,5 @@
 {
-  "name": "@designs/svelte",
+  "name": "@rblez-ui/svelte",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -16,7 +16,7 @@
     "typecheck": "svelte-check --tsconfig ./tsconfig.json"
   },
   "dependencies": {
-    "@designs/tokens": "workspace:*"
+    "@rblez-ui/tokens": "workspace:*"
   },
   "peerDependencies": {
     "svelte": ">=5.20"

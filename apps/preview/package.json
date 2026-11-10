@@ -1,5 +1,5 @@
 {
-  "name": "@designs/preview",
+  "name": "@rblez-ui/preview",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -10,9 +10,9 @@
     "typecheck": "tsc -p ."
   },
   "dependencies": {
-    "@designs/react": "workspace:*",
-    "@designs/svelte": "workspace:*",
-    "@designs/tokens": "workspace:*",
+    "@rblez-ui/react": "workspace:*",
+    "@rblez-ui/svelte": "workspace:*",
+    "@rblez-ui/tokens": "workspace:*",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "shiki": "^4.6.0",

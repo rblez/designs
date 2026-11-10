@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { Snippet } from "svelte";
-  import { cx, type BadgeVariant } from "@designs/tokens";
+  import { cx, type BadgeVariant } from "@rblez-ui/tokens";
   let { variant = "secondary", dot = false, children }: { variant?: BadgeVariant; dot?: boolean; children?: Snippet } = $props();
 </script>
 

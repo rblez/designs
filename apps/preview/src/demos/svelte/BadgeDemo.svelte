@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Badge } from "@designs/svelte";
+  import { Badge } from "@rblez-ui/svelte";
 </script>
 
 <div class="demo-row">

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Button } from "@designs/svelte";
+  import { Button } from "@rblez-ui/svelte";
   let loading = $state(false);
 </script>
 

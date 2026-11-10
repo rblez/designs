@@ -1,5 +1,5 @@
 import type { ButtonHTMLAttributes } from "react";
-import { cx, type ButtonSize, type ButtonVariant } from "@designs/tokens";
+import { cx, type ButtonSize, type ButtonVariant } from "@rblez-ui/tokens";
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant;

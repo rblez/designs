@@ -1,4 +1,4 @@
-import type { SidebarSection } from "@designs/tokens";
+import type { SidebarSection } from "@rblez-ui/tokens";
 
 export interface SidebarProps { sections: SidebarSection[]; active?: string; label?: string; onNavigate?: (href: string) => void }
 

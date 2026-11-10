@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Switch } from "@designs/react";
+import { Switch } from "@rblez-ui/react";
 
 export default function SwitchDemo() {
   const [notifications, setNotifications] = useState(true);

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { promptDefaults, promptPlaceholders, typewriter, type PromptSubmit, type PromptTheme } from "@designs/tokens";
+  import { promptDefaults, promptPlaceholders, typewriter, type PromptSubmit, type PromptTheme } from "@rblez-ui/tokens";
   import Icon from "./Icon.svelte";
 
   interface Props {

@@ -1,4 +1,4 @@
-import { icons, type IconName } from "@designs/tokens";
+import { icons, type IconName } from "@rblez-ui/tokens";
 
 export function Icon({ name, className = "d-prompt__icon" }: { name: IconName; className?: string }) {
   const icon = icons[name];

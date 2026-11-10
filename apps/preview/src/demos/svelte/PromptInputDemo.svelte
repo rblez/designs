@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { PromptInput } from "@designs/svelte";
-  import type { PromptSubmit } from "@designs/tokens";
+  import { PromptInput } from "@rblez-ui/svelte";
+  import type { PromptSubmit } from "@rblez-ui/tokens";
   let last = $state<PromptSubmit | null>(null);
 </script>
 

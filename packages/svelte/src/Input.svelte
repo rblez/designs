@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { Snippet } from "svelte";
   import type { HTMLInputAttributes } from "svelte/elements";
-  import { cx, type Size } from "@designs/tokens";
+  import { cx, type Size } from "@rblez-ui/tokens";
 
   interface Props extends Omit<HTMLInputAttributes, "size" | "prefix"> {
     value?: string;

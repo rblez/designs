@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { SidebarSection } from "@designs/tokens";
+  import type { SidebarSection } from "@rblez-ui/tokens";
   interface Props { sections: SidebarSection[]; active?: string; label?: string; onnavigate?: (href: string) => void; }
   let { sections, active, label = "Navegación", onnavigate }: Props = $props();
 </script>

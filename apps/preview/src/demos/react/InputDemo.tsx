@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Input } from "@designs/react";
+import { Input } from "@rblez-ui/react";
 
 export default function InputDemo() {
   const [email, setEmail] = useState("");

@@ -1,4 +1,4 @@
-import { Badge } from "@designs/react";
+import { Badge } from "@rblez-ui/react";
 
 export default function BadgeDemo() {
   return (

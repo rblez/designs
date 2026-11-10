@@ -1,5 +1,5 @@
 {
-  "name": "@designs/react",
+  "name": "@rblez-ui/react",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -9,7 +9,7 @@
     "typecheck": "tsc -p ."
   },
   "dependencies": {
-    "@designs/tokens": "workspace:*"
+    "@rblez-ui/tokens": "workspace:*"
   },
   "peerDependencies": {
     "react": ">=18"

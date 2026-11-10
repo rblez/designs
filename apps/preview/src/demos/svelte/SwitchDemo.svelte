@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Switch } from "@designs/svelte";
+  import { Switch } from "@rblez-ui/svelte";
   let notifications = $state(true);
 </script>
 

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Sidebar } from "@designs/svelte";
+  import { Sidebar } from "@rblez-ui/svelte";
   let active = $state("#inbox");
   const sections = [
     { title: "Workspace", items: [

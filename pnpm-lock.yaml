@@ -14,13 +14,13 @@ importers:
 
   apps/preview:
     dependencies:
-      '@designs/react':
+      '@rblez-ui/react':
         specifier: workspace:*
         version: link:../../packages/react
-      '@designs/svelte':
+      '@rblez-ui/svelte':
         specifier: workspace:*
         version: link:../../packages/svelte
-      '@designs/tokens':
+      '@rblez-ui/tokens':
         specifier: workspace:*
         version: link:../../packages/tokens
       react:
@@ -54,7 +54,7 @@ importers:
 
   packages/react:
     dependencies:
-      '@designs/tokens':
+      '@rblez-ui/tokens':
         specifier: workspace:*
         version: link:../tokens
     devDependencies:
@@ -67,7 +67,7 @@ importers:
 
   packages/svelte:
     dependencies:
-      '@designs/tokens':
+      '@rblez-ui/tokens':
         specifier: workspace:*
         version: link:../tokens
     devDependencies:

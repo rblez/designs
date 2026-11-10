@@ -1,6 +1,6 @@
-import "@designs/tokens/css";
-import "@designs/tokens/components.css";
-import "@designs/tokens/prompt-input.css";
+import "@rblez-ui/tokens/css";
+import "@rblez-ui/tokens/components.css";
+import "@rblez-ui/tokens/prompt-input.css";
 import "./style.css";
 import { mount } from "svelte";
 import App from "./App.svelte";

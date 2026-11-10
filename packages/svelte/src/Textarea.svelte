@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { HTMLTextareaAttributes } from "svelte/elements";
-  import { cx } from "@designs/tokens";
+  import { cx } from "@rblez-ui/tokens";
 
   interface Props extends HTMLTextareaAttributes {
     value?: string;

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { icons, type IconName } from "@designs/tokens";
+  import { icons, type IconName } from "@rblez-ui/tokens";
   let { name, class: className = "d-prompt__icon" }: { name: IconName; class?: string } = $props();
   const icon = $derived(icons[name]);
 </script>

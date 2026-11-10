@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button } from "@designs/react";
+import { Button } from "@rblez-ui/react";
 
 export default function ButtonDemo() {
   const [loading, setLoading] = useState(false);

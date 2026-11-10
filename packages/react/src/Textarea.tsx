@@ -1,5 +1,5 @@
 import { useId, type TextareaHTMLAttributes } from "react";
-import { cx } from "@designs/tokens";
+import { cx } from "@rblez-ui/tokens";
 
 export interface TextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   label?: string;

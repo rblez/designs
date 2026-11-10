@@ -1,5 +1,5 @@
 import { useId, type InputHTMLAttributes, type ReactNode } from "react";
-import { cx, type Size } from "@designs/tokens";
+import { cx, type Size } from "@rblez-ui/tokens";
 
 export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, "size" | "prefix"> {
   label?: string;

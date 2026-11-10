@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Input } from "@designs/svelte";
+  import { Input } from "@rblez-ui/svelte";
   let email = $state("");
   const invalid = $derived(email.length > 0 && !email.includes("@"));
 </script>

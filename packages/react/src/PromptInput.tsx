@@ -1,5 +1,5 @@
 import { useEffect, useLayoutEffect, useRef, useState, type KeyboardEvent } from "react";
-import { promptDefaults, promptPlaceholders, typewriter, type PromptSubmit, type PromptTheme } from "@designs/tokens";
+import { promptDefaults, promptPlaceholders, typewriter, type PromptSubmit, type PromptTheme } from "@rblez-ui/tokens";
 import { Icon } from "./Icon";
 
 export interface PromptInputProps {

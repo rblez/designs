@@ -1,6 +1,6 @@
 <script lang="ts">
   import CodeBlock from "./CodeBlock.svelte";
-  import { Card, Badge } from "@designs/svelte";
+  import { Card, Badge } from "@rblez-ui/svelte";
   let { slug, go }: { slug: string; go: (s: string) => void } = $props();
   const swatches = [
     ["--d-bg", "Fondo"], ["--d-surface", "Superficie"], ["--d-surface-2", "Superficie 2"], ["--d-ink", "Tinta"],
@@ -11,7 +11,7 @@
 <article class="page">
   {#if slug === "introduccion"}
     <p class="eyebrow">Empezar</p>
-    <h1>designs</h1>
+    <h1>rblez-ui</h1>
     <p class="lead">Componentes de interfaz propios, escritos en TypeScript, con la misma API en Svelte y React. Un solo CSS, tokens compartidos y cero dependencias de UI de terceros.</p>
     <div class="grid">
       <button class="tile" onclick={() => go("prompt-input")}><Badge variant="brand">IA</Badge><strong>PromptInput</strong><span>Composer con adjuntos, plan y dictado.</span></button>
@@ -22,7 +22,7 @@
     <h2>Principios</h2>
     <ul class="list">
       <li><strong>Una API, dos frameworks.</strong> Mismos nombres de props; solo cambia la convención de eventos.</li>
-      <li><strong>CSS antes que JS.</strong> Los estilos viven en <code>@designs/tokens</code>; los componentes solo ponen clases.</li>
+      <li><strong>CSS antes que JS.</strong> Los estilos viven en <code>@rblez-ui/tokens</code>; los componentes solo ponen clases.</li>
       <li><strong>Accesible por defecto.</strong> Roles, aria y foco visible en todo.</li>
     </ul>
   {:else if slug === "instalacion"}
@@ -30,11 +30,11 @@
     <h1>Instalación</h1>
     <p class="lead">Monorepo con pnpm. Uso privado de rblez; ver Licencia.</p>
     <h2>1. Estilos</h2>
-    <CodeBlock lang="ts" code={`import "@designs/tokens/css";\nimport "@designs/tokens/components.css";\nimport "@designs/tokens/prompt-input.css";`} />
+    <CodeBlock lang="ts" code={`import "@rblez-ui/tokens/css";\nimport "@rblez-ui/tokens/components.css";\nimport "@rblez-ui/tokens/prompt-input.css";`} />
     <h2>2. Svelte</h2>
-    <CodeBlock lang="svelte" code={`<script lang="ts">\n  import { Button } from "@designs/svelte";\n</script>\n\n<Button variant="brand">Build now</Button>`} />
+    <CodeBlock lang="svelte" code={`<script lang="ts">\n  import { Button } from "@rblez-ui/svelte";\n</script>\n\n<Button variant="brand">Build now</Button>`} />
     <h2>3. React</h2>
-    <CodeBlock lang="tsx" code={`import { Button } from "@designs/react";\n\nexport default () => <Button variant="brand">Build now</Button>;`} />
+    <CodeBlock lang="tsx" code={`import { Button } from "@rblez-ui/react";\n\nexport default () => <Button variant="brand">Build now</Button>;`} />
     <h2>Tema</h2>
     <p>Pon <code>data-theme="light"</code> o <code>"dark"</code> en <code>&lt;html&gt;</code>; sin atributo sigue al sistema.</p>
   {:else if slug === "tokens"}
@@ -49,7 +49,7 @@
     <h2>Tipografía</h2>
     <Card>
       <p class="type-sample sans">Inter — Build something people want.</p>
-      <p class="type-sample mono">Geist Mono — pnpm build --filter designs</p>
+      <p class="type-sample mono">Geist Mono — pnpm build --filter rblez-ui</p>
     </Card>
   {:else if slug === "licencia"}
     <p class="eyebrow">Legal</p>

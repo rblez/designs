@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Sidebar } from "@designs/react";
+import { Sidebar } from "@rblez-ui/react";
 
 const sections = [
   { title: "Workspace", items: [

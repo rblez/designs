@@ -1,4 +1,4 @@
-/* @designs/tokens — paleta crema/tinta + naranja (estilo Cursor / rblez.com). Grano obligatorio en la app. */
+/* @rblez-ui/tokens — paleta crema/tinta + naranja (estilo Cursor / rblez.com). Grano obligatorio en la app. */
 :root, [data-theme="light"] {
   --d-bg: #f7f7f4; --d-surface: #fcfcfa; --d-surface-2: #efeee9; --d-ink: #26251e; --d-ink-2: #4d4b42;
   --d-muted: rgba(38,37,30,.58); --d-line: rgba(38,37,30,.1); --d-line-2: rgba(38,37,30,.18); --d-hover: rgba(38,37,30,.05);

@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { PromptInput } from "@designs/react";
-import type { PromptSubmit } from "@designs/tokens";
+import { PromptInput } from "@rblez-ui/react";
+import type { PromptSubmit } from "@rblez-ui/tokens";
 
 export default function PromptInputDemo() {
   const [last, setLast] = useState<PromptSubmit | null>(null);

@@ -1,12 +1,12 @@
 {
-  "name": "designs",
+  "name": "rblez-ui",
   "private": true,
   "version": "0.0.0",
   "description": "Laboratorio de componentes en TypeScript web para Svelte y React",
   "packageManager": "pnpm@9.15.0",
   "scripts": {
-    "dev": "pnpm --filter @designs/preview dev",
-    "build": "pnpm --filter @designs/preview build",
+    "dev": "pnpm --filter @rblez-ui/preview dev",
+    "build": "pnpm --filter @rblez-ui/preview build",
     "typecheck": "pnpm -r typecheck"
   },
   "devDependencies": {

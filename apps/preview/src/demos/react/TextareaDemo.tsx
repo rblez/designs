@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Textarea } from "@designs/react";
+import { Textarea } from "@rblez-ui/react";
 
 export default function TextareaDemo() {
   const [bio, setBio] = useState("");
