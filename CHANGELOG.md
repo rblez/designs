@@ -25,7 +25,7 @@ Todos los cambios notables de rblez-ui. Formato basado en [Keep a Changelog](htt
 - Iconos Heroicons micro (16 px) en `@rblez-ui/tokens`.
 - Documentación en `/designs/`: vista previa y código por framework, resaltado con Shiki, tema claro y oscuro, inglés y español.
 - Navegación móvil tipo Vercel: dock inferior con búsqueda y listado.
-- «Enviar a IA»: abre ChatGPT, Claude, v0, Lovable, Bolt o Replit con el código del componente.
+- «Enviar a IA»: abre v0, ChatGPT, Claude o Replit con el código del componente.
 - Botón de estrellas de GitHub, página Acerca de, imagen Open Graph.
 - Versión y commit del build visibles en la cabecera de las docs.
 - CI en PRs, despliegue a GitHub Pages y releases automáticas por tag.

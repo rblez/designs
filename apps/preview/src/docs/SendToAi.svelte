@@ -10,14 +10,12 @@
 
   const e = encodeURIComponent;
   const targets: { id: AiId; name: string; url: (p: string) => string; prefill: boolean }[] = [
+    { id: "v0", name: "v0", url: (p) => `https://v0.app/chat?q=${e(p)}`, prefill: true },
     { id: "chatgpt", name: "ChatGPT", url: (p) => `https://chatgpt.com/?q=${e(p)}`, prefill: true },
     { id: "claude", name: "Claude", url: (p) => `https://claude.ai/new?q=${e(p)}`, prefill: true },
-    { id: "v0", name: "v0", url: (p) => `https://v0.app/chat?q=${e(p)}`, prefill: true },
-    { id: "lovable", name: "Lovable", url: (p) => `https://lovable.dev/#prompt=${e(p)}`, prefill: true },
-    { id: "bolt", name: "Bolt", url: (p) => `https://bolt.new/?prompt=${e(p)}`, prefill: true },
     { id: "replit", name: "Replit", url: (p) => `https://replit.com/create?prompt=${e(p)}`, prefill: true },
   ];
-  const fan: AiId[] = ["claude", "chatgpt", "v0"];
+  const fan: AiId[] = ["v0", "chatgpt", "claude"];
 
   const L = $derived(i18n.lang === "en"
     ? { btn: "Send to AI", title: "Send to AI", sub: "Opens with the component code as the prompt. It's also copied to your clipboard.", pre: "Prefilled", paste: "Copy & paste", copied: "Prompt copied", close: "Close" }
@@ -53,8 +51,7 @@
           <span class="ai-tile__go"><Icon name="arrowUpRight" size={12} /></span>
         </button>
       {/each}
-      {#each { length: (3 - (targets.length % 3)) % 3 } as _, i (i)}<span class="ai-tile ai-tile--empty" aria-hidden="true"></span>{/each}
-    </div>
+          </div>
   </div>
 </dialog>
 {#if toast}<div class="ai-toast" role="status">{toast}</div>{/if}

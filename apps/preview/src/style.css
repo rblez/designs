@@ -292,7 +292,7 @@ code, pre, .hl, .eyebrow, th, .ver, .divider__file, .foot, .d-sidebar__title, .g
 @media (max-width: 860px) { .canvas--phone { padding: 12px 0; } .canvas.canvas--phone > .canvas__frame > * { height: 640px; border-radius: 26px; } }
 
 /* Rejilla de IAs */
-.ai-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border: 1px solid var(--d-line); border-radius: 12px; overflow: hidden; gap: 1px; background: var(--d-line); }
+.ai-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border: 1px solid var(--d-line); border-radius: 12px; overflow: hidden; gap: 1px; background: var(--d-line); }
 .ai-tile { position: relative; display: grid; justify-items: center; align-content: center; gap: 10px; aspect-ratio: 1; padding: 10px 6px; border: 0; background: var(--d-surface); color: var(--d-ink); cursor: pointer; transition: background .15s; }
 .ai-tile:hover { background: var(--d-surface-2); }
 .ai-tile--empty { cursor: default; background-image: radial-gradient(var(--d-line-2) 1px, transparent 1px); background-size: 10px 10px; }
@@ -376,3 +376,8 @@ code, pre, .hl, .eyebrow, th, .ver, .divider__file, .foot, .d-sidebar__title, .g
 .preview-btn .d-icon { color: var(--d-orange); }
 @media (max-width: 420px) { .pv__name { display: none; } }
 .canvas.canvas--phone { padding-top: 56px; }
+@media (max-width: 480px) { .ai-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+.divider .ai-btn { flex-shrink: 1; min-width: 0; }
+.divider .icon-copy, .code__bar .icon-copy { flex: none; }
+.code__bar { display: flex; align-items: center; justify-content: space-between; }

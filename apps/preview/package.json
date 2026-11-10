@@ -13,6 +13,8 @@
     "@rblez-ui/react": "workspace:*",
     "@rblez-ui/svelte": "workspace:*",
     "@rblez-ui/tokens": "workspace:*",
+    "gsap": "^3.15.1",
+    "motion": "^14.12.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "shiki": "^4.6.0",

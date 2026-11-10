@@ -1,0 +1,9 @@
+{"cases":[
+ {"name":"dark","state":{}},
+ {"name":"light","state":{"theme":"light"}},
+ {"name":"compact-title","state":{"compact":true}},
+ {"name":"tab-chats","state":{"activeTab":"chats"}},
+ {"name":"row-selected","state":{"selected":"privacy"}},
+ {"name":"long-name","state":{"name":"Raymond Alejandro Blez","username":"rblez"}},
+ {"name":"no-meta","state":{"phone":"","username":""}}
+]}
