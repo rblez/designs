@@ -14,6 +14,7 @@
 
   $effect(() => { document.documentElement.dataset.theme = theme; localStorage.setItem("d-theme", theme); });
   $effect(() => { localStorage.setItem("d-fw", framework); });
+  $effect(() => { document.body.classList.toggle("menu-open", menu); });
   $effect(() => {
     const on = () => { slug = read(); menu = false; window.scrollTo({ top: 0 }); };
     addEventListener("hashchange", on);
@@ -38,7 +39,7 @@
     <button class="menu" aria-label="Menú" aria-expanded={menu} onclick={() => (menu = !menu)}>
       <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
     </button>
-    <a class="brand" href="#/introduccion"><img src="./isotipo.svg" alt="" width="20" height="20" /><span>designs</span></a>
+    <a class="brand" href="#/introduccion"><img src="./isotipo.svg" alt="designs" width="20" height="20" /></a>
     <span class="ver">v0.1</span>
   </div>
   <div class="top__right">
@@ -54,6 +55,7 @@
 </header>
 
 <div class="shell">
+  {#if menu}<button class="scrim" aria-label="Cerrar menú" onclick={() => (menu = false)}></button>{/if}
   <aside class="side" class:side--open={menu}>
     <Sidebar {sections} active={`#/${slug}`} label="Documentación" />
   </aside>

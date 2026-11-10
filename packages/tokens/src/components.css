@@ -31,7 +31,7 @@
 @keyframes d-spin { to { transform: rotate(360deg); } }
 
 /* Field (Input / Textarea) */
-.d-field { display: grid; gap: 6px; width: 100%; }
+.d-field { display: grid; gap: 6px; width: 100%; min-width: 0; }
 .d-label { font: 600 12px/1.3 var(--d-sans); color: var(--d-ink); }
 .d-hint { font: 12px/1.4 var(--d-sans); color: var(--d-muted); margin: 0; }
 .d-hint--error { color: var(--d-red); }
@@ -49,7 +49,7 @@
 .d-control--lg { min-height: 42px; padding: 0 14px; }
 .d-input, .d-textarea {
   caret-color: var(--d-orange);
-  flex: 1; min-width: 0; border: 0; outline: 0; background: transparent; margin: 0; padding: 0;
+  flex: 1; min-width: 0; width: 100%; border: 0; outline: 0; background: transparent; margin: 0; padding: 0;
   color: var(--d-ink); font: 14px/20px var(--d-sans);
 }
 .d-input::placeholder, .d-textarea::placeholder { color: var(--d-muted); opacity: .8; }
@@ -111,7 +111,7 @@
   transition: background-color .12s, color .12s;
 }
 .d-sidebar__item:hover { background: var(--d-hover); color: var(--d-ink); }
-.d-sidebar__item[aria-current="page"] { background: var(--d-surface-2); color: var(--d-ink); font-weight: 600; box-shadow: inset 2px 0 0 var(--d-orange); }
+.d-sidebar__item[aria-current="page"] { background: var(--d-surface-2); color: var(--d-ink); font-weight: 600; box-shadow: inset 0 0 0 1px var(--d-line); }
 
 @media (prefers-reduced-motion: reduce) {
   .d-btn, .d-control, .d-switch, .d-switch::after, .d-sidebar__item { transition: none; }

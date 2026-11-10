@@ -3,6 +3,7 @@
   import ReactIsland from "./ReactIsland.svelte";
   import CodeBlock from "./CodeBlock.svelte";
   import FrameworkSwitch from "./FrameworkSwitch.svelte";
+  import Code from "./Code.svelte";
   import { Badge } from "@designs/svelte";
 
   let { doc, framework = $bindable() }: { doc: ComponentDoc; framework: "svelte" | "react" } = $props();
@@ -30,7 +31,7 @@
       <span class="divider__file">{file}</span>
       <button type="button" class="code__copy" onclick={copy}>{copied ? "Copiado" : "Copiar"}</button>
     </div>
-    <pre class="example__code"><code>{src}</code></pre>
+    <Code code={src} lang={framework === "svelte" ? "svelte" : "tsx"} class="example__code" />
   </section>
 
   <h2>Uso</h2>
