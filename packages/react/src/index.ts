@@ -19,3 +19,5 @@ export { Footer } from "./Footer";
 export type { FooterProps } from "./Footer";
 export { ProfileSettings } from "./ProfileSettings";
 export type { ProfileSettingsProps } from "./ProfileSettings";
+export { NotFound } from "./NotFound";
+export type { NotFoundProps } from "./NotFound";

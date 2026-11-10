@@ -525,3 +525,6 @@ html { -webkit-tap-highlight-color: transparent; -webkit-text-size-adjust: 100%;
   .mk-win { border-radius: 8px 8px 0 0; } .mk-phone { width: 31%; right: 10px; bottom: -40px; }
   .mk-win__nav { gap: 6px; }
 }
+.canvas--wide:has(.d-404) { padding: 0; }
+.canvas .d-404 { min-height: 480px; }
+.shell--landing .d-404 { min-height: calc(100dvh - 56px); }

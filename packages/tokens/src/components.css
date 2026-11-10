@@ -211,3 +211,42 @@
   :where(.d-btn, .d-ps__tab, .d-sidebar__item):active { transform: scale(.97); transition: transform 80ms ease-out; }
 }
 @media (hover: none) and (pointer: coarse) { .d-ps__row:active { background: var(--d-hover, rgba(127,127,127,.12)); } }
+
+/* ───────── NotFound (404 isométrico) ───────── */
+.d-404 {
+  --nf-face-1: color-mix(in srgb, var(--d-surface) 70%, var(--d-bg)); --nf-face-2: color-mix(in srgb, var(--d-ink) 5%, var(--d-bg));
+  --nf-top: color-mix(in srgb, var(--d-surface) 85%, var(--d-bg)); --nf-side: color-mix(in srgb, var(--d-ink) 4%, var(--d-bg));
+  --nf-line: color-mix(in srgb, var(--d-ink) 16%, var(--d-bg)); --nf-grid: color-mix(in srgb, var(--d-ink) 7%, transparent);
+  position: relative; isolation: isolate; container-type: inline-size; display: grid; align-items: center;
+  min-height: 100dvh; padding: 48px 24px; box-sizing: border-box; background: var(--d-bg); color: var(--d-ink); overflow: hidden; font-family: var(--d-sans);
+}
+:root[data-theme="dark"] .d-404, .d-404[data-theme="dark"] { --nf-face-1: #24221c; --nf-face-2: #1b1913; --nf-top: #2a2822; --nf-side: #1f1d17; --nf-line: #3d3a33; --nf-grid: rgba(255,255,255,.06); }
+.d-404--grid::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; background-color: var(--nf-grid);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='234.5' height='270.8'%3E%3Cg stroke='%23000' stroke-width='1' fill='none'%3E%3Cpath d='M.5 0V270.8'/%3E%3Cpath d='M0 0L234.5 135.4M0 135.4L234.5 270.8M0 135.4L234.5 0M0 270.8L234.5 135.4'/%3E%3C/g%3E%3C/svg%3E") calc(50% - 84.5px) calc(50% - 41.4px) / 234.5px 270.8px repeat, linear-gradient(#000 70%, transparent 98%);
+  -webkit-mask-composite: source-in; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='234.5' height='270.8'%3E%3Cg stroke='%23000' stroke-width='1' fill='none'%3E%3Cpath d='M.5 0V270.8'/%3E%3Cpath d='M0 0L234.5 135.4M0 135.4L234.5 270.8M0 135.4L234.5 0M0 270.8L234.5 135.4'/%3E%3C/g%3E%3C/svg%3E") calc(50% - 84.5px) calc(50% - 41.4px) / 234.5px 270.8px repeat intersect, linear-gradient(#000 70%, transparent 98%);
+}
+.d-404__in { display: grid; grid-template-columns: 525px 450px; column-gap: 196px; align-items: center; justify-content: center; }
+.d-404__art { translate: 0 -28px; line-height: 0; }
+.d-404__art svg { width: 100%; height: auto; overflow: visible; }
+.d-404__art path { stroke-width: 1; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.d-404__art .nf-back { fill: var(--nf-side); stroke: var(--nf-line); }
+.d-404__art .nf-top { fill: var(--nf-top); stroke: var(--nf-top); }
+.d-404__art .nf-side { fill: var(--nf-side); stroke: var(--nf-side); }
+.d-404__art .nf-edge { fill: none; stroke: var(--nf-line); }
+.d-404__art .nf-front { fill: url(#nf-face); stroke: var(--nf-line); }
+.d-404__art .nf-tint .nf-back, .d-404__art .nf-tint .nf-edge, .d-404__art .nf-tint .nf-front { stroke: url(#nf-glow); }
+.d-404__copy { translate: 0 50px; max-width: 450px; }
+.d-404__title { margin: 0; font: 600 18px/1.45 var(--d-sans); letter-spacing: -0.01em; color: var(--d-muted); text-wrap: pretty; max-width: 26ch; }
+.d-404__text { margin: 6px 0 0; font: 600 18px/1.45 var(--d-sans); letter-spacing: -0.01em; color: var(--d-muted); }
+.d-404__action { display: inline-flex; align-items: center; height: 34px; margin-top: 26px; padding: 0 14px; border-radius: 8px; border: 1px solid var(--d-line-2); background: var(--d-surface); color: var(--d-ink);
+  font: 600 14px/1 var(--d-sans); text-decoration: none; box-shadow: 0 1px 2px rgba(0,0,0,.04); transition: background-color .15s, border-color .15s; }
+.d-404__action:hover { background: var(--d-surface-2); border-color: color-mix(in srgb, var(--d-ink) 25%, var(--d-bg)); }
+.d-404__action:focus-visible { outline: 2px solid var(--d-orange); outline-offset: 2px; }
+@container (max-width: 1240px) { .d-404__in { grid-template-columns: minmax(0, 460px) minmax(0, 400px); column-gap: 56px; } }
+@container (max-width: 760px) {
+  .d-404__in { grid-template-columns: minmax(0, 360px); row-gap: 28px; align-content: center; }
+  .d-404__art, .d-404__copy { translate: none; }
+  .d-404__title, .d-404__text { font-size: 16px; }
+  .d-404__action { margin-top: 20px; }
+}

@@ -5,6 +5,8 @@ Todos los cambios notables de rblez-ui. Formato basado en [Keep a Changelog](htt
 ## [Unreleased]
 
 ### Added
+- `NotFound`: página 404 con un 404 isométrico en 3D (vector generado desde Inter), rejilla isométrica y tema claro/oscuro. La docs lo usa para rutas inexistentes.
+- Slider de componentes en móvil (deslizar o tocar) y paginador anterior/siguiente.
 - Landing en la introducción con animaciones GSAP (timeline y ScrollTrigger) y Motion (inView, hover, springs).
 - Acerca de completo: mockups en PC y móvil, cada IA, paquetes, stack, versiones, licencia y contacto.
 - `SKILL.md`: guía para agentes de IA que trabajan con rblez-ui.

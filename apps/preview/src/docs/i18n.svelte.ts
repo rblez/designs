@@ -59,6 +59,8 @@ export const en: Record<string, { description: string; props: Record<string, str
     props: { profile: "{ name, phone?, username?, avatar?, initials? }", sections: "{ title?, items: { id, label, description?, icon?, color?, image?, badge?, value?, href?, chevron? }[] }[]", tabs: "{ id, label, icon?, image?, badge? }[] — floating bottom bar.", activeTab: "Active tab (bind: in Svelte; defaultTab in React).", title: "Title shown in the bar on scroll.", footer: "Text under the groups (app version).", "onselect / onSelect": "When a row is pressed.", "onavatar, onqr, onsearch, onmore, ontab": "Header and tab actions." } },
   footer: { description: "Site footer with logo, link columns and a legal bar. A replica of Linear's.",
     props: { columns: "{ title, links: { label, href, external? }[] }[]", legal: "Legal column on desktop; bottom bar on mobile.", logo: "Brand mark in the top-left corner.", logoHref: "Logo destination." } },
+  "not-found": { description: "404 page with an isometric 3D 404 (vector), an isometric grid and a link back.",
+    props: { title: "Headline.", description: "Text under the headline.", actionLabel: "Link text.", href: "Link target.", grid: "Isometric background grid.", "onaction / onAction": "On link press (e.g. router navigation)." } },
   badge: { description: "Status labels with an optional dot.", props: { variant: "Color.", dot: "Status dot." } },
   kbd: { description: "Keyboard shortcuts.", props: { children: "Key." } },
 };

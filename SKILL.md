@@ -71,6 +71,7 @@ Light: bg `#f7f7f4`, ink `#26251e`. Dark: bg `#14120b`, ink `#edecec`.
 | `Footer` | `columns: { title, links }[]`, `legal`, `logo`, `logoHref` | Linear-style; legal moves to a bottom bar on mobile. |
 | `PromptInput` | `value`, `plan`, `placeholder` (string or rotating string[]), `submitLabel`, `theme`, `onsubmit(d: { value, plan, files })`, `ondictate` | AI composer: attachments, plan mode, dictation; Enter sends, Shift+Enter new line. |
 | `ProfileSettings` | `profile`, `sections`, `tabs`, `activeTab`, `title`, `footer`, `onselect`, `onavatar`, `onqr`, `onsearch`, `onmore`, `ontab` | Telegram-style settings screen; title compacts on scroll; floating tab bar. Row colors: `blue sky indigo cyan green orange amber red rose violet purple gray`. |
+| `NotFound` | `title`, `description`, `actionLabel`, `href`, `grid`, `onaction` | 404 page: isometric 3D "404" vector + isometric grid. Regenerate the art with `python3 scripts/notfound/gen.py`. |
 | `Icon` | `name` (curated) or `icon` (any Heroicon), `variant: line · fill`, `size`, `strokeWidth`, `label` | See §5. |
 
 Types live in `@rblez-ui/tokens` (`ButtonVariant`, `SidebarSection`, `FooterColumn`, `SettingsSection`, `SettingsItem`, `SettingsTab`, `SettingsProfile`, `PromptSubmit`, `IconName`, `IconNode`, …).

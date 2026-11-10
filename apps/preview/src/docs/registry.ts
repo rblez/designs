@@ -36,6 +36,10 @@ import RPS from "../demos/react/ProfileSettingsDemo";
 import rPS from "../demos/react/ProfileSettingsDemo.tsx?raw";
 import SPS from "../demos/svelte/ProfileSettingsDemo.svelte";
 import sPS from "../demos/svelte/ProfileSettingsDemo.svelte?raw";
+import SNF from "../demos/svelte/NotFoundDemo.svelte";
+import sNF from "../demos/svelte/NotFoundDemo.svelte?raw";
+import RNF from "../demos/react/NotFoundDemo";
+import rNF from "../demos/react/NotFoundDemo.tsx?raw";
 import rFooter from "../demos/react/FooterDemo.tsx?raw";
 import rButton from "../demos/react/ButtonDemo.tsx?raw";
 import rInput from "../demos/react/InputDemo.tsx?raw";
@@ -141,6 +145,17 @@ export const components: ComponentDoc[] = [
       ["footer", "string", "—", "Texto bajo los grupos (versión de la app)."],
       ["onselect / onSelect", "(item) => void", "—", "Al pulsar una fila."],
       ["onavatar, onqr, onsearch, onmore, ontab", "() => void", "—", "Acciones de cabecera y pestañas."],
+    ] },
+  { slug: "not-found", name: "NotFound", group: "Layout", badge: "Nuevo", surface: "wide",
+    description: "Página 404 con un 404 isométrico en 3D (vector), rejilla isométrica y un enlace para volver.",
+    svelte: SNF, react: RNF, svelteSrc: sNF, reactSrc: rNF,
+    props: [
+      ["title", "string", '"The page you’re looking for…"', "Titular."],
+      ["description", "string", '"Let’s get you back on track."', "Texto bajo el titular."],
+      ["actionLabel", "string", '"Take me home"', "Texto del enlace."],
+      ["href", "string", '"/"', "Destino del enlace."],
+      ["grid", "boolean", "true", "Rejilla isométrica de fondo."],
+      ["onaction / onAction", "(e) => void", "—", "Al pulsar el enlace (p. ej. navegación del router)."],
     ] },
   { slug: "badge", name: "Badge", group: "Feedback", description: "Etiquetas de estado con punto opcional.",
     svelte: SBadge, react: RBadge, svelteSrc: sBadge, reactSrc: rBadge,

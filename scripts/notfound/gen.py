@@ -11,7 +11,7 @@ from fontTools.pens.basePen import BasePen
 
 FONT = "apps/preview/src/fonts/Inter-Variable.woff2"
 WGHT = float(sys.argv[1]) if len(sys.argv) > 1 else 420
-CAP = 250.0          # alto de los dígitos en px de pantalla
+CAP = 236.0          # alto de los dígitos en px de pantalla
 DEPTH = 21.0         # extrusión en px
 TRACK = -0.10        # tracking (fracción del avance)
 C30, S30 = math.cos(math.pi / 6), 0.5
@@ -63,41 +63,52 @@ def proj(X, Y, Z):
 def area(c):
     return sum(c[i-1][0]*c[i][1] - c[i][0]*c[i-1][1] for i in range(len(c))) / 2
 
-polys = []  # (layer, depthkey, kind, pts)
-for gi, contours in enumerate(glyphs):
-    layer = 2 - gi  # dibuja primero el 4 de la derecha (más lejos)
+def sharp(c, i):
+    a, p, b = c[i - 1], c[i], c[(i + 1) % len(c)]
+    v1 = (p[0] - a[0], p[1] - a[1]); v2 = (b[0] - p[0], b[1] - p[1])
+    n1, n2 = math.hypot(*v1), math.hypot(*v2)
+    if n1 < 1e-6 or n2 < 1e-6: return False
+    return (v1[0] * v2[0] + v1[1] * v2[1]) / (n1 * n2) < math.cos(math.radians(28))
+
+ORDER = [2, 0, 1]  # 4 derecho, 4 izquierdo, 0 delante (como el original)
+fmt = lambda v: f"{v:.1f}".rstrip("0").rstrip(".")
+allpts = []
+groups = []
+for gi in ORDER:
+    contours = glyphs[gi]
     outer = max(contours, key=lambda c: abs(area(c)))
     sgn = 1 if area(outer) > 0 else -1
+    back = [[proj(x, DEPTH, z) for x, z in c] for c in contours]
+    front = [[proj(x, 0, z) for x, z in c] for c in contours]
+    sides, corners = [], []
     for c in contours:
-        n = len(c)
+        n = len(c); vis = []
         for i in range(n):
             (ax, az), (bx, bz) = c[i], c[(i + 1) % n]
             ex, ez = bx - ax, bz - az
             nx2, nz2 = ez * sgn, -ex * sgn
-            if -nx2 + nz2 <= 1e-9: continue
-            a, b = (ax, az), (bx, bz)
-            pts = [proj(a[0], 0, a[1]), proj(b[0], 0, b[1]), proj(b[0], DEPTH, b[1]), proj(a[0], DEPTH, a[1])]
-            mx, mz = (a[0] + b[0]) / 2, (a[1] + b[1]) / 2
+            v = -nx2 + nz2 > 1e-9; vis.append(v)
+            if not v: continue
+            pts = [proj(ax, 0, az), proj(bx, 0, bz), proj(bx, DEPTH, bz), proj(ax, DEPTH, az)]
             shade = "top" if nz2 > abs(nx2) else "side"
-            polys.append((layer, mx + DEPTH / 2 - mz, "s-" + shade, pts))
-    polys.append((layer, -1e9, "front", [[proj(x, 0, z) for x, z in c] for c in contours]))
+            sides.append(((ax + bx) / 2 + DEPTH / 2 - (az + bz) / 2, shade, pts))
+        for i in range(n):
+            if (vis[i] or vis[i - 1]) and (sharp(c, i) or vis[i] != vis[i - 1]):
+                x, z = c[i]; corners.append([proj(x, 0, z), proj(x, DEPTH, z)])
+    sides.sort(key=lambda t: -t[0])
+    groups.append((back, sides, corners, front))
+    for c in back + front: allpts += c
 
-polys.sort(key=lambda p: (p[0], -p[1]))
-xs = [pt[0] for p in polys for pt in (p[3] if p[2] != "front" else [q for c in p[3] for q in c])]
-ys = [pt[1] for p in polys for pt in (p[3] if p[2] != "front" else [q for c in p[3] for q in c])]
 pad = 4
-minx, miny = min(xs) - pad, min(ys) - pad
-W, H = max(xs) - minx + pad, max(ys) - miny + pad
-fmt = lambda v: f"{v:.1f}".rstrip("0").rstrip(".")
-def path(pts): return "M" + "L".join(f"{fmt(x - minx)} {fmt(y - miny)}" for x, y in pts) + "Z"
-
+minx = min(p[0] for p in allpts) - pad; miny = min(p[1] for p in allpts) - pad
+W = max(p[0] for p in allpts) - minx + pad; H = max(p[1] for p in allpts) - miny + pad
+def P(pts, close=True): return "M" + "L".join(f"{fmt(x - minx)} {fmt(y - miny)}" for x, y in pts) + ("Z" if close else "")
 body = []
-for layer, _, kind, pts in polys:
-    if kind == "front":
-        d = "".join(path(c) for c in pts)
-        body.append(f'<path class="nf-front" d="{d}" fill-rule="nonzero"/>')
-    else:
-        body.append(f'<path class="nf-{kind}" d="{path(pts)}"/>')
+for back, sides, corners, front in groups:
+    body.append(f'<path class="nf-back" d="{"".join(P(c) for c in back)}"/>')
+    for _, shade, pts in sides: body.append(f'<path class="nf-{shade}" d="{P(pts)}"/>')
+    body.append(f'<path class="nf-edge" d="{"".join(P(l, False) for l in corners)}"/>')
+    body.append(f'<path class="nf-front" d="{"".join(P(c) for c in front)}"/>')
 inner = "".join(body)
 
 # centro del 0 para el brillo de color

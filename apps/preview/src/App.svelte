@@ -6,6 +6,7 @@
   import GuidePage from "./docs/GuidePage.svelte";
   import Landing from "./docs/Landing.svelte";
   import AboutPage from "./docs/AboutPage.svelte";
+  import { NotFound } from "@rblez-ui/svelte";
   import PreviewPage from "./docs/PreviewPage.svelte";
   import GitHubStars from "./docs/GitHubStars.svelte";
   import { i18n, setLang, t } from "./docs/i18n.svelte";
@@ -18,6 +19,7 @@
   const isPreview = () => /^[^/]+\/preview\/?$/.test(location.pathname.slice(BASE.length));
   if (read() === "licencia") history.replaceState(null, "", `${BASE}acerca/#licencia`);
   let slug = $state(read());
+  const lost = $derived(!components.some((c) => c.slug === slug) && !guides.some((g) => g.slug === slug));
   let preview = $state(isPreview());
   let framework = $state<"svelte" | "react">((localStorage.getItem("d-fw") as "svelte" | "react") ?? "svelte");
   let theme = $state<"light" | "dark">((localStorage.getItem("d-theme") as "light" | "dark") ?? (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"));
@@ -115,7 +117,7 @@
   </div>
 </header>
 
-<div class="shell" class:shell--landing={slug === "introduccion"}>
+<div class="shell" class:shell--landing={slug === "introduccion" || lost}>
   <aside class="side">
     <Sidebar {sections} active={href(slug)} label={L.docs} />
   </aside>
@@ -126,6 +128,10 @@
       <ComponentPage {doc} bind:framework />
     {:else if slug === "acerca"}
       <AboutPage />
+    {:else if lost}
+      <NotFound title={i18n.lang === "en" ? "The page you’re looking for has wandered off, but don’t worry!" : "La página que buscas se ha perdido, pero no te preocupes."}
+        description={i18n.lang === "en" ? "Let’s get you back on track." : "Vamos a devolverte al buen camino."}
+        actionLabel={i18n.lang === "en" ? "Take me home" : "Llévame al inicio"} href={BASE} />
     {:else}
       <GuidePage {slug} {go} />
     {/if}
