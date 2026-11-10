@@ -4,6 +4,13 @@ Laboratorio de componentes web en TypeScript. Solo web: un mismo componente en *
 
 Preview: https://www.rblez.com/designs/ (también en GitHub Pages)
 
+## Componentes
+
+| Componente | Svelte | React | Notas |
+|---|---|---|---|
+| `PromptInput` | ✓ | ✓ | Clon del composer de bolt.new: autosize, placeholder animado, adjuntos, Plan, dictado, Build now. Estilos en `@designs/tokens/prompt-input.css`, `theme` light · dark · auto |
+| `Button` | ✓ | ✓ | solid · outline · ghost, sm · md · lg |
+
 ## Estructura
 
 ```

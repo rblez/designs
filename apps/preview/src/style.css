@@ -19,3 +19,11 @@ h2 { font-size: 16px; margin: 40px 0 4px; }
 .row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
 .row + .row { margin-top: 10px; }
 footer { margin-top: 64px; }
+.wrap { max-width: 48rem; }
+.stage--bolt-dark, .stage--bolt-light { padding: 56px 16px 20px; border: 0; overflow: hidden; }
+.stage--bolt-dark { background: radial-gradient(120% 90% at 85% 0%, #3aa0ff 0%, #0b5fe0 35%, #062a8a 70%, #04123f 100%); }
+.stage--bolt-dark .tag { color: rgba(255,255,255,.7); }
+.stage--bolt-light { background: radial-gradient(120% 90% at 85% 0%, #e6f3ff 0%, #f3f0f5 55%, #fffefe 100%); border: 1px solid var(--d-line); }
+.stage--bolt-light .tag { color: rgba(12,12,15,.5); }
+.out { font: 12px/1.5 var(--d-mono); color: rgba(255,255,255,.75); text-align: center; margin: 14px 0 0; }
+.out--dark { color: rgba(12,12,15,.55); }
