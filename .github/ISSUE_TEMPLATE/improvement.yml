@@ -1,0 +1,20 @@
+name: Mejora / Improvement
+description: Mejora un componente existente / Improve an existing component
+labels: ["enhancement", "triage"]
+body:
+  - type: input
+    id: component
+    attributes: { label: Componente / Component, placeholder: "ProfileSettings" }
+    validations: { required: true }
+  - type: dropdown
+    id: package
+    attributes:
+      label: Paquete / Package
+      options: ["@rblez-ui/svelte", "@rblez-ui/react", "@rblez-ui/tokens", "Docs"]
+  - type: textarea
+    id: idea
+    attributes: { label: Propuesta / Proposal, description: "Qué cambiarías y por qué." }
+    validations: { required: true }
+  - type: input
+    id: ref
+    attributes: { label: Referencia / Reference, placeholder: "Enlace o captura" }

@@ -21,3 +21,6 @@ body:
   - type: input
     id: env
     attributes: { label: Navegador y dispositivo / Browser & device }
+  - type: textarea
+    id: screenshot
+    attributes: { label: Captura / Screenshot, description: "Arrastra una imagen o vídeo aquí." }

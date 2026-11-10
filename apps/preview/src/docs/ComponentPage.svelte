@@ -32,6 +32,19 @@
       await navigator.clipboard.writeText(url); shared = true; setTimeout(() => (shared = false), 1600);
     } catch {}
   }
+  // Issues prellenados en GitHub (formularios .github/ISSUE_TEMPLATE)
+  const REPO = "https://github.com/rblez/designs/issues/new";
+  const pkg = $derived(framework === "svelte" ? "@rblez-ui/svelte" : "@rblez-ui/react");
+  const env = () => `${navigator.userAgent.match(/(Chrome|Firefox|Safari|Edg)\/[\d.]+/)?.[0] ?? "Browser"} · ${innerWidth}×${innerHeight}`;
+  const issueUrl = (kind: "bug" | "idea") => {
+    const q = new URLSearchParams(kind === "bug"
+      ? { template: "bug.yml", title: `[${doc.name}] `, package: pkg, component: doc.name, version: `v${__VERSION__}${__COMMIT__ ? ` (${__COMMIT__})` : ""}`, env: env() }
+      : { template: "improvement.yml", title: `[${doc.name}] `, component: doc.name, package: pkg });
+    return `${REPO}?${q}`;
+  };
+  const IL = $derived(isEn
+    ? { h: "Feedback", p: `Found a problem with ${doc.name} or have an idea? Open an issue; the component, package and version are filled in.`, bug: "Report a bug", idea: "Suggest an improvement", all: "All issues" }
+    : { h: "Comentarios", p: `¿Algo falla en ${doc.name} o tienes una idea? Abre un issue; el componente, el paquete y la versión van rellenados.`, bug: "Reportar un bug", idea: "Proponer una mejora", all: "Ver issues" });
 </script>
 
 <article class="page">
@@ -73,4 +86,16 @@
       </tbody>
     </table>
   </div>
+
+  <section class="feedback" aria-labelledby="fb-h">
+    <div>
+      <h2 id="fb-h">{IL.h}</h2>
+      <p>{IL.p}</p>
+    </div>
+    <div class="feedback__actions">
+      <a class="fb-btn fb-btn--primary" href={issueUrl("bug")} target="_blank" rel="noreferrer"><Icon name="bug" size={14} />{IL.bug}</a>
+      <a class="fb-btn" href={issueUrl("idea")} target="_blank" rel="noreferrer"><Icon name="lightbulb" size={14} />{IL.idea}</a>
+      <a class="fb-link" href={`https://github.com/rblez/designs/issues?q=is%3Aissue+${encodeURIComponent(`"[${doc.name}]"`)}`} target="_blank" rel="noreferrer">{IL.all} <Icon name="arrowUpRight" size={12} /></a>
+    </div>
+  </section>
 </article>

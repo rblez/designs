@@ -333,3 +333,16 @@ code, pre, .hl, .eyebrow, th, .ver, .divider__file, .foot, .d-sidebar__title, .g
 .divider { flex-wrap: nowrap; }
 @media (max-width: 560px) { .divider__file { display: none; } }
 @media (max-width: 560px) { .divider .ai-btn { margin-left: auto; } }
+
+/* Feedback / issues por componente */
+.feedback { margin-top: 40px; padding: 18px; display: grid; gap: 14px; border: 1px solid var(--d-line); border-radius: var(--d-radius-xl, 14px); background: var(--d-surface); }
+.feedback h2 { margin: 0 0 4px; }
+.feedback p { margin: 0; color: var(--d-muted); font-size: 13px; max-width: 60ch; }
+.feedback__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.page .fb-btn { display: inline-flex; align-items: center; gap: 6px; height: 32px; padding: 0 12px; border: 1px solid var(--d-line-2); border-radius: 9px; background: var(--d-surface); color: var(--d-ink); font: 600 12.5px/1 var(--d-sans); }
+.page .fb-btn:hover { background: var(--d-surface-2); }
+.page .fb-btn--primary { background: var(--d-ink); color: var(--d-bg); border-color: var(--d-ink); }
+.page .fb-btn--primary:hover { background: var(--d-ink); opacity: .9; }
+.page .fb-link { display: inline-flex; align-items: center; gap: 4px; margin-left: 4px; font: 600 12.5px/1 var(--d-sans); color: var(--d-muted); }
+.page .fb-link:hover { color: var(--d-ink); }
+.fb-btn:focus-visible, .fb-link:focus-visible { outline: 2px solid var(--d-orange); outline-offset: 2px; }

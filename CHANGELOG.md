@@ -8,6 +8,7 @@ Todos los cambios notables de rblez-ui. Formato basado en [Keep a Changelog](htt
 - ProfileSettings: pantalla de ajustes de perfil estilo Telegram (Svelte y React), con avatar, grupos de iconos de color, título compacto al hacer scroll y pestañas flotantes.
 - 24 iconos Heroicons micro nuevos.
 - Cada componente tiene su propia URL (`/designs/<slug>/`) con título, descripción e imagen Open Graph propias, y botón Compartir.
+- Sección de Comentarios en cada componente: abre un issue de bug o mejora en GitHub con componente, paquete, versión y navegador rellenados.
 - Búsqueda en la cabecera en escritorio (⌘K / Ctrl+K) con paleta de comandos.
 
 ### Changed
