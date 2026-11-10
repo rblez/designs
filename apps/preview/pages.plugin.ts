@@ -54,6 +54,10 @@ export function sharePages(): Plugin {
           .replace(/(property="og:image:alt" content=")[^"]*/, `$1${esc(title)}`);
         mkdirSync(resolve(outDir, p.slug), { recursive: true });
         writeFileSync(resolve(outDir, p.slug, "index.html"), page);
+        if (!GUIDES.some((g) => g.slug === p.slug)) {
+          mkdirSync(resolve(outDir, p.slug, "preview"), { recursive: true });
+          writeFileSync(resolve(outDir, p.slug, "preview", "index.html"), page.replace(/<title>[^<]*<\/title>/, `<title>${esc(p.name)} · Preview · rblez-ui</title>`));
+        }
       }
       writeFileSync(resolve(outDir, "404.html"), html);
       writeFileSync(resolve(outDir, "pages.json"), JSON.stringify(pages, null, 1));

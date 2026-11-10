@@ -16,7 +16,6 @@
     { id: "lovable", name: "Lovable", url: (p) => `https://lovable.dev/#prompt=${e(p)}`, prefill: true },
     { id: "bolt", name: "Bolt", url: (p) => `https://bolt.new/?prompt=${e(p)}`, prefill: true },
     { id: "replit", name: "Replit", url: (p) => `https://replit.com/create?prompt=${e(p)}`, prefill: true },
-    { id: "hark", name: "Hark", url: () => `https://hark.com`, prefill: false },
   ];
   const fan: AiId[] = ["claude", "chatgpt", "v0"];
 
@@ -54,7 +53,7 @@
           <span class="ai-tile__go"><Icon name="arrowUpRight" size={12} /></span>
         </button>
       {/each}
-      {#each { length: (4 - (targets.length % 4)) % 4 } as _, i (i)}<span class="ai-tile ai-tile--empty" aria-hidden="true"></span>{/each}
+      {#each { length: (3 - (targets.length % 3)) % 3 } as _, i (i)}<span class="ai-tile ai-tile--empty" aria-hidden="true"></span>{/each}
     </div>
   </div>
 </dialog>

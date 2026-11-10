@@ -4,6 +4,7 @@
   import { components, guides } from "./docs/registry";
   import ComponentPage from "./docs/ComponentPage.svelte";
   import GuidePage from "./docs/GuidePage.svelte";
+  import PreviewPage from "./docs/PreviewPage.svelte";
   import GitHubStars from "./docs/GitHubStars.svelte";
   import { i18n, setLang, t } from "./docs/i18n.svelte";
 
@@ -12,7 +13,9 @@
   // Rutas reales (/designs/<slug>/) para compartir; los enlaces viejos con #/ se redirigen.
   if (/^#\/./.test(location.hash)) history.replaceState(null, "", href(location.hash.slice(2)));
   const read = () => location.pathname.slice(BASE.length).replace(/\/+$/, "").split("/")[0] || "introduccion";
+  const isPreview = () => /^[^/]+\/preview\/?$/.test(location.pathname.slice(BASE.length));
   let slug = $state(read());
+  let preview = $state(isPreview());
   let framework = $state<"svelte" | "react">((localStorage.getItem("d-fw") as "svelte" | "react") ?? "svelte");
   let theme = $state<"light" | "dark">((localStorage.getItem("d-theme") as "light" | "dark") ?? (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"));
   let menu = $state(false);
@@ -35,7 +38,7 @@
     return () => removeEventListener("keydown", k);
   });
   $effect(() => {
-    const on = () => { slug = read(); close(); window.scrollTo({ top: 0 }); };
+    const on = () => { slug = read(); preview = isPreview(); close(); window.scrollTo({ top: 0 }); };
     const click = (e: MouseEvent) => {
       if (e.defaultPrevented || e.button || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
       const a = (e.target as Element).closest?.("a"); if (!a || a.target || a.hasAttribute("download")) return;
@@ -81,6 +84,9 @@
   }
 </script>
 
+{#if preview && doc}
+  <PreviewPage {doc} bind:framework back={href(doc.slug)} />
+{:else}
 <div class="bg" aria-hidden="true"></div>
 <header class="top">
   <div class="top__left">
@@ -166,3 +172,4 @@
     {#if menu}<Icon name="close" size={16} />{:else}<Icon name="menu" size={16} />{/if}
   </button>
 </nav>
+{/if}

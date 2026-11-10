@@ -58,10 +58,13 @@
   <p class="lead">{description}</p>
 
   <section class="example">
-    <div class="canvas" class:canvas--gradient={doc.surface === "gradient"} class:canvas--wide={doc.surface === "wide"} class:canvas--phone={doc.surface === "phone"}>
-      {#key framework + doc.slug}
-        {#if framework === "svelte"}<Demo />{:else}<ReactIsland component={doc.react} />{/if}
-      {/key}
+    <div class="canvas canvas--static" class:canvas--gradient={doc.surface === "gradient"} class:canvas--wide={doc.surface === "wide"} class:canvas--phone={doc.surface === "phone"}>
+      <div class="canvas__frame" inert aria-hidden="true">
+        {#key framework + doc.slug}
+          {#if framework === "svelte"}<Demo />{:else}<ReactIsland component={doc.react} />{/if}
+        {/key}
+      </div>
+      <a class="preview-btn" href={`${import.meta.env.BASE_URL}${doc.slug}/preview/`}><Icon name="play" size={12} />Preview</a>
     </div>
     <div class="divider">
       <FrameworkSwitch bind:value={framework} />
