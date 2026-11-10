@@ -15,5 +15,8 @@
     "typecheck": "tsc -p ."
   },
   "license": "UNLICENSED",
-  "author": "rblez <hello@rblez.com>"
+  "author": "rblez <hello@rblez.com>",
+  "dependencies": {
+    "lucide": "^1.71.0"
+  }
 }

@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Icon } from "@rblez-ui/svelte";
-  let { repo = "rblez/designs" }: { repo?: string } = $props();
+  let { repo = "rblez/ui" }: { repo?: string } = $props();
   let stars = $state<number | null>(null);
   $effect(() => {
     const key = `d-stars-${repo}`;

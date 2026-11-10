@@ -8,9 +8,9 @@ import { sharePages } from "./pages.plugin";
 const pkg = JSON.parse(readFileSync(new URL("../../package.json", import.meta.url), "utf8"));
 const commit = (process.env.GITHUB_SHA ?? (() => { try { return execSync("git rev-parse HEAD").toString(); } catch { return ""; } })()).trim().slice(0, 7);
 
-// Se sirve en www.rblez.com/designs/ y en rblez.github.io/designs/
+// Se sirve en www.rblez.com/ui/ y en rblez.github.io/ui/
 export default defineConfig({
-  base: "/designs/",
+  base: "/ui/",
   plugins: [svelte(), react({ include: /\.tsx$/ }), sharePages()],
   define: {
     __VERSION__: JSON.stringify(pkg.version),

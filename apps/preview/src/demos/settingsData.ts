@@ -1,6 +1,6 @@
 import type { SettingsProfile, SettingsSection, SettingsTab } from "@rblez-ui/tokens";
 
-export const profile: SettingsProfile = { name: "Ray", phone: "+1 555 010 0199", username: "rblez", avatar: "/designs/isotipo-avatar.svg" };
+export const profile: SettingsProfile = { name: "Ray", phone: "+1 555 010 0199", username: "rblez", avatar: "/ui/isotipo-avatar.svg" };
 
 export const sections: SettingsSection[] = [
   { title: "Cuentas", items: [{ id: "tiendly", label: "Tiendly", icon: "storefront", color: "green", badge: 2, chevron: true }] },
@@ -33,7 +33,7 @@ export const tabs: SettingsTab[] = [
   { id: "chats", label: "Chats", icon: "chats", badge: 11 },
   { id: "contacts", label: "Contactos", icon: "userCircle" },
   { id: "settings", label: "Ajustes", icon: "cog" },
-  { id: "profile", label: "Perfil", image: "/designs/isotipo-avatar.svg" },
+  { id: "profile", label: "Perfil", image: "/ui/isotipo-avatar.svg" },
 ];
 
 export const footer = "rblez-ui v0.1 · ProfileSettings";

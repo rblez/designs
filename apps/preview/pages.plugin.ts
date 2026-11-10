@@ -4,11 +4,10 @@ import { resolve } from "node:path";
 
 export interface PageMeta { slug: string; name: string; description: string; descriptionEn: string; group?: string }
 
-const SITE = "https://www.rblez.com/designs/";
+const SITE = "https://www.rblez.com/ui/";
 const GUIDES: PageMeta[] = [
   { group: "Docs", slug: "instalacion", name: "Instalación", description: "Cómo instalar rblez-ui en Svelte 5 y React.", descriptionEn: "How to install rblez-ui in Svelte 5 and React." },
   { group: "Docs", slug: "tokens", name: "Tokens", description: "Color, tipografía y tema de rblez-ui.", descriptionEn: "rblez-ui color, typography and theming." },
-  { group: "Docs", slug: "licencia", name: "Licencia", description: "Licencia de rblez-ui.", descriptionEn: "rblez-ui license." },
   { group: "Docs", slug: "acerca", name: "Acerca de", description: "Qué es rblez-ui y quién lo hace.", descriptionEn: "What rblez-ui is and who makes it." },
 ];
 
@@ -60,6 +59,8 @@ export function sharePages(): Plugin {
         }
       }
       writeFileSync(resolve(outDir, "404.html"), html);
+      mkdirSync(resolve(outDir, "licencia"), { recursive: true });
+      writeFileSync(resolve(outDir, "licencia", "index.html"), `<!doctype html><meta charset="utf-8"><meta http-equiv="refresh" content="0;url=../acerca/#licencia"><link rel="canonical" href="${SITE}acerca/">`);
       writeFileSync(resolve(outDir, "pages.json"), JSON.stringify(pages, null, 1));
     },
   };

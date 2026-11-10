@@ -4,15 +4,15 @@
 
 # rblez-ui
 
-[![CI](https://github.com/rblez/designs/actions/workflows/ci.yml/badge.svg)](https://github.com/rblez/designs/actions/workflows/ci.yml)
-[![Pages](https://github.com/rblez/designs/actions/workflows/pages.yml/badge.svg)](https://github.com/rblez/designs/actions/workflows/pages.yml)
-[![Release](https://img.shields.io/github/v/release/rblez/designs?label=release&color=f54e00)](https://github.com/rblez/designs/releases)
+[![CI](https://github.com/rblez/ui/actions/workflows/ci.yml/badge.svg)](https://github.com/rblez/ui/actions/workflows/ci.yml)
+[![Pages](https://github.com/rblez/ui/actions/workflows/pages.yml/badge.svg)](https://github.com/rblez/ui/actions/workflows/pages.yml)
+[![Release](https://img.shields.io/github/v/release/rblez/ui?label=release&color=f54e00)](https://github.com/rblez/ui/releases)
 ![License](https://img.shields.io/badge/license-proprietary-26251e)
 
 **ES** · Componentes web en TypeScript para **Svelte 5** y **React 18+**, con una sola API, un único CSS y tokens compartidos.
 **EN** · TypeScript web components for **Svelte 5** and **React 18+** — one API, one stylesheet, shared tokens.
 
-Docs: **[www.rblez.com/designs](https://www.rblez.com/designs/)** · [GitHub Pages](https://rblez.github.io/designs/) · [Changelog](./CHANGELOG.md) · [Releases](https://github.com/rblez/designs/releases)
+Docs: **[www.rblez.com/ui](https://www.rblez.com/ui/)** · [GitHub Pages](https://rblez.github.io/ui/) · [Changelog](./CHANGELOG.md) · [Releases](https://github.com/rblez/ui/releases)
 
 ## Componentes / Components
 
@@ -22,7 +22,7 @@ Docs: **[www.rblez.com/designs](https://www.rblez.com/designs/)** · [GitHub Pag
 | Formularios / Forms | `Button`, `Input`, `Textarea`, `Switch` |
 | Layout | `Card`, `Sidebar`, `Footer` |
 | Feedback | `Badge`, `Kbd` |
-| Base | `Icon` (Heroicons micro), tokens |
+| Base | `Icon` (Lucide, línea y relleno), tokens |
 
 ## Paquetes / Packages
 
@@ -38,13 +38,17 @@ import "@rblez-ui/tokens/components.css";
 import { Button } from "@rblez-ui/svelte"; // o "@rblez-ui/react"
 ```
 
+## Para agentes de IA
+
+Lee [SKILL.md](./SKILL.md): reglas, tokens, API de cada componente, iconos y recetas.
+
 ## Estructura
 
 ```
 packages/tokens   tokens, CSS e iconos
 packages/svelte   Svelte 5
 packages/react    React 18+
-apps/preview      docs (Vite + Svelte), base /designs/
+apps/preview      docs (Vite + Svelte), base /ui/
 scripts/og        plantilla de la imagen Open Graph
 ```
 
@@ -52,7 +56,7 @@ scripts/og        plantilla de la imagen Open Graph
 
 ```bash
 pnpm install
-pnpm dev      # http://localhost:5173/designs/
+pnpm dev      # http://localhost:5173/ui/
 pnpm build    # apps/preview/dist
 ```
 
@@ -66,8 +70,8 @@ pnpm build    # apps/preview/dist
 ## Despliegue
 
 - **GitHub Pages**: automático en cada push a `main`.
-- **www.rblez.com/designs/**: `apps/preview/dist` se copia a `designs/` en `rblez/www.rblez.com` y se publica con `npx wrangler deploy`.
+- **www.rblez.com/ui/**: `apps/preview/dist` se copia a `ui/` en `rblez/www.rblez.com` y se publica con `npx wrangler deploy`.
 
 ## Licencia
 
-Propietaria. © 2026 rblez. Todos los derechos reservados. Ver [LICENSE](./LICENSE). Fuentes Inter y SUSE Mono bajo SIL OFL 1.1; iconos Heroicons (MIT).
+Propietaria. © 2026 rblez. Todos los derechos reservados. Ver [LICENSE](./LICENSE). Fuentes Inter y SUSE Mono bajo SIL OFL 1.1; iconos Lucide (ISC).

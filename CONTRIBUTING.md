@@ -24,6 +24,6 @@ rblez-ui es software propietario de rblez. Este documento describe el flujo inte
 
 ```bash
 pnpm install
-pnpm dev     # docs en http://localhost:5173/designs/
+pnpm dev     # docs en http://localhost:5173/ui/
 pnpm build
 ```

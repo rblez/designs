@@ -1,5 +1,6 @@
 <script lang="ts">
   import CodeBlock from "./CodeBlock.svelte";
+  import AboutPage from "./AboutPage.svelte";
   import { Card, Badge } from "@rblez-ui/svelte";
   import { i18n } from "./i18n.svelte";
   let { slug, go }: { slug: string; go: (s: string) => void } = $props();
@@ -81,20 +82,6 @@
       <p class="type-sample mono">SUSE Mono — pnpm build --filter rblez-ui</p>
     </Card>
   {:else if slug === "acerca"}
-    <p class="eyebrow">{c.start}</p>
-    <h1>{c.about}</h1>
-    <p class="lead">{c.aboutLead}</p>
-    <ul class="list">
-      <li><strong>{c.a.author}.</strong> <a href="https://www.rblez.com" target="_blank" rel="noreferrer">rblez</a> · <a href="mailto:hello@rblez.com">hello@rblez.com</a></li>
-      <li><strong>{c.a.code}.</strong> <a href="https://github.com/rblez/designs" target="_blank" rel="noreferrer">github.com/rblez/designs</a></li>
-      <li><strong>{c.a.version}.</strong> v{__VERSION__}{__COMMIT__ ? ` (${__COMMIT__})` : ""} · {__BUILD_DATE__} · <a href="https://github.com/rblez/designs/releases" target="_blank" rel="noreferrer">Releases</a></li>
-      <li><strong>{c.a.type}.</strong> {c.a.typeV}</li>
-      <li><strong>{c.a.license}.</strong> {c.a.licV}</li>
-    </ul>
-  {:else if slug === "licencia"}
-    <p class="eyebrow">{c.legal}</p>
-    <h1>{c.licTitle}</h1>
-    <p class="lead">{c.licLead}</p>
-    <p>{c.licP} <a href="mailto:hello@rblez.com">hello@rblez.com</a>.</p>
+    <AboutPage />
   {/if}
 </article>

@@ -1,9 +1,16 @@
 <script lang="ts">
-  import { icons, type IconName } from "@rblez-ui/tokens";
-  let { name, class: className = "d-icon", size }: { name: IconName; class?: string; size?: number } = $props();
-  const icon = $derived(icons[name]);
+  import { icons, type IconName, type IconNode, type IconVariant } from "@rblez-ui/tokens";
+  let { name, icon, variant = "line", size = 16, strokeWidth, label, class: className = "d-icon" }: {
+    /** Icono del set curado. */ name?: IconName;
+    /** Cualquier icono de Lucide: import { Camera } from "lucide". */ icon?: IconNode;
+    variant?: IconVariant; size?: number; strokeWidth?: number; label?: string; class?: string;
+  } = $props();
+  const node = $derived((icon ?? (name ? icons[name] : [])) as IconNode);
+  const sw = $derived(strokeWidth ?? (size <= 16 ? 2.25 : 2));
 </script>
 
-<svg class={className} viewBox="0 0 16 16" width={size} height={size} fill="currentColor" aria-hidden="true">
-  {#each icon.paths as p (p.d)}<path d={p.d} fill-rule={"evenodd" in p ? "evenodd" : undefined} clip-rule={"evenodd" in p ? "evenodd" : undefined} />{/each}
+<svg class={className} data-variant={variant} viewBox="0 0 24 24" width={size} height={size}
+  fill={variant === "fill" ? "currentColor" : "none"} stroke="currentColor" stroke-width={sw}
+  stroke-linecap="round" stroke-linejoin="round" role={label ? "img" : undefined} aria-label={label} aria-hidden={label ? undefined : "true"}>
+  {#each node as [tag, attrs], i (i)}<svelte:element this={tag} {...attrs} />{/each}
 </svg>

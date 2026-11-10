@@ -1,6 +1,6 @@
 /* Icon */
 .d-icon { display: inline-block; flex: none; width: 16px; height: 16px; vertical-align: middle; }
-/* @designs — estilos compartidos por Svelte y React. Requiere tokens.css. */
+/* rblez-ui — estilos compartidos por Svelte y React. Requiere tokens.css. */
 .d-focus:focus-visible, .d-btn:focus-visible, .d-switch:focus-visible, .d-sidebar__item:focus-visible {
   outline: none; box-shadow: 0 0 0 1px var(--d-surface), 0 0 0 3px var(--d-ring);
 }

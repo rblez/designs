@@ -4,16 +4,19 @@
   import { components, guides } from "./docs/registry";
   import ComponentPage from "./docs/ComponentPage.svelte";
   import GuidePage from "./docs/GuidePage.svelte";
+  import Landing from "./docs/Landing.svelte";
+  import AboutPage from "./docs/AboutPage.svelte";
   import PreviewPage from "./docs/PreviewPage.svelte";
   import GitHubStars from "./docs/GitHubStars.svelte";
   import { i18n, setLang, t } from "./docs/i18n.svelte";
 
-  const BASE = import.meta.env.BASE_URL; // "/designs/"
+  const BASE = import.meta.env.BASE_URL; // "/ui/"
   const href = (slug: string) => `${BASE}${slug}/`;
-  // Rutas reales (/designs/<slug>/) para compartir; los enlaces viejos con #/ se redirigen.
+  // Rutas reales (/ui/<slug>/) para compartir; los enlaces viejos con #/ se redirigen.
   if (/^#\/./.test(location.hash)) history.replaceState(null, "", href(location.hash.slice(2)));
   const read = () => location.pathname.slice(BASE.length).replace(/\/+$/, "").split("/")[0] || "introduccion";
   const isPreview = () => /^[^/]+\/preview\/?$/.test(location.pathname.slice(BASE.length));
+  if (read() === "licencia") history.replaceState(null, "", `${BASE}acerca/#licencia`);
   let slug = $state(read());
   let preview = $state(isPreview());
   let framework = $state<"svelte" | "react">((localStorage.getItem("d-fw") as "svelte" | "react") ?? "svelte");
@@ -85,7 +88,7 @@
 </script>
 
 {#if preview && doc}
-  <PreviewPage {doc} bind:framework back={href(doc.slug)} />
+  <PreviewPage {doc} back={href(doc.slug)} />
 {:else}
 <div class="bg" aria-hidden="true"></div>
 <header class="top">
@@ -112,13 +115,17 @@
   </div>
 </header>
 
-<div class="shell">
+<div class="shell" class:shell--landing={slug === "introduccion"}>
   <aside class="side">
     <Sidebar {sections} active={href(slug)} label={L.docs} />
   </aside>
   <main class="main">
-    {#if doc}
+    {#if slug === "introduccion"}
+      <Landing {go} />
+    {:else if doc}
       <ComponentPage {doc} bind:framework />
+    {:else if slug === "acerca"}
+      <AboutPage />
     {:else}
       <GuidePage {slug} {go} />
     {/if}

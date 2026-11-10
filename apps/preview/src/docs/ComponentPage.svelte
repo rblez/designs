@@ -33,7 +33,7 @@
     } catch {}
   }
   // Issues prellenados en GitHub (formularios .github/ISSUE_TEMPLATE)
-  const REPO = "https://github.com/rblez/designs/issues/new";
+  const REPO = "https://github.com/rblez/ui/issues/new";
   const pkg = $derived(framework === "svelte" ? "@rblez-ui/svelte" : "@rblez-ui/react");
   const env = () => `${navigator.userAgent.match(/(Chrome|Firefox|Safari|Edg)\/[\d.]+/)?.[0] ?? "Browser"} · ${innerWidth}×${innerHeight}`;
   const issueUrl = (kind: "bug" | "idea") => {
@@ -98,7 +98,7 @@
     <div class="feedback__actions">
       <a class="fb-btn fb-btn--primary" href={issueUrl("bug")} target="_blank" rel="noreferrer"><Icon name="bug" size={14} />{IL.bug}</a>
       <a class="fb-btn" href={issueUrl("idea")} target="_blank" rel="noreferrer"><Icon name="lightbulb" size={14} />{IL.idea}</a>
-      <a class="fb-link" href={`https://github.com/rblez/designs/issues?q=is%3Aissue+${encodeURIComponent(`"[${doc.name}]"`)}`} target="_blank" rel="noreferrer">{IL.all} <Icon name="arrowUpRight" size={12} /></a>
+      <a class="fb-link" href={`https://github.com/rblez/ui/issues?q=is%3Aissue+${encodeURIComponent(`"[${doc.name}]"`)}`} target="_blank" rel="noreferrer">{IL.all} <Icon name="arrowUpRight" size={12} /></a>
     </div>
   </section>
 </article>

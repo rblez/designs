@@ -4,5 +4,5 @@
 </script>
 
 <Footer {columns} {legal}>
-  {#snippet logo()}<img src="/designs/isotipo.svg" alt="" class="demo-logo" />{/snippet}
+  {#snippet logo()}<img src="/ui/isotipo.svg" alt="" class="demo-logo" />{/snippet}
 </Footer>
