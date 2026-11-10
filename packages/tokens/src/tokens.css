@@ -1,0 +1,25 @@
+:root {
+  --d-bg: #f7f7f4; --d-ink: #26251e; --d-muted: rgba(38,37,30,.55); --d-line: rgba(38,37,30,.12);
+  --d-accent: #26251e; --d-accent-ink: #f7f7f4;
+  --d-radius-sm: 6px; --d-radius-md: 10px; --d-radius-lg: 14px;
+  --d-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", Inter, Roboto, system-ui, sans-serif;
+  --d-mono: ui-monospace, "SF Mono", "Geist Mono", "Source Code Pro", monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --d-bg: #14120b; --d-ink: #edecec; --d-muted: rgba(237,236,236,.55); --d-line: rgba(237,236,236,.14);
+    --d-accent: #edecec; --d-accent-ink: #14120b;
+  }
+}
+.d-btn {
+  font: 500 16px/1.2 var(--d-sans); border-radius: var(--d-radius-md); border: 1px solid transparent;
+  padding: 8px 16px; cursor: pointer; transition: opacity .15s, background .15s;
+}
+.d-btn:disabled { opacity: .45; cursor: not-allowed; }
+.d-btn--sm { font-size: 14px; padding: 6px 12px; }
+.d-btn--lg { font-size: 20px; padding: 12px 24px; }
+.d-btn--solid { background: var(--d-accent); color: var(--d-accent-ink); }
+.d-btn--outline { background: transparent; color: var(--d-ink); border-color: var(--d-line); }
+.d-btn--ghost { background: transparent; color: var(--d-ink); }
+.d-btn:not(:disabled):hover { opacity: .85; }
+@media (prefers-reduced-motion: reduce) { .d-btn { transition: none; } }
