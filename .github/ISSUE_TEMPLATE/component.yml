@@ -1,0 +1,18 @@
+name: Componente nuevo / New component
+description: Propón un componente / Propose a component
+labels: ["component", "enhancement"]
+body:
+  - type: input
+    id: name
+    attributes: { label: Nombre / Name, placeholder: "Dialog" }
+    validations: { required: true }
+  - type: textarea
+    id: why
+    attributes: { label: Uso / Use case }
+    validations: { required: true }
+  - type: textarea
+    id: api
+    attributes: { label: API propuesta / Proposed API, render: tsx }
+  - type: input
+    id: ref
+    attributes: { label: Referencia / Reference, placeholder: "Vercel, Linear, shadcn…" }

@@ -1,0 +1,31 @@
+name: Release
+on:
+  push:
+    tags: ["v*.*.*"]
+permissions:
+  contents: write
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile=false
+      - run: pnpm build
+      - name: Check tag matches package.json
+        run: |
+          v="$(node -p "require('./package.json').version")"
+          [ "v$v" = "$GITHUB_REF_NAME" ] || { echo "Tag $GITHUB_REF_NAME ≠ package.json v$v"; exit 1; }
+      - name: Package docs build
+        run: cd apps/preview/dist && zip -qr "../../../rblez-ui-docs-${GITHUB_REF_NAME}.zip" .
+      - name: Notes from CHANGELOG
+        run: |
+          awk -v v="${GITHUB_REF_NAME#v}" '$0 ~ "^## \\["v"\\]"{f=1;next} /^## \[/{if(f)exit} f' CHANGELOG.md > notes.md
+      - uses: softprops/action-gh-release@v2
+        with:
+          body_path: notes.md
+          files: rblez-ui-docs-${{ github.ref_name }}.zip

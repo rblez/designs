@@ -66,7 +66,7 @@
 <header class="top">
   <div class="top__left">
     <a class="brand" href="#/introduccion"><img src="./isotipo.svg" alt="rblez-ui" width="20" height="20" /></a>
-    <span class="ver">v0.1</span>
+    <span class="ver" title={__COMMIT__ ? `build ${__COMMIT__} · ${__BUILD_DATE__}` : __BUILD_DATE__}>v{__VERSION__}</span>
   </div>
   <div class="top__right">
     <div class="seg seg--lang" role="group" aria-label={L.language}>
@@ -108,7 +108,7 @@
     {/if}
   </div>
   <div class="sheet__foot">
-    <span class="sheet__meta">rblez-ui · v0.1</span>
+    <span class="sheet__meta">rblez-ui · v{__VERSION__}{__COMMIT__ ? ` · ${__COMMIT__}` : ""}</span>
     <div class="seg seg--lang" role="group" aria-label={L.language}>
       <button aria-pressed={i18n.lang === "es"} onclick={() => setLang("es")}>ES</button>
       <button aria-pressed={i18n.lang === "en"} onclick={() => setLang("en")}>EN</button>

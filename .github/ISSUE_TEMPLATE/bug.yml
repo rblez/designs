@@ -1,0 +1,23 @@
+name: Bug
+description: Algo no funciona como debería / Something isn't working
+labels: ["bug", "triage"]
+body:
+  - type: dropdown
+    id: package
+    attributes:
+      label: Paquete / Package
+      options: ["@rblez-ui/svelte", "@rblez-ui/react", "@rblez-ui/tokens", "Docs"]
+    validations: { required: true }
+  - type: input
+    id: component
+    attributes: { label: Componente / Component, placeholder: "Button, PromptInput…" }
+  - type: textarea
+    id: what
+    attributes: { label: Qué pasa / What happens, description: "Pasos para reproducir y resultado esperado." }
+    validations: { required: true }
+  - type: input
+    id: version
+    attributes: { label: Versión / Version, placeholder: "v0.1.0 (aparece en la cabecera de las docs)" }
+  - type: input
+    id: env
+    attributes: { label: Navegador y dispositivo / Browser & device }
