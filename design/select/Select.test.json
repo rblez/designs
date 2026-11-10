@@ -1,0 +1,15 @@
+{"cases":[
+ {"name":"dark","state":{}},
+ {"name":"light","state":{"theme":"light"}},
+ {"name":"open","state":{"open":true}},
+ {"name":"open-active-3","state":{"open":true,"active":3}},
+ {"name":"selected-sfo","state":{"value":"sfo"}},
+ {"name":"placeholder","state":{"value":null}},
+ {"name":"search-vir","state":{"open":true,"query":"vir"}},
+ {"name":"search-empty","state":{"open":true,"query":"tokio","active":-1}},
+ {"name":"not-searchable","state":{"open":true,"searchable":false}},
+ {"name":"error","state":{"value":null,"error":"Elige una región para continuar."}},
+ {"name":"size-sm","state":{"size":"sm"}},
+ {"name":"size-lg","state":{"size":"lg"}},
+ {"name":"disabled","state":{"disabled":true}}
+]}

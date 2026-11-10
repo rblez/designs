@@ -9,6 +9,14 @@ Todos los cambios notables de rblez-ui. Formato basado en [Keep a Changelog](htt
 - Header de la docs: se apilaba en dos filas (logo y versión arriba, búsqueda/Star abajo) y el logo quedaba cortado arriba, en móvil y en escritorio. Causa: `.top` no tenía ninguna regla base (ni `display`, ni altura, ni padding), solo ajustes sueltos en media queries. Ahora `.top` es una fila `sticky` de 56px (`display: flex; justify-content: space-between`) con fondo difuminado y borde inferior, como `.pv__bar`.
 
 ### Added
+- `Grid` y `GridItem`: rejillas responsive con container queries (480 / 768 / 1024 / 1280px): `auto-fit` / `auto-fill` por ancho mínimo (`min`), `columns` con columnas por breakpoint (`cols: { base, sm, md, lg, xl }`), `masonry` (columnas CSS), `bento` con `colSpan` / `rowSpan` y `split` con columna lateral (`sidebar`, `side`). Los spans anchos ocupan la fila entera por debajo de 768px.
+- `Modal`: diálogo sobre `<dialog>` nativo con focus trap, devolución del foco, `aria-modal` / `aria-labelledby` / `aria-describedby`, tamaños `sm` · `md` · `lg`, pie de acciones, cierre con Esc y clic en el fondo configurables y bloqueo de scroll.
+- `BottomSheet`: hoja inferior para móvil con asa para arrastrar (y flechas ↑/↓), puntos de anclaje (`snapPoints`, `snap`), cerrar arrastrando, fondo, focus trap, Esc, bloqueo de scroll y padding de safe-area.
+- `Select`: select accesible con listbox propio (`role="combobox"`), teclado completo (flechas, Home/End, PageUp/PageDown, búsqueda por tecleo, Enter/Esc/Tab), `aria-activedescendant`, iconos, opciones deshabilitadas, búsqueda opcional (`searchable`, sin tildes ni mayúsculas) e input oculto para formularios. Mismo aspecto que `Input`.
+- `Toast`: `<Toaster>` (región `aria-live="polite"`, `position`, `max`) y `toast()` con variantes `default` · `success` · `warning` · `danger`, título, descripción, acción, duración, cierre, apilado y pausa al pasar el ratón o con el foco. El store es agnóstico al framework y vive en `@rblez-ui/tokens`.
+- Grupo «Overlay» en la docs; demos y páginas (`/ui/<slug>/`) para los cinco componentes, en español e inglés.
+- Versiones Patch en `design/grid`, `design/modal`, `design/bottom-sheet`, `design/select` y `design/toast` con casos de estado (claro/oscuro, abierto/cerrado, opción elegida, variantes…) y sus snapshots.
+- CI: job «Patch snapshots» que ejecuta `patch test` sobre cada `design/*/`.
 - `NotFound`: página 404 con un 404 isométrico en 3D (vector generado desde Inter), rejilla isométrica y tema claro/oscuro. La docs lo usa para rutas inexistentes.
 - Slider de componentes en móvil (deslizar o tocar) y paginador anterior/siguiente.
 - Landing en la introducción con animaciones GSAP (timeline y ScrollTrigger) y Motion (inView, hover, springs).
@@ -21,6 +29,7 @@ Todos los cambios notables de rblez-ui. Formato basado en [Keep a Changelog](htt
 - Búsqueda en la cabecera en escritorio (⌘K / Ctrl+K) con paleta de comandos.
 
 ### Changed
+- `ProfileSettings`: los iconos de las baldosas de color son rellenos (Heroicons solid vía `<Icon variant="fill">`), en blanco sobre la baldosa, como en los ajustes de Telegram; el icono de la pestaña activa también es relleno y las inactivas siguen en línea. Las píldoras superiores (QR, buscar, más) y el chevron siguen en línea. La versión Patch (`design/profile-settings`) usa glifos rellenos equivalentes y sus snapshots se han regenerado.
 - El repo pasa a `rblez/ui` y la ruta a `/ui/`.
 - La licencia se integra en Acerca de.
 - Preview sin selector de framework.

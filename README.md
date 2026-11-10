@@ -19,9 +19,10 @@ Docs: **[www.rblez.com/ui](https://www.rblez.com/ui/)** · [GitHub Pages](https:
 | Grupo | Componentes |
 |---|---|
 | IA / AI | `PromptInput` |
-| Formularios / Forms | `Button`, `Input`, `Textarea`, `Switch` |
-| Layout | `Card`, `Sidebar`, `Footer` |
-| Feedback | `Badge`, `Kbd` |
+| Formularios / Forms | `Button`, `Input`, `Textarea`, `Switch`, `Select` |
+| Layout | `Grid`, `Card`, `Sidebar`, `Footer`, `ProfileSettings`, `NotFound` |
+| Overlay | `Modal`, `BottomSheet` |
+| Feedback | `Badge`, `Kbd`, `Toast` (`Toaster` + `toast()`) |
 | Base | `Icon` (Heroicons, línea y relleno), tokens |
 
 ## Paquetes / Packages
@@ -50,6 +51,7 @@ packages/svelte   Svelte 5
 packages/react    React 18+
 apps/preview      docs (Vite + Svelte), base /ui/
 scripts/og        plantilla de la imagen Open Graph
+design/<slug>     versión Patch de cada componente (Figma + tests de estado)
 ```
 
 ## Desarrollo

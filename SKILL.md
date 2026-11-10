@@ -64,17 +64,22 @@ Light: bg `#f7f7f4`, ink `#26251e`. Dark: bg `#14120b`, ink `#edecec`.
 | `Input` | `value`, `label`, `hint`, `error`, `size`, `prefix` / `suffix` | `error` sets `aria-invalid`. |
 | `Textarea` | `value`, `label`, `hint`, `error`, `rows` | |
 | `Switch` | `checked`, `label`, `disabled` | `role="switch"`. |
+| `Select` | `value`, `options: { value, label, disabled?, icon? }[]`, `label`, `hint`, `error`, `placeholder`, `size`, `searchable`, `name`, `onchange` | Own listbox (`role="combobox"` + `listbox`): arrows, Home/End, PageUp/Down, typeahead, Enter/Esc/Tab, `aria-activedescendant`. Same look as `Input`. |
+| `Modal` | `open`, `onclose`, `title`, `description`, `size: sm · md · lg`, `closeOnBackdrop`, `closeOnEsc`, `showClose`, `footer` | Native `<dialog>` + `showModal()`: focus trap, focus return, `aria-modal`, `aria-labelledby`, scroll lock. |
+| `BottomSheet` | `open`, `onclose`, `title`, `description`, `snapPoints` (fractions of the viewport), `snap`, `onsnapchange`, `dismissible`, `footer` | Drag handle (↑/↓ keys), drag to dismiss, backdrop, Esc, focus trap, scroll lock, safe-area padding. |
 | `Badge` | `variant: default · secondary · outline · brand · success · warning · danger`, `dot` | |
 | `Kbd` | children | Keyboard shortcuts. |
+| `Toaster` + `toast()` | `position`, `max`, `label`; `toast(title \| options)`, `toast.success/warning/danger`, `toast.dismiss(id?)` | One `<Toaster>` per app; `aria-live="polite"`; options `{ title, description, variant, duration, action: { label, onClick }, dismissible }`; pauses on hover/focus. Store shared in `@rblez-ui/tokens`. |
 | `Card` | `title`, `description`, `footer` | |
+| `Grid` | `variant: auto-fit · auto-fill · columns · masonry · bento · split`, `cols` (number or `{ base, sm, md, lg, xl }`), `min`, `gap`, `sidebar`, `side`, `rowHeight`, `as` | Container queries (480/768/1024/1280). `GridItem` with `colSpan` / `rowSpan`; wide spans take the full row below 768px. |
 | `Sidebar` | `sections: { title, items: { label, href, badge? }[] }[]`, `active`, `onnavigate` | `aria-current="page"` on the active item. |
 | `Footer` | `columns: { title, links }[]`, `legal`, `logo`, `logoHref` | Linear-style; legal moves to a bottom bar on mobile. |
 | `PromptInput` | `value`, `plan`, `placeholder` (string or rotating string[]), `submitLabel`, `theme`, `onsubmit(d: { value, plan, files })`, `ondictate` | AI composer: attachments, plan mode, dictation; Enter sends, Shift+Enter new line. |
-| `ProfileSettings` | `profile`, `sections`, `tabs`, `activeTab`, `title`, `footer`, `onselect`, `onavatar`, `onqr`, `onsearch`, `onmore`, `ontab` | Telegram-style settings screen; title compacts on scroll; floating tab bar. Row colors: `blue sky indigo cyan green orange amber red rose violet purple gray`. |
+| `ProfileSettings` | `profile`, `sections`, `tabs`, `activeTab`, `title`, `footer`, `onselect`, `onavatar`, `onqr`, `onsearch`, `onmore`, `ontab` | Telegram-style settings screen; title compacts on scroll; floating tab bar. Tile icons are filled (white on the color tile); the active tab icon is filled, inactive tabs and top pills stay line. Row colors: `blue sky indigo cyan green orange amber red rose violet purple gray`. |
 | `NotFound` | `title`, `description`, `actionLabel`, `href`, `grid`, `onaction` | 404 page: isometric 3D "404" vector + isometric grid. Regenerate the art with `python3 scripts/notfound/gen.py`. |
 | `Icon` | `name` (curated) or `icon` (any Heroicon), `variant: line · fill`, `size`, `strokeWidth`, `label` | See §5. |
 
-Types live in `@rblez-ui/tokens` (`ButtonVariant`, `SidebarSection`, `FooterColumn`, `SettingsSection`, `SettingsItem`, `SettingsTab`, `SettingsProfile`, `PromptSubmit`, `IconName`, `IconNode`, …).
+Types live in `@rblez-ui/tokens` (`ButtonVariant`, `SidebarSection`, `FooterColumn`, `SettingsSection`, `SettingsItem`, `SettingsTab`, `SettingsProfile`, `PromptSubmit`, `IconName`, `IconNode`, `GridVariant`, `GridCols`, `ModalSize`, `SelectOption`, `ToastOptions`, `ToastVariant`, `ToastPosition`, …).
 
 ## 5. Icons (Heroicons)
 
@@ -129,7 +134,7 @@ Line icons use stroke 2 at ≤16px and 1.5 above. Icon-only buttons need `aria-l
 2. `packages/svelte/src/<Name>.svelte` and `packages/react/src/<Name>.tsx` with identical props; export both from each `index.ts`.
 3. Demo in `apps/preview/src/demos/{svelte,react}/<Name>Demo.*` and an entry in `apps/preview/src/docs/registry.ts` (slug, name, group, description, props); English copy in `docs/i18n.svelte.ts`.
 4. Regenerate OG images: `pnpm build && python3 scripts/og/render.py && pnpm build`.
-5. Optional: a Patch version in `design/<slug>/` with `*.test.json` state cases for Figma export and snapshot tests.
+5. A Patch version in `design/<slug>/` with `*.test.json` state cases for Figma export and snapshot tests (`patch test design/<slug>/<Name>.pat`; CI runs every `design/*/`).
 6. Add a line to `CHANGELOG.md` under **Unreleased**; open a PR (`feat(<name>): …`).
 
 ## 9. Don'ts

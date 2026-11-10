@@ -31,7 +31,7 @@ export function ProfileSettings({
   const Row = ({ it }: { it: SettingsItem }) => {
     const inner = (<>
       {it.image ? <span className="d-ps__tile"><img src={it.image} alt="" /></span>
-        : it.icon && <span className="d-ps__tile" data-color={it.color ?? "gray"}><Icon name={it.icon} /></span>}
+        : it.icon && <span className="d-ps__tile" data-color={it.color ?? "gray"}><Icon name={it.icon} variant="fill" size={20} /></span>}
       <span className="d-ps__text"><span className="d-ps__label">{it.label}</span>{it.description && <span className="d-ps__desc">{it.description}</span>}</span>
       {it.value && <span className="d-ps__value">{it.value}</span>}
       {it.badge != null && <span className="d-ps__badge">{badgeText(it.badge)}</span>}
@@ -74,7 +74,7 @@ export function ProfileSettings({
           {tabs.map((t) => (
             <button type="button" key={t.id} className="d-ps__tab" aria-current={current === t.id ? "page" : undefined}
               onClick={() => { setTab(t.id); onTab?.(t); }}>
-              {t.image ? <img src={t.image} alt="" /> : t.icon && <Icon name={t.icon} />}
+              {t.image ? <img src={t.image} alt="" /> : t.icon && (current === t.id ? <Icon name={t.icon} variant="fill" size={24} /> : <Icon name={t.icon} />)}
               {t.label}
               {t.badge ? <span className="d-ps__tab-badge">{badgeText(t.badge)}</span> : null}
             </button>

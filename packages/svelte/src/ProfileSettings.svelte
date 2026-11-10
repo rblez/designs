@@ -50,7 +50,7 @@
           <svelte:element this={it.href ? "a" : "button"} class="d-ps__row" href={it.href} type={it.href ? undefined : "button"} role={it.href ? undefined : "button"} tabindex="0"
             onclick={() => onselect?.(it)}>
             {#if it.image}<span class="d-ps__tile"><img src={it.image} alt="" /></span>
-            {:else if it.icon}<span class="d-ps__tile" data-color={it.color ?? "gray"}><Icon name={it.icon} /></span>{/if}
+            {:else if it.icon}<span class="d-ps__tile" data-color={it.color ?? "gray"}><Icon name={it.icon} variant="fill" size={20} /></span>{/if}
             <span class="d-ps__text">
               <span class="d-ps__label">{it.label}</span>
               {#if it.description}<span class="d-ps__desc">{it.description}</span>{/if}
@@ -69,7 +69,7 @@
     <nav class="d-ps__tabs" aria-label="Tabs">
       {#each tabs as t (t.id)}
         <button type="button" class="d-ps__tab" aria-current={activeTab === t.id ? "page" : undefined} onclick={() => { activeTab = t.id; ontab?.(t); }}>
-          {#if t.image}<img src={t.image} alt="" />{:else if t.icon}<Icon name={t.icon} />{/if}
+          {#if t.image}<img src={t.image} alt="" />{:else if t.icon}{#if activeTab === t.id}<Icon name={t.icon} variant="fill" size={24} />{:else}<Icon name={t.icon} />{/if}{/if}
           {t.label}
           {#if t.badge}<span class="d-ps__tab-badge">{badgeText(t.badge)}</span>{/if}
         </button>

@@ -55,7 +55,7 @@
     return () => { removeEventListener("popstate", on); removeEventListener("click", click); };
   });
 
-  const groups = ["IA", "Formularios", "Layout", "Feedback"] as const;
+  const groups = ["IA", "Formularios", "Layout", "Overlay", "Feedback"] as const;
   const L = $derived(t());
   $effect(() => { document.documentElement.lang = i18n.lang; });
   const sections: SidebarSection[] = $derived([

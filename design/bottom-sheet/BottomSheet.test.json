@@ -1,0 +1,9 @@
+{"cases":[
+ {"name":"dark","state":{}},
+ {"name":"light","state":{"theme":"light"}},
+ {"name":"closed","state":{"open":false}},
+ {"name":"snap-expanded","state":{"snap":1}},
+ {"name":"dragging","state":{"drag":120}},
+ {"name":"all-on","state":{"items":[{"id":"notifications","label":"Notificaciones","on":true},{"id":"airplane","label":"Modo avión","on":true},{"id":"data","label":"Ahorro de datos","on":true}]}},
+ {"name":"tablet","state":{"viewport":768,"snap":1}}
+]}

@@ -25,3 +25,29 @@ jobs:
         run: |
           echo "### rblez-ui v$(node -p "require('./package.json').version") · ${GITHUB_SHA::7}" >> "$GITHUB_STEP_SUMMARY"
           du -sh apps/preview/dist >> "$GITHUB_STEP_SUMMARY"
+  patch:
+    name: Patch snapshots
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Checkout rblez/patch
+        uses: actions/checkout@v4
+        with:
+          repository: rblez/patch
+          path: .patch-cli
+      - uses: oven-sh/setup-bun@v2
+      - name: Link patch CLI
+        working-directory: .patch-cli
+        run: |
+          bun install
+          bun link
+          echo "$HOME/.bun/bin" >> "$GITHUB_PATH"
+      - name: patch test design/*/
+        run: |
+          fail=0
+          for f in design/*/*.pat; do
+            echo "::group::$f"
+            patch test "$f" || fail=1
+            echo "::endgroup::"
+          done
+          exit $fail

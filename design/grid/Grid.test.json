@@ -1,0 +1,15 @@
+{"cases":[
+ {"name":"dark","state":{}},
+ {"name":"light","state":{"theme":"light"}},
+ {"name":"bento-768","state":{"viewport":768}},
+ {"name":"bento-1280","state":{"viewport":1280}},
+ {"name":"auto-fit","state":{"variant":"auto-fit"}},
+ {"name":"auto-fit-1280","state":{"variant":"auto-fit","viewport":1280}},
+ {"name":"auto-fill-1280","state":{"variant":"auto-fill","viewport":1280}},
+ {"name":"columns-360","state":{"variant":"columns","viewport":360}},
+ {"name":"columns-1280","state":{"variant":"columns","viewport":1280}},
+ {"name":"masonry","state":{"variant":"masonry"}},
+ {"name":"masonry-1280","state":{"variant":"masonry","viewport":1280}},
+ {"name":"split-390","state":{"variant":"split"}},
+ {"name":"split-1280","state":{"variant":"split","viewport":1280}}
+]}

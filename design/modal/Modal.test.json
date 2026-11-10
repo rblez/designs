@@ -1,0 +1,10 @@
+{"cases":[
+ {"name":"dark","state":{}},
+ {"name":"light","state":{"theme":"light"}},
+ {"name":"closed","state":{"open":false}},
+ {"name":"size-md-desktop","state":{"size":"md","viewport":1280}},
+ {"name":"size-lg-desktop","state":{"size":"lg","viewport":1280}},
+ {"name":"size-lg-mobile","state":{"size":"lg"}},
+ {"name":"no-close-no-footer","state":{"showClose":false,"showFooter":false}},
+ {"name":"empty-name","state":{"name":""}}
+]}

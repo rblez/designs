@@ -1,0 +1,13 @@
+{"cases":[
+ {"name":"dark","state":{}},
+ {"name":"light","state":{"theme":"light"}},
+ {"name":"empty","state":{"toasts":[]}},
+ {"name":"variant-default","state":{"toasts":[{"id":"a","variant":"default","title":"Cambios guardados","description":"Tu perfil está al día."}]}},
+ {"name":"variant-success-action","state":{"toasts":[{"id":"a","variant":"success","title":"Desplegado","description":"rblez-ui · producción","action":"Ver"}]}},
+ {"name":"variant-warning","state":{"toasts":[{"id":"a","variant":"warning","title":"Cuota al 80%","description":"Quedan 2 GB este mes."}]}},
+ {"name":"variant-danger-persistent","state":{"toasts":[{"id":"a","variant":"danger","title":"Error al desplegar","description":"Revisa los logs del build.","dismissible":false}]}},
+ {"name":"stack-max-4","state":{"max":4}},
+ {"name":"top-center-desktop","state":{"position":"top-center","viewport":1280}},
+ {"name":"bottom-left-desktop","state":{"position":"bottom-left","viewport":1280}},
+ {"name":"long-text","state":{"toasts":[{"id":"a","variant":"default","title":"Un título bastante largo que tiene que partirse en varias líneas sin desbordar","description":"Descripción larga: el toast nunca debe provocar scroll horizontal a 360px de ancho."}],"viewport":360}}
+]}

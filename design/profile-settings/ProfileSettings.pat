@@ -61,7 +61,7 @@
 						onclick={() => select(it)}
 					>
 						<div style={{ width: 30, height: 30, borderRadius: 9, background: tile[it.color], alignItems: 'center', justifyContent: 'center' }}>
-							<p style={{ fontSize: 15, fontWeight: 700, color: '#ffffff' }}>{it.glyph}</p>
+							<p style={{ fontSize: 15, fontWeight: 800, color: '#ffffff' }}>{it.glyph}</p><!-- relleno, blanco -->
 						</div>
 						<div style={{ width: 'fill', gap: 2 }}>
 							<p style={{ fontSize: 15, fontWeight: 600, letterSpacing: -0.15 }}>{it.label}</p>
@@ -87,7 +87,7 @@
 				style={{ width: 'fill', alignItems: 'center', gap: 3, padding: [7, 4, 6, 4], borderRadius: 26, background: activeTab === t.id ? '#f54e0029' : '#0000', color: activeTab === t.id ? accent : c.ink }}
 				onclick={() => (activeTab = t.id)}
 			>
-				<p style={{ fontSize: 18, fontWeight: 700 }}>{t.glyph}</p>
+				<p style={{ fontSize: 18, fontWeight: activeTab === t.id ? 800 : 400 }}>{activeTab === t.id ? t.glyphFill : t.glyph}</p>
 				<p style={{ fontSize: 11.5, fontWeight: 600 }}>{t.label}</p>
 				{#if t.badge}
 					<div style={{ position: 'absolute', left: 48, top: 2, minWidth: 18, height: 18, padding: [0, 5], borderRadius: 9, background: accent, alignItems: 'center', justifyContent: 'center' }}>
