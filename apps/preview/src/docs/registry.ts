@@ -10,6 +10,8 @@ import SCard from "../demos/svelte/CardDemo.svelte";
 import SKbd from "../demos/svelte/KbdDemo.svelte";
 import SSidebar from "../demos/svelte/SidebarDemo.svelte";
 import SPrompt from "../demos/svelte/PromptInputDemo.svelte";
+import SFooter from "../demos/svelte/FooterDemo.svelte";
+import sFooter from "../demos/svelte/FooterDemo.svelte?raw";
 import sButton from "../demos/svelte/ButtonDemo.svelte?raw";
 import sInput from "../demos/svelte/InputDemo.svelte?raw";
 import sTextarea from "../demos/svelte/TextareaDemo.svelte?raw";
@@ -29,6 +31,8 @@ import RCard from "../demos/react/CardDemo";
 import RKbd from "../demos/react/KbdDemo";
 import RSidebar from "../demos/react/SidebarDemo";
 import RPrompt from "../demos/react/PromptInputDemo";
+import RFooter from "../demos/react/FooterDemo";
+import rFooter from "../demos/react/FooterDemo.tsx?raw";
 import rButton from "../demos/react/ButtonDemo.tsx?raw";
 import rInput from "../demos/react/InputDemo.tsx?raw";
 import rTextarea from "../demos/react/TextareaDemo.tsx?raw";
@@ -50,7 +54,7 @@ export interface ComponentDoc {
   svelte: Component; react: ComponentType;
   svelteSrc: string; reactSrc: string;
   props: Prop[];
-  surface?: "plain" | "gradient";
+  surface?: "plain" | "gradient" | "wide";
 }
 
 export const components: ComponentDoc[] = [
@@ -111,6 +115,15 @@ export const components: ComponentDoc[] = [
       ["sections", "SidebarSection[]", "—", "{ title, items: { label, href, badge? }[] }[]"],
       ["active", "string", "—", "href activo (aria-current=page)."],
       ["onnavigate / onNavigate", "(href: string) => void", "—", "Al pulsar un item."],
+    ] },
+  { slug: "footer", name: "Footer", group: "Layout", badge: "Nuevo", surface: "wide",
+    description: "Pie de sitio con logo, columnas de enlaces y barra legal. Réplica del de Linear.",
+    svelte: SFooter, react: RFooter, svelteSrc: sFooter, reactSrc: rFooter,
+    props: [
+      ["columns", "FooterColumn[]", "—", "{ title, links: { label, href, external? }[] }[]"],
+      ["legal", "FooterLink[]", "[]", "Columna Legal en escritorio; barra inferior en móvil."],
+      ["logo", "Snippet | ReactNode", "—", "Marca en la esquina superior izquierda."],
+      ["logoHref", "string", '"/"', "Destino del logo."],
     ] },
   { slug: "badge", name: "Badge", group: "Feedback", description: "Etiquetas de estado con punto opcional.",
     svelte: SBadge, react: RBadge, svelteSrc: sBadge, reactSrc: rBadge,

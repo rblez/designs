@@ -1,10 +1,11 @@
 <script lang="ts">
-  import { Sidebar } from "@rblez-ui/svelte";
+  import { Sidebar, Icon } from "@rblez-ui/svelte";
   import type { SidebarSection } from "@rblez-ui/tokens";
   import { components, guides } from "./docs/registry";
   import ComponentPage from "./docs/ComponentPage.svelte";
   import GuidePage from "./docs/GuidePage.svelte";
   import GitHubStars from "./docs/GitHubStars.svelte";
+  import { i18n, setLang, t } from "./docs/i18n.svelte";
 
   const read = () => location.hash.replace(/^#\/?/, "") || "introduccion";
   let slug = $state(read());
@@ -32,13 +33,15 @@
   });
 
   const groups = ["IA", "Formularios", "Layout", "Feedback"] as const;
-  const sections: SidebarSection[] = [
-    { title: "Empezar", items: guides.map((g) => ({ label: g.name, href: `#/${g.slug}` })) },
+  const L = $derived(t());
+  $effect(() => { document.documentElement.lang = i18n.lang; });
+  const sections: SidebarSection[] = $derived([
+    { title: L.getStarted, items: guides.map((g) => ({ label: L.guides[g.slug as keyof typeof L.guides] ?? g.name, href: `#/${g.slug}` })) },
     ...groups.map((g) => ({
-      title: g,
-      items: components.filter((c) => c.group === g).map((c) => ({ label: c.name, href: `#/${c.slug}`, badge: c.badge })),
+      title: L.groups[g],
+      items: components.filter((c) => c.group === g).map((c) => ({ label: c.name, href: `#/${c.slug}`, badge: c.badge ? L.new : undefined })),
     })),
-  ];
+  ]);
   const doc = $derived(components.find((c) => c.slug === slug));
   const go = (s: string) => (location.hash = `#/${s}`);
   function close() { menu = false; query = ""; findEl?.blur(); }
@@ -66,12 +69,16 @@
     <span class="ver">v0.1</span>
   </div>
   <div class="top__right">
+    <div class="seg seg--lang" role="group" aria-label={L.language}>
+      <button aria-pressed={i18n.lang === "es"} onclick={() => setLang("es")}>ES</button>
+      <button aria-pressed={i18n.lang === "en"} onclick={() => setLang("en")}>EN</button>
+    </div>
     <GitHubStars />
-    <button class="theme" aria-label="Cambiar tema" onclick={() => (theme = theme === "dark" ? "light" : "dark")}>
+    <button class="theme" aria-label={L.toggleTheme} onclick={() => (theme = theme === "dark" ? "light" : "dark")}>
       {#if theme === "dark"}
-        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" stroke-linecap="round"/></svg>
+        <Icon name="sun" size={14} />
       {:else}
-        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z" stroke-linejoin="round"/></svg>
+        <Icon name="moon" size={14} />
       {/if}
     </button>
   </div>
@@ -79,7 +86,7 @@
 
 <div class="shell">
   <aside class="side">
-    <Sidebar {sections} active={`#/${slug}`} label="Documentación" />
+    <Sidebar {sections} active={`#/${slug}`} label={L.docs} />
   </aside>
   <main class="main">
     {#if doc}
@@ -91,32 +98,34 @@
 </div>
 
 <!-- Dock móvil: buscar + menú, tipo Vercel -->
-{#if menu}<button class="scrim" aria-label="Cerrar" onclick={close}></button>{/if}
-<div class="sheet" class:sheet--open={menu} role="dialog" aria-modal="true" aria-label="Navegación" inert={!menu}>
+{#if menu}<button class="scrim" aria-label={L.close} onclick={close}></button>{/if}
+<div class="sheet" class:sheet--open={menu} role="dialog" aria-modal="true" aria-label={L.nav} inert={!menu}>
   <div class="sheet__body">
     {#if filtered.length}
-      <Sidebar sections={filtered} active={`#/${slug}`} label="Documentación" />
+      <Sidebar sections={filtered} active={`#/${slug}`} label={L.docs} />
     {:else}
-      <p class="sheet__empty">Sin resultados para “{query}”.</p>
+      <p class="sheet__empty">{L.noResults(query)}</p>
     {/if}
   </div>
   <div class="sheet__foot">
     <span class="sheet__meta">rblez-ui · v0.1</span>
-    <div class="seg" role="group" aria-label="Tema">
-      <button aria-pressed={theme === "light"} aria-label="Claro" onclick={() => (theme = "light")}><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" stroke-linecap="round"/></svg></button>
-      <button aria-pressed={theme === "dark"} aria-label="Oscuro" onclick={() => (theme = "dark")}><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5Z" stroke-linejoin="round"/></svg></button>
+    <div class="seg seg--lang" role="group" aria-label={L.language}>
+      <button aria-pressed={i18n.lang === "es"} onclick={() => setLang("es")}>ES</button>
+      <button aria-pressed={i18n.lang === "en"} onclick={() => setLang("en")}>EN</button>
+    </div>
+    <div class="seg" role="group" aria-label={L.theme}>
+      <button aria-pressed={theme === "light"} aria-label={L.light} onclick={() => (theme = "light")}><Icon name="sun" size={14} /></button>
+      <button aria-pressed={theme === "dark"} aria-label={L.dark} onclick={() => (theme = "dark")}><Icon name="moon" size={14} /></button>
     </div>
   </div>
 </div>
-<nav class="dock" aria-label="Buscar y navegar">
+<nav class="dock" aria-label={L.nav}>
   <label class="dock__find">
-    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4-4"/></svg>
-    <input bind:this={findEl} bind:value={query} type="search" placeholder="Buscar…" aria-label="Buscar en la documentación" enterkeyhint="go" autocomplete="off" onfocus={() => (menu = true)} onkeydown={onFind} />
+    <Icon name="search" size={14} />
+    <input bind:this={findEl} bind:value={query} type="search" placeholder={L.search} aria-label={L.searchLabel} enterkeyhint="go" autocomplete="off" onfocus={() => (menu = true)} onkeydown={onFind} />
   </label>
   <span class="dock__sep" aria-hidden="true"></span>
-  <button class="dock__btn" aria-label={menu ? "Cerrar menú" : "Abrir menú"} aria-expanded={menu} onclick={() => (menu ? close() : (menu = true))}>
-    <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-      {#if menu}<path d="M6 6l12 12M18 6 6 18"/>{:else}<path d="M5 9h14M5 15h14"/>{/if}
-    </svg>
+  <button class="dock__btn" aria-label={menu ? L.closeMenu : L.openMenu} aria-expanded={menu} onclick={() => (menu ? close() : (menu = true))}>
+    {#if menu}<Icon name="close" size={16} />{:else}<Icon name="menu" size={16} />{/if}
   </button>
 </nav>

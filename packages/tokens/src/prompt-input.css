@@ -48,8 +48,8 @@
 }
 .d-prompt__group { display: flex; align-items: center; gap: .5rem; flex-shrink: 0; }
 .d-prompt__spacer { flex: 1; min-width: 0; }
-.d-prompt__icon { display: block; width: 1rem; height: 1rem; }
-.d-prompt__icon--lg { width: 1.25rem; height: 1.25rem; }
+.d-prompt__icon { display: block; width: 14px; height: 14px; }
+.d-prompt__icon--lg { width: 16px; height: 16px; }
 .d-prompt__btn {
   display: inline-flex; align-items: center; justify-content: center; gap: .25rem; flex-shrink: 0;
   height: 2rem; border: 0; padding: 0; margin: 0; background: transparent; color: rgb(var(--p-text));

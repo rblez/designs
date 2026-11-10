@@ -14,3 +14,5 @@ export type { SidebarProps } from "./Sidebar";
 export { PromptInput } from "./PromptInput";
 export type { PromptInputProps } from "./PromptInput";
 export { Icon } from "./Icon";
+export { Footer } from "./Footer";
+export type { FooterProps } from "./Footer";

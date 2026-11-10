@@ -98,14 +98,14 @@ export function PromptInput({
           <div className="d-prompt__group">
             <button type="button" className="d-prompt__btn d-prompt__plan" aria-pressed={plan} aria-label={promptDefaults.planLabel}
               onClick={() => setPlan(!plan)}>
-              <Icon name="lightbulb" /><span className="d-prompt__plan-label">{promptDefaults.planLabel}</span>
+              <Icon name="lightbulb" className="d-prompt__icon" /><span className="d-prompt__plan-label">{promptDefaults.planLabel}</span>
             </button>
             <button type="button" className="d-prompt__btn d-prompt__mic" aria-label="Start dictation" aria-pressed={dictating}
               disabled={!onDictate || disabled} onClick={() => onDictate?.()}>
-              <Icon name="microphone" />
+              <Icon name="microphone" className="d-prompt__icon" />
             </button>
             <button type="button" className="d-prompt__send" aria-label="Send message" disabled={empty || disabled} onClick={submit}>
-              <span className="d-prompt__send-label">{submitLabel}</span><Icon name="send" />
+              <span className="d-prompt__send-label">{submitLabel}</span><Icon name="send" className="d-prompt__icon" />
             </button>
           </div>
         </div>

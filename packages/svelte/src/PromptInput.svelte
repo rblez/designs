@@ -97,14 +97,14 @@
       <div class="d-prompt__group">
         <button type="button" class="d-prompt__btn d-prompt__plan" aria-pressed={plan} aria-label={promptDefaults.planLabel}
           onclick={() => (plan = !plan)}>
-          <Icon name="lightbulb" /><span class="d-prompt__plan-label">{promptDefaults.planLabel}</span>
+          <Icon name="lightbulb" class="d-prompt__icon" /><span class="d-prompt__plan-label">{promptDefaults.planLabel}</span>
         </button>
         <button type="button" class="d-prompt__btn d-prompt__mic" aria-label="Start dictation" aria-pressed={dictating}
           disabled={!ondictate || disabled} onclick={() => ondictate?.()}>
-          <Icon name="microphone" />
+          <Icon name="microphone" class="d-prompt__icon" />
         </button>
         <button type="button" class="d-prompt__send" aria-label="Send message" disabled={empty || disabled} onclick={submit}>
-          <span class="d-prompt__send-label">{submitLabel}</span><Icon name="send" />
+          <span class="d-prompt__send-label">{submitLabel}</span><Icon name="send" class="d-prompt__icon" />
         </button>
       </div>
     </div>

@@ -4,7 +4,9 @@
   import CodeBlock from "./CodeBlock.svelte";
   import FrameworkSwitch from "./FrameworkSwitch.svelte";
   import Code from "./Code.svelte";
+  import SendToAi from "./SendToAi.svelte";
   import { Badge } from "@rblez-ui/svelte";
+  import { i18n, t, en } from "./i18n.svelte";
 
   let { doc, framework = $bindable() }: { doc: ComponentDoc; framework: "svelte" | "react" } = $props();
   let copied = $state(false);
@@ -12,16 +14,23 @@
   const src = $derived((framework === "svelte" ? doc.svelteSrc : doc.reactSrc).trim());
   const file = $derived(`${doc.name}Demo.${framework === "svelte" ? "svelte" : "tsx"}`);
   const importLine = $derived(`import { ${doc.name} } from "@rblez-ui/${framework}";`);
+  const L = $derived(t());
+  const isEn = $derived(i18n.lang === "en");
+  const description = $derived(isEn ? en[doc.slug]?.description ?? doc.description : doc.description);
+  const pdesc = (name: string, es: string) => (isEn ? en[doc.slug]?.props[name] ?? es : es);
+  const aiPrompt = $derived(isEn
+    ? `Use this ${doc.name} component from rblez-ui (${framework === "svelte" ? "Svelte 5" : "React"}). ${description}\n\n\`\`\`${framework === "svelte" ? "svelte" : "tsx"}\n${src}\n\`\`\``
+    : `Usa este componente ${doc.name} de rblez-ui (${framework === "svelte" ? "Svelte 5" : "React"}). ${description}\n\n\`\`\`${framework === "svelte" ? "svelte" : "tsx"}\n${src}\n\`\`\``);
   async function copy() { await navigator.clipboard?.writeText(src); copied = true; setTimeout(() => (copied = false), 1400); }
 </script>
 
 <article class="page">
-  <p class="eyebrow">Componentes / {doc.group}</p>
-  <h1>{doc.name} {#if doc.badge}<Badge variant="brand">{doc.badge}</Badge>{/if}</h1>
-  <p class="lead">{doc.description}</p>
+  <p class="eyebrow">{L.components} / {L.groups[doc.group]}</p>
+  <h1>{doc.name} {#if doc.badge}<Badge variant="brand">{L.new}</Badge>{/if}</h1>
+  <p class="lead">{description}</p>
 
   <section class="example">
-    <div class="canvas" class:canvas--gradient={doc.surface === "gradient"}>
+    <div class="canvas" class:canvas--gradient={doc.surface === "gradient"} class:canvas--wide={doc.surface === "wide"}>
       {#key framework + doc.slug}
         {#if framework === "svelte"}<Demo />{:else}<ReactIsland component={doc.react} />{/if}
       {/key}
@@ -29,18 +38,19 @@
     <div class="divider">
       <FrameworkSwitch bind:value={framework} />
       <span class="divider__file">{file}</span>
-      <button type="button" class="code__copy" onclick={copy}>{copied ? "Copiado" : "Copiar"}</button>
+      <SendToAi prompt={aiPrompt} />
+      <button type="button" class="code__copy" onclick={copy}>{copied ? L.copied : L.copy}</button>
     </div>
     <Code code={src} lang={framework === "svelte" ? "svelte" : "tsx"} class="example__code" />
   </section>
 
-  <h2>Uso</h2>
+  <h2>{L.usage}</h2>
   <CodeBlock lang="ts" code={importLine} />
 
-  <h2>Props</h2>
+  <h2>{L.props}</h2>
   <div class="table-wrap">
     <table>
-      <thead><tr><th>Prop</th><th>Tipo</th><th>Default</th><th>Descripción</th></tr></thead>
+      <thead><tr><th>{L.prop}</th><th>{L.type}</th><th>{L.def}</th><th>{L.desc}</th></tr></thead>
       <tbody>
         {#each doc.props as [name, type, def, desc] (name)}
           <tr><td><code>{name}</code></td><td><code class="t">{type}</code></td><td><code>{def}</code></td><td>{desc}</td></tr>

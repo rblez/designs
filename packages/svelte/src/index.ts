@@ -8,3 +8,4 @@ export { default as Kbd } from "./Kbd.svelte";
 export { default as Sidebar } from "./Sidebar.svelte";
 export { default as PromptInput } from "./PromptInput.svelte";
 export { default as Icon } from "./Icon.svelte";
+export { default as Footer } from "./Footer.svelte";

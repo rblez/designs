@@ -7,6 +7,9 @@ export type BadgeVariant = "default" | "secondary" | "outline" | "brand" | "succ
 export interface SidebarItem { label: string; href: string; badge?: string }
 export interface SidebarSection { title: string; items: SidebarItem[] }
 
+export interface FooterLink { label: string; href: string; external?: boolean }
+export interface FooterColumn { title: string; links: FooterLink[] }
+
 export const cx = (...c: Array<string | false | null | undefined>) => c.filter(Boolean).join(" ");
 
 export * from "./icons";
