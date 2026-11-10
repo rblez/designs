@@ -29,3 +29,8 @@ Licencias y permisos: hello@rblez.com
 Fuentes de terceros incluidas en apps/preview/src/fonts (Inter y SUSE Mono) se
 distribuyen bajo SIL Open Font License 1.1; ver sus archivos de licencia. Esta
 licencia propietaria no se aplica a ellas.
+
+Los iconos de packages/tokens/src/icons.ts y packages/tokens/src/heroicons.ts
+provienen de Heroicons (https://heroicons.com), MIT License,
+Copyright (c) Tailwind Labs, Inc. El aviso MIT completo está en
+packages/tokens/HEROICONS-LICENSE. Esta licencia propietaria no se aplica a ellos.

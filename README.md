@@ -22,7 +22,7 @@ Docs: **[www.rblez.com/ui](https://www.rblez.com/ui/)** · [GitHub Pages](https:
 | Formularios / Forms | `Button`, `Input`, `Textarea`, `Switch` |
 | Layout | `Card`, `Sidebar`, `Footer` |
 | Feedback | `Badge`, `Kbd` |
-| Base | `Icon` (Lucide, línea y relleno), tokens |
+| Base | `Icon` (Heroicons, línea y relleno), tokens |
 
 ## Paquetes / Packages
 
@@ -74,4 +74,4 @@ pnpm build    # apps/preview/dist
 
 ## Licencia
 
-Propietaria. © 2026 rblez. Todos los derechos reservados. Ver [LICENSE](./LICENSE). Fuentes Inter y SUSE Mono bajo SIL OFL 1.1; iconos Lucide (ISC).
+Propietaria. © 2026 rblez. Todos los derechos reservados. Ver [LICENSE](./LICENSE). Fuentes Inter y SUSE Mono bajo SIL OFL 1.1; iconos Heroicons (MIT).

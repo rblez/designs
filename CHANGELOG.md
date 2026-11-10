@@ -8,7 +8,7 @@ Todos los cambios notables de rblez-ui. Formato basado en [Keep a Changelog](htt
 - Landing en la introducción con animaciones GSAP (timeline y ScrollTrigger) y Motion (inView, hover, springs).
 - Acerca de completo: mockups en PC y móvil, cada IA, paquetes, stack, versiones, licencia y contacto.
 - `SKILL.md`: guía para agentes de IA que trabajan con rblez-ui.
-- Iconos Lucide: set curado con variante `line` y `fill`, y cualquier icono de Lucide vía `icon`.
+- Iconos Heroicons en línea (outline) y relleno (solid, mini y micro según el tamaño); los 324 iconos en `@rblez-ui/tokens/heroicons`.
 - ProfileSettings: pantalla de ajustes de perfil estilo Telegram (Svelte y React), con avatar, grupos de iconos de color, título compacto al hacer scroll y pestañas flotantes.
 - Cada componente tiene su propia URL (`/ui/<slug>/`) con título, descripción e imagen Open Graph propias, y botón Compartir.
 - Sección de Comentarios en cada componente: abre un issue de bug o mejora en GitHub con componente, paquete, versión y navegador rellenados.

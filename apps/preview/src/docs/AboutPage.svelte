@@ -22,7 +22,7 @@
     lead: "rblez-ui is rblez's component library: Svelte 5 and React with the same API, one stylesheet and shared tokens. Built for interfaces that feel made by hand.",
     meta: ["Version", "Build", "Date", "License"],
     mock: "Docs on desktop and mobile", mockLead: "The same documentation adapts from a three-column desktop layout to a mobile dock with search.",
-    pk: "Packages", pkRows: [["@rblez-ui/tokens", "Tokens, CSS, Lucide icons and shared types."], ["@rblez-ui/svelte", "Svelte 5 components (runes)."], ["@rblez-ui/react", "React 18+ components."]],
+    pk: "Packages", pkRows: [["@rblez-ui/tokens", "Tokens, CSS, Heroicons and shared types."], ["@rblez-ui/svelte", "Svelte 5 components (runes)."], ["@rblez-ui/react", "React 18+ components."]],
     comps: "Components", ai: "Send to AI", aiLead: "Every component page has a Send to AI button. It copies the prompt to your clipboard and opens the tool with the code already written.",
     docs: "Documentation", docsList: [
       ["Its own URL", "Every component lives at /ui/<slug>/ with its own title, description and Open Graph image."],
@@ -35,14 +35,14 @@
     ],
     stack: "Stack and credits", design: "Design workflow", designP: "Components are also written in Patch to export editable layers to Figma and to run snapshot tests per state (theme, selected tab, long names…) in CI.",
     ver: "Versions", verP: "SemVer and Keep a Changelog. Every vX.Y.Z tag publishes a release with notes and a zip of the docs. The header shows the version and commit of each build.",
-    lic: "License", licP: "Proprietary software. © 2026 rblez. All rights reserved. The source is visible but may not be copied, modified, distributed, sublicensed or used, in whole or in part, without written permission from rblez. Use for training AI models is prohibited. Fonts under SIL OFL 1.1; Lucide icons under ISC.",
+    lic: "License", licP: "Proprietary software. © 2026 rblez. All rights reserved. The source is visible but may not be copied, modified, distributed, sublicensed or used, in whole or in part, without written permission from rblez. Use for training AI models is prohibited. Fonts under SIL OFL 1.1; Heroicons under ISC.",
     contact: "Contact", repo: "Source", rel: "Releases", chg: "Changelog",
   } : {
     eyebrow: "Acerca de", title: "Acerca de rblez-ui",
     lead: "rblez-ui es la librería de componentes de rblez: Svelte 5 y React con la misma API, un solo CSS y tokens compartidos. Hecha para interfaces que se sienten hechas a mano.",
     meta: ["Versión", "Build", "Fecha", "Licencia"],
     mock: "Las docs en PC y móvil", mockLead: "La misma documentación pasa de tres columnas en escritorio a un dock con búsqueda en el móvil.",
-    pk: "Paquetes", pkRows: [["@rblez-ui/tokens", "Tokens, CSS, iconos Lucide y tipos compartidos."], ["@rblez-ui/svelte", "Componentes Svelte 5 (runes)."], ["@rblez-ui/react", "Componentes React 18+."]],
+    pk: "Paquetes", pkRows: [["@rblez-ui/tokens", "Tokens, CSS, iconos Heroicons y tipos compartidos."], ["@rblez-ui/svelte", "Componentes Svelte 5 (runes)."], ["@rblez-ui/react", "Componentes React 18+."]],
     comps: "Componentes", ai: "Enviar a IA", aiLead: "Cada página de componente tiene el botón Enviar a IA. Copia el prompt al portapapeles y abre la herramienta con el código ya escrito.",
     docs: "Documentación", docsList: [
       ["URL propia", "Cada componente vive en /ui/<slug>/ con su título, descripción e imagen Open Graph."],
@@ -55,12 +55,12 @@
     ],
     stack: "Stack y créditos", design: "Flujo de diseño", designP: "Los componentes también se escriben en Patch para exportar capas editables a Figma y correr tests de snapshot por estado (tema, pestaña activa, nombres largos…) en CI.",
     ver: "Versiones", verP: "SemVer y Keep a Changelog. Cada tag vX.Y.Z publica una release con notas y un zip de las docs. La cabecera muestra la versión y el commit de cada build.",
-    lic: "Licencia", licP: "Software propietario. © 2026 rblez. Todos los derechos reservados. El código es visible pero no puede copiarse, modificarse, distribuirse, sublicenciarse ni usarse, total o parcialmente, sin permiso escrito de rblez. Se prohíbe su uso para entrenar modelos de IA. Fuentes bajo SIL OFL 1.1; iconos Lucide bajo ISC.",
+    lic: "Licencia", licP: "Software propietario. © 2026 rblez. Todos los derechos reservados. El código es visible pero no puede copiarse, modificarse, distribuirse, sublicenciarse ni usarse, total o parcialmente, sin permiso escrito de rblez. Se prohíbe su uso para entrenar modelos de IA. Fuentes bajo SIL OFL 1.1; iconos Heroicons bajo ISC.",
     contact: "Contacto", repo: "Código", rel: "Releases", chg: "Changelog",
   });
 
   const stack = [
-    ["Svelte 5", "MIT"], ["React 18+", "MIT"], ["Vite", "MIT"], ["TypeScript", "Apache-2.0"], ["Shiki", "MIT"], ["Lucide", "ISC"],
+    ["Svelte 5", "MIT"], ["React 18+", "MIT"], ["Vite", "MIT"], ["TypeScript", "Apache-2.0"], ["Shiki", "MIT"], ["Heroicons", "MIT"],
     ["Inter", "OFL 1.1"], ["SUSE Mono", "OFL 1.1"], ["GSAP", "Standard"], ["Motion", "MIT"], ["Patch", "—"], ["GitHub Pages · Cloudflare", "—"],
   ];
 
@@ -87,15 +87,43 @@
   </dl>
 
   <section class="ab-mock" aria-label={T.mock}>
-    <figure class="ab-mock__desk">
-      <div class="ab-browser"><span></span><span></span><span></span><em>rblez.com/ui</em></div>
-      <img class="only-light" src={shot("desktop-light")} alt="" loading="lazy" />
-      <img class="only-dark" src={shot("desktop-dark")} alt="" loading="lazy" />
+    <figure class="mk-win ab-mock__desk">
+      <div class="mk-win__bar">
+        <span class="mk-lights"><i></i><i></i><i></i></span>
+        <span class="mk-win__nav">
+          <svg viewBox="0 0 20 20" aria-hidden="true"><rect x="2.5" y="3.5" width="15" height="13" rx="2.5" /><path d="M7.5 3.5v13" /></svg>
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M12.5 4.5 7 10l5.5 5.5" /></svg>
+          <svg viewBox="0 0 20 20" aria-hidden="true" class="off"><path d="M7.5 4.5 13 10l-5.5 5.5" /></svg>
+        </span>
+        <span class="mk-url"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="3.5" y="7" width="9" height="6.5" rx="1.5" /><path d="M5.5 7V5.3a2.5 2.5 0 0 1 5 0V7" /></svg>rblez.com</span>
+        <span class="mk-win__nav mk-win__nav--r">
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 12.5V3.5M6.5 7 10 3.5 13.5 7" /><path d="M5.5 10.5v5h9v-5" /></svg>
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 4.5v11M4.5 10h11" /></svg>
+          <svg viewBox="0 0 20 20" aria-hidden="true"><rect x="3" y="6" width="10.5" height="10.5" rx="2" /><path d="M6.5 3.5h8a2 2 0 0 1 2 2v8" /></svg>
+        </span>
+      </div>
+      <div class="mk-win__tabs"><span class="on"><img src={`${BASE}isotipo.svg`} alt="" />PromptInput · rblez-ui</span><span><img src={`${BASE}isotipo.svg`} alt="" />ProfileSettings · rblez-ui</span></div>
+      <div class="mk-win__screen">
+        <img class="only-light" src={shot("desktop-light")} alt="" loading="lazy" />
+        <img class="only-dark" src={shot("desktop-dark")} alt="" loading="lazy" />
+      </div>
     </figure>
-    <figure class="ab-mock__phone">
-      <div class="ab-notch"></div>
-      <img class="only-light" src={shot("mobile-light")} alt="" loading="lazy" />
-      <img class="only-dark" src={shot("mobile-dark")} alt="" loading="lazy" />
+    <figure class="mk-phone ab-mock__phone">
+      <span class="mk-phone__btn mk-phone__btn--action"></span><span class="mk-phone__btn mk-phone__btn--vup"></span><span class="mk-phone__btn mk-phone__btn--vdn"></span><span class="mk-phone__btn mk-phone__btn--pwr"></span>
+      <div class="mk-phone__screen">
+        <div class="mk-status">
+          <span class="mk-status__time">9:41</span>
+          <span class="mk-island"></span>
+          <span class="mk-status__icons">
+            <svg viewBox="0 0 18 12" aria-hidden="true"><rect x="0" y="8" width="3" height="4" rx=".7" /><rect x="5" y="5.5" width="3" height="6.5" rx=".7" /><rect x="10" y="3" width="3" height="9" rx=".7" /><rect x="15" y="0" width="3" height="12" rx=".7" /></svg>
+            <svg viewBox="0 0 16 12" aria-hidden="true"><path d="M8 11.6 5.6 9.2a3.4 3.4 0 0 1 4.8 0z" /><path d="M3.5 7.1a6.4 6.4 0 0 1 9 0l-1.4 1.4a4.4 4.4 0 0 0-6.2 0z" /><path d="M1.2 4.8a9.6 9.6 0 0 1 13.6 0l-1.4 1.4a7.6 7.6 0 0 0-10.8 0z" /></svg>
+            <svg viewBox="0 0 27 13" aria-hidden="true" class="bat"><rect x=".5" y=".5" width="23" height="12" rx="3.6" fill="none" stroke="currentColor" opacity=".4" /><rect x="2" y="2" width="16" height="9" rx="2.2" /><path d="M25 4.5v4a2 2 0 0 0 0-4z" opacity=".45" /></svg>
+          </span>
+        </div>
+        <img class="only-light" src={shot("mobile-light")} alt="" loading="lazy" />
+        <img class="only-dark" src={shot("mobile-dark")} alt="" loading="lazy" />
+        <span class="mk-home"></span>
+      </div>
     </figure>
   </section>
   <p class="ab-cap">{T.mock}. {T.mockLead}</p>

@@ -37,7 +37,7 @@ Theme: set `data-theme="light" | "dark"` on `<html>`. Without it, the system pre
 3. **Typography:** Inter Bold (700) for headings, Inter SemiBold (600) for everything else, **SUSE Mono** for code, versions and meta. No other families.
 4. **Look:** cream/ink palette, orange `#f54e00` as the only accent, subtle grain and soft orange gradients. Generous radius (12–20px), thin 1px lines (`--d-line`), no heavy shadows.
 5. **Accessibility is not optional:** real `<button>`/`<a>`, `aria-*` labels on icon-only controls, visible focus (`outline: 2px solid var(--d-orange)`), keyboard paths for everything, `prefers-reduced-motion` respected.
-6. **Icons are Lucide** through `<Icon>`; never paste raw SVGs into components.
+6. **Icons are Heroicons** through `<Icon>`; never paste raw SVGs into components.
 7. **Mobile first:** test at 360, 390 and 768px. Nothing may overflow horizontally.
 8. **Bilingual copy:** user-facing text in the docs exists in Spanish and English.
 
@@ -71,25 +71,25 @@ Light: bg `#f7f7f4`, ink `#26251e`. Dark: bg `#14120b`, ink `#edecec`.
 | `Footer` | `columns: { title, links }[]`, `legal`, `logo`, `logoHref` | Linear-style; legal moves to a bottom bar on mobile. |
 | `PromptInput` | `value`, `plan`, `placeholder` (string or rotating string[]), `submitLabel`, `theme`, `onsubmit(d: { value, plan, files })`, `ondictate` | AI composer: attachments, plan mode, dictation; Enter sends, Shift+Enter new line. |
 | `ProfileSettings` | `profile`, `sections`, `tabs`, `activeTab`, `title`, `footer`, `onselect`, `onavatar`, `onqr`, `onsearch`, `onmore`, `ontab` | Telegram-style settings screen; title compacts on scroll; floating tab bar. Row colors: `blue sky indigo cyan green orange amber red rose violet purple gray`. |
-| `Icon` | `name` (curated) or `icon` (any Lucide node), `variant: line · fill`, `size`, `strokeWidth`, `label` | See §5. |
+| `Icon` | `name` (curated) or `icon` (any Heroicon), `variant: line · fill`, `size`, `strokeWidth`, `label` | See §5. |
 
 Types live in `@rblez-ui/tokens` (`ButtonVariant`, `SidebarSection`, `FooterColumn`, `SettingsSection`, `SettingsItem`, `SettingsTab`, `SettingsProfile`, `PromptSubmit`, `IconName`, `IconNode`, …).
 
-## 5. Icons (Lucide)
+## 5. Icons (Heroicons)
 
 ```svelte
 <script lang="ts">
   import { Icon } from "@rblez-ui/svelte";
-  import { Rocket } from "lucide";        // any of the ~1,700 Lucide icons
+  import { rocketLaunch } from "@rblez-ui/tokens/heroicons"; // any of the 324 Heroicons, tree-shakeable
 </script>
-<Icon name="search" />                     <!-- curated set, stable names -->
-<Icon name="heart" variant="fill" />       <!-- filled variant -->
-<Icon icon={Rocket} size={20} label="Deploy" />
+<Icon name="search" />                     <!-- curated set, stable names; line = outline 24 -->
+<Icon name="heart" variant="fill" />       <!-- fill: micro (≤16px), mini (≤20px), solid (24) -->
+<Icon icon={rocketLaunch} size={20} label="Deploy" />
 ```
 
-Curated names: plus, lightbulb, microphone, send, search, menu, close, sun, moon, star, arrowUpRight, check, clipboard, chevronRight, userCircle, chatBubble, key, speakerWave, chartPie, folder, computer, battery, globe, sparkles, gift, storefront, chatEllipsis, question, shieldCheck, camera, qrCode, ellipsisVertical, cog, users, chats, bell, lock, arrowLeft, bug, play, share, externalLink, heart.
+Curated names: plus, lightbulb, microphone, send, search, menu, close, sun, moon, star, arrowUpRight, check, clipboard, chevronRight, userCircle, chatBubble, key, speakerWave, chartPie, folder, computer, battery, globe, sparkles, gift, storefront, chatEllipsis, question, shieldCheck, camera, qrCode, ellipsisVertical, cog, users, chats, bell, lock, arrowLeft, bug, play, share, externalLink, heart, copy, home, user, trash, pencil, link, paperclip, photo, chevronDown, chevronLeft, arrowRight, eye, eyeSlash, info, warning, bolt.
 
-Default size 16px with stroke 2.25 (2 above 16px). Icon-only buttons need `aria-label`.
+Line icons use stroke 2 at ≤16px and 1.5 above. Icon-only buttons need `aria-label`.
 
 ## 6. Recipes
 

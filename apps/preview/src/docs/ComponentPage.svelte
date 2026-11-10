@@ -7,10 +7,29 @@
   import Code from "./Code.svelte";
   import SendToAi from "./SendToAi.svelte";
   import { Badge } from "@rblez-ui/svelte";
+  import { components } from "./registry";
   import { i18n, t, en } from "./i18n.svelte";
 
   let { doc, framework = $bindable() }: { doc: ComponentDoc; framework: "svelte" | "react" } = $props();
   let copied = $state(false);
+  const BASE = import.meta.env.BASE_URL;
+  const idx = $derived(components.findIndex((c) => c.slug === doc.slug));
+  const prev = $derived(idx > 0 ? components[idx - 1] : undefined);
+  const next = $derived(idx < components.length - 1 ? components[idx + 1] : undefined);
+  let rail: HTMLElement | undefined = $state();
+  $effect(() => { doc.slug; rail?.querySelector<HTMLElement>('[aria-current="page"]')?.scrollIntoView({ inline: "center", block: "nearest", behavior: "smooth" }); });
+  function nav(e: MouseEvent, slug: string) {
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+    e.preventDefault(); history.pushState(null, "", `${BASE}${slug}/`); dispatchEvent(new PopStateEvent("popstate")); scrollTo({ top: 0 });
+  }
+  // Deslizar a izquierda o derecha sobre la cabecera cambia de componente
+  let sx = 0, sy = 0;
+  function ts(e: TouchEvent) { sx = e.touches[0].clientX; sy = e.touches[0].clientY; }
+  function te(e: TouchEvent) {
+    const dx = e.changedTouches[0].clientX - sx, dy = e.changedTouches[0].clientY - sy;
+    if (Math.abs(dx) < 60 || Math.abs(dy) > Math.abs(dx) * 0.6) return;
+    const to = dx < 0 ? next : prev; if (to) { history.pushState(null, "", `${BASE}${to.slug}/`); dispatchEvent(new PopStateEvent("popstate")); scrollTo({ top: 0 }); }
+  }
   const Demo = $derived(doc.svelte);
   const src = $derived((framework === "svelte" ? doc.svelteSrc : doc.reactSrc).trim());
   const file = $derived(`${doc.name}Demo.${framework === "svelte" ? "svelte" : "tsx"}`);
@@ -48,12 +67,19 @@
 </script>
 
 <article class="page">
+  <nav class="crail" bind:this={rail} aria-label={L.components}>
+    {#each components as c (c.slug)}
+      <a href={`${BASE}${c.slug}/`} aria-current={c.slug === doc.slug ? "page" : undefined} onclick={(e) => nav(e, c.slug)}>{c.name}</a>
+    {/each}
+  </nav>
+  <div class="swipe-zone" ontouchstart={ts} ontouchend={te}>
   <p class="eyebrow">{L.components} / {L.groups[doc.group]}</p>
   <div class="page__head">
     <h1>{doc.name} {#if doc.badge}<Badge variant="brand">{L.new}</Badge>{/if}</h1>
     <button type="button" class="share" onclick={share} aria-live="polite">
       <Icon name={shared ? "check" : "arrowUpRight"} size={14} />{shared ? (isEn ? "Link copied" : "Enlace copiado") : (isEn ? "Share" : "Compartir")}
     </button>
+  </div>
   </div>
   <p class="lead">{description}</p>
 
@@ -101,4 +127,9 @@
       <a class="fb-link" href={`https://github.com/rblez/ui/issues?q=is%3Aissue+${encodeURIComponent(`"[${doc.name}]"`)}`} target="_blank" rel="noreferrer">{IL.all} <Icon name="arrowUpRight" size={12} /></a>
     </div>
   </section>
+
+  <nav class="pager" aria-label={isEn ? "More components" : "Más componentes"}>
+    {#if prev}<a class="pager__btn" href={`${BASE}${prev.slug}/`} onclick={(e) => nav(e, prev.slug)}><small>{isEn ? "Previous" : "Anterior"}</small><span><Icon name="chevronLeft" size={14} />{prev.name}</span></a>{:else}<span></span>{/if}
+    {#if next}<a class="pager__btn pager__btn--next" href={`${BASE}${next.slug}/`} onclick={(e) => nav(e, next.slug)}><small>{isEn ? "Next" : "Siguiente"}</small><span>{next.name}<Icon name="chevronRight" size={14} /></span></a>{/if}
+  </nav>
 </article>

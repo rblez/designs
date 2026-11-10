@@ -199,3 +199,15 @@
 .d-ps [data-color="purple"].d-ps__tile { background: var(--ps-tile); }
 .d-ps [data-color="gray"] { --ps-tile: #8e8e93; }
 @media (prefers-reduced-motion: reduce) { .d-ps__bar::before, .d-ps__title { transition: none; } }
+
+/* Sensación nativa en táctil: sin recuadro azul al tocar, sin zoom por doble toque,
+   foco visible solo con teclado y respuesta al presionar. */
+:where(a, button, [role="button"], [role="switch"], [role="tab"], label, summary, input, textarea, select) {
+  -webkit-tap-highlight-color: transparent; touch-action: manipulation;
+}
+:where(button, [role="button"], [role="switch"], [role="tab"]) { -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
+:where(a, button, [role="button"], [role="switch"], [role="tab"], summary):focus:not(:focus-visible) { outline: none; }
+@media (hover: none) and (pointer: coarse) {
+  :where(.d-btn, .d-ps__tab, .d-sidebar__item):active { transform: scale(.97); transition: transform 80ms ease-out; }
+}
+@media (hover: none) and (pointer: coarse) { .d-ps__row:active { background: var(--d-hover, rgba(127,127,127,.12)); } }
