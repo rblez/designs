@@ -4,6 +4,7 @@
   import { components, guides } from "./docs/registry";
   import ComponentPage from "./docs/ComponentPage.svelte";
   import GuidePage from "./docs/GuidePage.svelte";
+  import GitHubStars from "./docs/GitHubStars.svelte";
 
   const read = () => location.hash.replace(/^#\/?/, "") || "introduccion";
   let slug = $state(read());
@@ -41,7 +42,7 @@
     <span class="ver">v0.1</span>
   </div>
   <div class="top__right">
-    <a class="top__link" href="https://github.com/rblez/designs">GitHub</a>
+    <GitHubStars />
     <button class="theme" aria-label="Cambiar tema" onclick={() => (theme = theme === "dark" ? "light" : "dark")}>
       {#if theme === "dark"}
         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" stroke-linecap="round"/></svg>
@@ -62,6 +63,6 @@
     {:else}
       <GuidePage {slug} {go} />
     {/if}
-    <footer class="foot">© 2026 rblez. Todos los derechos reservados. Software propietario.</footer>
+    <footer class="foot"><span>© 2026 rblez. Todos los derechos reservados. Software propietario.</span><GitHubStars /></footer>
   </main>
 </div>
