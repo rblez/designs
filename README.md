@@ -27,7 +27,7 @@ apps/
 
 ## Publicación
 
-- **GitHub Pages**: `.github/workflows/pages.yml` construye `apps/preview` en cada push a `main`.
+- **GitHub Pages**: rama `gh-pages` con el build de `apps/preview` (Settings → Pages → Deploy from branch `gh-pages`).
 - **www.rblez.com/designs/**: copiar `apps/preview/dist/*` a `designs/` en `rblez/www.rblez.com` y `npx wrangler deploy` (igual que asciidot y terminal).
 
 ## Añadir un componente
