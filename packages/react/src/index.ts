@@ -1,5 +1,16 @@
 export { Button } from "./Button";
 export type { ButtonProps } from "./Button";
+export { Input } from "./Input";
+export type { InputProps } from "./Input";
+export { Textarea } from "./Textarea";
+export type { TextareaProps } from "./Textarea";
+export { Switch } from "./Switch";
+export type { SwitchProps } from "./Switch";
+export { Badge } from "./Badge";
+export { Card } from "./Card";
+export { Kbd } from "./Kbd";
+export { Sidebar } from "./Sidebar";
+export type { SidebarProps } from "./Sidebar";
 export { PromptInput } from "./PromptInput";
 export type { PromptInputProps } from "./PromptInput";
 export { Icon } from "./Icon";

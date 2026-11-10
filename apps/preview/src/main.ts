@@ -1,14 +1,8 @@
-import "./style.css";
+import "@designs/tokens/css";
+import "@designs/tokens/components.css";
 import "@designs/tokens/prompt-input.css";
+import "./style.css";
 import { mount } from "svelte";
-import { createElement } from "react";
-import { createRoot } from "react-dom/client";
-import SvelteDemo from "./SvelteDemo.svelte";
-import { ReactDemo } from "./ReactDemo";
-import SveltePrompt from "./SveltePrompt.svelte";
-import { ReactPrompt } from "./ReactPrompt";
+import App from "./App.svelte";
 
-mount(SvelteDemo, { target: document.getElementById("svelte-button")! });
-createRoot(document.getElementById("react-button")!).render(createElement(ReactDemo));
-mount(SveltePrompt, { target: document.getElementById("svelte-prompt")! });
-createRoot(document.getElementById("react-prompt")!).render(createElement(ReactPrompt));
+mount(App, { target: document.getElementById("app")! });

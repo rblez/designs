@@ -1,12 +1,18 @@
 import type { ButtonHTMLAttributes } from "react";
-import type { ButtonSize, ButtonVariant } from "@designs/tokens";
+import { cx, type ButtonSize, type ButtonVariant } from "@designs/tokens";
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant;
   size?: ButtonSize;
+  loading?: boolean;
 }
 
-export function Button({ variant = "solid", size = "md", className, ...rest }: ButtonProps) {
-  const cls = ["d-btn", `d-btn--${variant}`, `d-btn--${size}`, className].filter(Boolean).join(" ");
-  return <button className={cls} {...rest} />;
+export function Button({ variant = "solid", size = "md", loading = false, disabled, className, type = "button", children, ...rest }: ButtonProps) {
+  return (
+    <button type={type} className={cx("d-btn", `d-btn--${variant}`, size !== "md" && `d-btn--${size}`, className)}
+      disabled={disabled || loading} aria-busy={loading || undefined} {...rest}>
+      {loading && <span className="d-spinner" aria-hidden="true" />}
+      {children}
+    </button>
+  );
 }

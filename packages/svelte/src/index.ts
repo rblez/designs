@@ -1,3 +1,10 @@
 export { default as Button } from "./Button.svelte";
+export { default as Input } from "./Input.svelte";
+export { default as Textarea } from "./Textarea.svelte";
+export { default as Switch } from "./Switch.svelte";
+export { default as Badge } from "./Badge.svelte";
+export { default as Card } from "./Card.svelte";
+export { default as Kbd } from "./Kbd.svelte";
+export { default as Sidebar } from "./Sidebar.svelte";
 export { default as PromptInput } from "./PromptInput.svelte";
 export { default as Icon } from "./Icon.svelte";

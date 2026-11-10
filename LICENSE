@@ -1,0 +1,31 @@
+Copyright (c) 2026 rblez. Todos los derechos reservados. / All rights reserved.
+
+LICENCIA PROPIETARIA
+
+Este repositorio y todo su contenido (código fuente, componentes, estilos, tokens de
+diseño, documentación, imágenes y cualquier otro material, en adelante el "Software")
+son propiedad exclusiva de rblez.
+
+El código es visible públicamente únicamente con fines de consulta. NO se concede
+ninguna licencia ni derecho de uso. Queda expresamente prohibido, sin el permiso previo
+y por escrito de rblez:
+
+  1. Copiar, reproducir o clonar el Software, total o parcialmente.
+  2. Modificar, adaptar, traducir o crear obras derivadas del Software.
+  3. Distribuir, publicar, sublicenciar, vender, alquilar o transferir el Software.
+  4. Usar el Software, o partes de él, en proyectos personales, comerciales o de terceros.
+  5. Usar el Software para entrenar, ajustar o evaluar modelos de inteligencia artificial.
+  6. Eliminar o alterar este aviso de copyright y licencia.
+
+Ver o hacer fork del repositorio dentro de GitHub, conforme a sus Términos de Servicio,
+no otorga ninguno de los derechos anteriores.
+
+EL SOFTWARE SE PROPORCIONA "TAL CUAL", SIN GARANTÍA DE NINGÚN TIPO.
+
+Licencias y permisos: hello@rblez.com
+
+---
+
+Fuentes de terceros incluidas en apps/preview/src/fonts (Inter y Geist Mono) se
+distribuyen bajo SIL Open Font License 1.1; ver sus archivos de licencia. Esta
+licencia propietaria no se aplica a ellas.

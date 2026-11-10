@@ -92,3 +92,12 @@
   .d-prompt__caret { animation: none; }
   .d-prompt__box, .d-prompt__btn, .d-prompt__send { transition: none; }
 }
+/* theme="auto" sigue al data-theme del documento si existe */
+[data-theme="dark"] .d-prompt[data-theme="auto"] {
+  --p-bg: 30 30 33; --p-text: 249 246 249; --p-text-2: 214 213 222; --p-text-3: 164 163 172;
+  --p-border: #3c3c41; --p-hover: #fffefe0a;
+}
+[data-theme="light"] .d-prompt[data-theme="auto"] {
+  --p-bg: 255 254 254; --p-text: 12 12 15; --p-text-2: 82 82 88; --p-text-3: 115 115 123;
+  --p-border: #d6d5de; --p-hover: #1111140a;
+}
