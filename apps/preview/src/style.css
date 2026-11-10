@@ -528,3 +528,5 @@ html { -webkit-tap-highlight-color: transparent; -webkit-text-size-adjust: 100%;
 .canvas--wide:has(.d-404) { padding: 0; }
 .canvas .d-404 { min-height: 480px; }
 .shell--landing .d-404 { min-height: calc(100dvh - 56px); }
+/* Preview button never overlaps demo content on narrow screens */
+@media (max-width: 860px) { .canvas--static:not(.canvas--wide) { padding-top: 60px; } }
