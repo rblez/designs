@@ -16,3 +16,5 @@ export type { PromptInputProps } from "./PromptInput";
 export { Icon } from "./Icon";
 export { Footer } from "./Footer";
 export type { FooterProps } from "./Footer";
+export { ProfileSettings } from "./ProfileSettings";
+export type { ProfileSettingsProps } from "./ProfileSettings";

@@ -32,6 +32,10 @@ import RKbd from "../demos/react/KbdDemo";
 import RSidebar from "../demos/react/SidebarDemo";
 import RPrompt from "../demos/react/PromptInputDemo";
 import RFooter from "../demos/react/FooterDemo";
+import RPS from "../demos/react/ProfileSettingsDemo";
+import rPS from "../demos/react/ProfileSettingsDemo.tsx?raw";
+import SPS from "../demos/svelte/ProfileSettingsDemo.svelte";
+import sPS from "../demos/svelte/ProfileSettingsDemo.svelte?raw";
 import rFooter from "../demos/react/FooterDemo.tsx?raw";
 import rButton from "../demos/react/ButtonDemo.tsx?raw";
 import rInput from "../demos/react/InputDemo.tsx?raw";
@@ -54,7 +58,7 @@ export interface ComponentDoc {
   svelte: Component; react: ComponentType;
   svelteSrc: string; reactSrc: string;
   props: Prop[];
-  surface?: "plain" | "gradient" | "wide";
+  surface?: "plain" | "gradient" | "wide" | "phone";
 }
 
 export const components: ComponentDoc[] = [
@@ -124,6 +128,19 @@ export const components: ComponentDoc[] = [
       ["legal", "FooterLink[]", "[]", "Columna Legal en escritorio; barra inferior en móvil."],
       ["logo", "Snippet | ReactNode", "—", "Marca en la esquina superior izquierda."],
       ["logoHref", "string", '"/"', "Destino del logo."],
+    ] },
+  { slug: "profile-settings", name: "ProfileSettings", group: "Layout", badge: "Nuevo", surface: "phone",
+    description: "Pantalla de ajustes de perfil estilo Telegram: avatar, grupos con iconos de color, título compacto al hacer scroll y pestañas flotantes.",
+    svelte: SPS, react: RPS, svelteSrc: sPS, reactSrc: rPS,
+    props: [
+      ["profile", "SettingsProfile", "—", "{ name, phone?, username?, avatar?, initials? }"],
+      ["sections", "SettingsSection[]", "—", "{ title?, items: { id, label, description?, icon?, color?, image?, badge?, value?, href?, chevron? }[] }[]"],
+      ["tabs", "SettingsTab[]", "[]", "{ id, label, icon?, image?, badge? }[] — barra inferior flotante."],
+      ["activeTab", "string", "primera", "Pestaña activa (bind: en Svelte; defaultTab en React)."],
+      ["title", "string", '"Ajustes"', "Título que aparece en la barra al hacer scroll."],
+      ["footer", "string", "—", "Texto bajo los grupos (versión de la app)."],
+      ["onselect / onSelect", "(item) => void", "—", "Al pulsar una fila."],
+      ["onavatar, onqr, onsearch, onmore, ontab", "() => void", "—", "Acciones de cabecera y pestañas."],
     ] },
   { slug: "badge", name: "Badge", group: "Feedback", description: "Etiquetas de estado con punto opcional.",
     svelte: SBadge, react: RBadge, svelteSrc: sBadge, reactSrc: rBadge,

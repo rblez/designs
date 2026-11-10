@@ -14,3 +14,14 @@ export const cx = (...c: Array<string | false | null | undefined>) => c.filter(B
 
 export * from "./icons";
 export * from "./prompt";
+
+/* ProfileSettings (estilo Telegram) */
+export type SettingsColor = "blue" | "sky" | "indigo" | "cyan" | "green" | "orange" | "amber" | "red" | "rose" | "violet" | "purple" | "gray";
+export interface SettingsItem {
+  id: string; label: string; description?: string; icon?: import("./icons").IconName; color?: SettingsColor;
+  /** Imagen en lugar del icono (p. ej. cuenta vinculada). */
+  image?: string; badge?: number | string; value?: string; href?: string; chevron?: boolean;
+}
+export interface SettingsSection { title?: string; items: SettingsItem[] }
+export interface SettingsTab { id: string; label: string; icon?: import("./icons").IconName; image?: string; badge?: number }
+export interface SettingsProfile { name: string; phone?: string; username?: string; avatar?: string; initials?: string }

@@ -4,6 +4,17 @@ Todos los cambios notables de rblez-ui. Formato basado en [Keep a Changelog](htt
 
 ## [Unreleased]
 
+### Added
+- ProfileSettings: pantalla de ajustes de perfil estilo Telegram (Svelte y React), con avatar, grupos de iconos de color, título compacto al hacer scroll y pestañas flotantes.
+- 24 iconos Heroicons micro nuevos.
+- Cada componente tiene su propia URL (`/designs/<slug>/`) con título, descripción e imagen Open Graph propias, y botón Compartir.
+- Búsqueda en la cabecera en escritorio (⌘K / Ctrl+K) con paleta de comandos.
+
+### Changed
+- «Enviar a IA»: rejilla sin subtítulos, logos más grandes con los favicons oficiales de cada servicio.
+- Copiar código ahora es un icono junto a «Enviar a IA».
+- Los enlaces antiguos con `#/slug` redirigen a la nueva ruta.
+
 ## [0.1.0] - 2026-11-10
 
 ### Added

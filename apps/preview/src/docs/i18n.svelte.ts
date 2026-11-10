@@ -55,6 +55,8 @@ export const en: Record<string, { description: string; props: Record<string, str
     props: { title: "Title.", description: "Subtitle.", footer: "Footer actions." } },
   sidebar: { description: "Sectioned navigation. These docs use it.",
     props: { sections: "{ title, items: { label, href, badge? }[] }[]", active: "Active href (aria-current=page).", "onnavigate / onNavigate": "Called when an item is pressed." } },
+  "profile-settings": { description: "Telegram-style profile settings screen: avatar, colored icon groups, compact title on scroll and floating tabs.",
+    props: { profile: "{ name, phone?, username?, avatar?, initials? }", sections: "{ title?, items: { id, label, description?, icon?, color?, image?, badge?, value?, href?, chevron? }[] }[]", tabs: "{ id, label, icon?, image?, badge? }[] — floating bottom bar.", activeTab: "Active tab (bind: in Svelte; defaultTab in React).", title: "Title shown in the bar on scroll.", footer: "Text under the groups (app version).", "onselect / onSelect": "When a row is pressed.", "onavatar, onqr, onsearch, onmore, ontab": "Header and tab actions." } },
   footer: { description: "Site footer with logo, link columns and a legal bar. A replica of Linear's.",
     props: { columns: "{ title, links: { label, href, external? }[] }[]", legal: "Legal column on desktop; bottom bar on mobile.", logo: "Brand mark in the top-left corner.", logoHref: "Logo destination." } },
   badge: { description: "Status labels with an optional dot.", props: { variant: "Color.", dot: "Status dot." } },

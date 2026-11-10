@@ -35,7 +35,7 @@
 </script>
 
 <button type="button" class="ai-btn" onclick={() => (open = true)} aria-haspopup="dialog">
-  <span class="ai-fan" aria-hidden="true">{#each fan as id, i (id)}<span class="ai-fan__chip" style:--i={i}><AiLogo {id} size={12} /></span>{/each}</span>
+  <span class="ai-fan" aria-hidden="true">{#each fan as id, i (id)}<span class="ai-fan__chip" style:--i={i}><AiLogo {id} size={16} /></span>{/each}</span>
   <span>{L.btn}</span>
 </button>
 
@@ -49,12 +49,12 @@
     <div class="ai-grid">
       {#each targets as t (t.id)}
         <button type="button" class="ai-tile" onclick={() => send(t)}>
-          <span class="ai-tile__logo"><AiLogo id={t.id} size={22} /></span>
+          <AiLogo id={t.id} size={44} />
           <strong>{t.name}</strong>
-          <small>{t.prefill ? L.pre : L.paste}</small>
           <span class="ai-tile__go"><Icon name="arrowUpRight" size={12} /></span>
         </button>
       {/each}
+      {#each { length: (4 - (targets.length % 4)) % 4 } as _, i (i)}<span class="ai-tile ai-tile--empty" aria-hidden="true"></span>{/each}
     </div>
   </div>
 </dialog>

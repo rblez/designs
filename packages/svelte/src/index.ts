@@ -9,3 +9,4 @@ export { default as Sidebar } from "./Sidebar.svelte";
 export { default as PromptInput } from "./PromptInput.svelte";
 export { default as Icon } from "./Icon.svelte";
 export { default as Footer } from "./Footer.svelte";
+export { default as ProfileSettings } from "./ProfileSettings.svelte";
