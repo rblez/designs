@@ -29,6 +29,7 @@ Todos los cambios notables de rblez-ui. Formato basado en [Keep a Changelog](htt
 - Búsqueda en la cabecera en escritorio (⌘K / Ctrl+K) con paleta de comandos.
 
 ### Changed
+- Acerca de: se quita el mockup del teléfono; queda solo la vista de escritorio.
 - `ProfileSettings`: los iconos de las baldosas de color son rellenos (Heroicons solid vía `<Icon variant="fill">`), en blanco sobre la baldosa, como en los ajustes de Telegram; el icono de la pestaña activa también es relleno y las inactivas siguen en línea. Las píldoras superiores (QR, buscar, más) y el chevron siguen en línea. La versión Patch (`design/profile-settings`) usa glifos rellenos equivalentes y sus snapshots se han regenerado.
 - El repo pasa a `rblez/ui` y la ruta a `/ui/`.
 - La licencia se integra en Acerca de.

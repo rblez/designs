@@ -514,27 +514,12 @@ html { -webkit-tap-highlight-color: transparent; -webkit-text-size-adjust: 100%;
 .mk-win__tabs img { width: 12px; height: 12px; } :root[data-theme="dark"] .mk-win__tabs img { filter: invert(1); }
 .mk-win__screen img { display: block; width: 100%; height: auto; }
 
-.mk-phone { position: absolute; right: 28px; bottom: -64px; width: 25%; aspect-ratio: 393 / 852; padding: 3.2%; border-radius: 17% / 7.9%;
-  background: linear-gradient(135deg, #8d8a85 0%, #d9d6d0 18%, #6f6c67 40%, #bdb9b2 62%, #5e5b56 82%, #a9a59e 100%);
-  box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.35), inset 0 0 0 3px #1b1a18, 0 40px 70px -24px rgba(0,0,0,.55), 0 10px 24px -10px rgba(0,0,0,.4); }
-.mk-phone::before { content: ""; position: absolute; inset: 1.4%; border-radius: 16% / 7.4%; background: #050505; }
-.mk-phone__screen { position: relative; z-index: 1; height: 100%; border-radius: 13.5% / 6.3%; overflow: hidden; background: var(--d-bg); }
-.mk-phone__screen img { display: block; width: 100%; height: auto; }
-.mk-status { position: relative; display: flex; align-items: center; justify-content: space-between; height: 7%; padding: 0 9% 0 11%; color: var(--d-ink); }
-.mk-status__time { font: 600 clamp(7px, 1.05vw, 13px)/1 -apple-system, "SF Pro Text", Inter, sans-serif; letter-spacing: -.01em; }
-.mk-status__icons { display: inline-flex; align-items: center; gap: 4%; width: 24%; justify-content: flex-end; }
-.mk-status__icons svg { height: clamp(5px, .7vw, 9px); width: auto; fill: currentColor; } .mk-status__icons svg.bat { height: clamp(6px, .8vw, 10px); }
-.mk-island { position: absolute; left: 50%; top: 22%; translate: -50% 0; width: 32%; height: 58%; border-radius: 999px; background: #000; }
-.mk-home { position: absolute; left: 50%; bottom: 1.1%; translate: -50% 0; width: 36%; height: .55%; border-radius: 999px; background: var(--d-ink); opacity: .85; }
-.mk-phone__btn { position: absolute; z-index: -1; width: 1.6%; border-radius: 2px; background: linear-gradient(90deg, #5f5c57, #bfbbb4, #6d6a65); }
-.mk-phone__btn--action { left: -1%; top: 17%; height: 4%; } .mk-phone__btn--vup { left: -1%; top: 24.5%; height: 7%; } .mk-phone__btn--vdn { left: -1%; top: 33%; height: 7%; }
-.mk-phone__btn--pwr { right: -1%; top: 27%; height: 11%; width: 1.6%; }
-@media (max-width: 620px) { .ab-mock { padding: 22px 16px 0; } .mk-win { width: 94%; } .mk-win__tabs, .mk-win__nav:not(.mk-win__nav--r) svg:not(:first-child), .mk-win__nav--r svg:not(:last-child) { display: none; } .mk-win__bar { height: 34px; gap: 8px; } .mk-phone { width: 36%; right: 8px; bottom: -48px; } }
+@media (max-width: 620px) { .ab-mock { padding: 22px 16px 0; } .mk-win { width: 94%; } .mk-win__tabs, .mk-win__nav:not(.mk-win__nav--r) svg:not(:first-child), .mk-win__nav--r svg:not(:last-child) { display: none; } .mk-win__bar { height: 34px; gap: 8px; } }
 .ab-mock figure { margin: 0; }
 @media (max-width: 620px) {
   .mk-win__bar { height: 22px; gap: 6px; padding: 0 8px; } .mk-lights { gap: 4px; } .mk-lights i { width: 7px; height: 7px; }
   .mk-win svg { width: 10px; height: 10px; } .mk-url { height: 14px; flex-basis: 48%; font-size: 7.5px; gap: 3px; border-radius: 4px; } .mk-url svg { width: 7px; height: 7px; }
-  .mk-win { border-radius: 8px 8px 0 0; } .mk-phone { width: 31%; right: 10px; bottom: -40px; }
+  .mk-win { border-radius: 8px 8px 0 0; }
   .mk-win__nav { gap: 6px; }
 }
 .canvas--wide:has(.d-404) { padding: 0; }
