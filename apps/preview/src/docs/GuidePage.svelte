@@ -49,7 +49,7 @@
     <h2>Tipografía</h2>
     <Card>
       <p class="type-sample sans">Inter — Build something people want.</p>
-      <p class="type-sample mono">Geist Mono — pnpm build --filter rblez-ui</p>
+      <p class="type-sample mono">SUSE Mono — pnpm build --filter rblez-ui</p>
     </Card>
   {:else if slug === "licencia"}
     <p class="eyebrow">Legal</p>
