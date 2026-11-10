@@ -4,6 +4,9 @@ Todos los cambios notables de rblez-ui. Formato basado en [Keep a Changelog](htt
 
 ## [Unreleased]
 
+### Fixed
+- `NotFound`: en móvil el arte y el texto se rompían en una columna de ~30px (cada palabra cortada). Causa: `.d-404` es un flex item (vía `display: contents` del marco del preview) y sin `width` ni `min-width` colapsaba; la media query de contenedor nunca se activaba. Ahora `.d-404` lleva `width: 100%; min-width: 0` y el layout apila arte y texto correctamente a 360/390px.
+
 ### Added
 - `NotFound`: página 404 con un 404 isométrico en 3D (vector generado desde Inter), rejilla isométrica y tema claro/oscuro. La docs lo usa para rutas inexistentes.
 - Slider de componentes en móvil (deslizar o tocar) y paginador anterior/siguiente.

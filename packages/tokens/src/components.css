@@ -218,7 +218,7 @@
   --nf-top: color-mix(in srgb, var(--d-surface) 85%, var(--d-bg)); --nf-side: color-mix(in srgb, var(--d-ink) 4%, var(--d-bg));
   --nf-line: color-mix(in srgb, var(--d-ink) 16%, var(--d-bg)); --nf-grid: color-mix(in srgb, var(--d-ink) 7%, transparent);
   position: relative; isolation: isolate; container-type: inline-size; display: grid; align-items: center;
-  min-height: 100dvh; padding: 48px 24px; box-sizing: border-box; background: var(--d-bg); color: var(--d-ink); overflow: hidden; font-family: var(--d-sans);
+  width: 100%; min-width: 0; min-height: 100dvh; padding: 48px 24px; box-sizing: border-box; background: var(--d-bg); color: var(--d-ink); overflow: hidden; font-family: var(--d-sans);
 }
 :root[data-theme="dark"] .d-404, .d-404[data-theme="dark"] { --nf-face-1: #24221c; --nf-face-2: #1b1913; --nf-top: #2a2822; --nf-side: #1f1d17; --nf-line: #3d3a33; --nf-grid: rgba(255,255,255,.06); }
 .d-404--grid::before {
