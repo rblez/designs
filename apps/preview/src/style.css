@@ -24,7 +24,15 @@ code { font-family: var(--d-mono); font-size: .86em; }
   background-image: url("/grain.png"); background-size: 128px 128px; image-rendering: auto;
 }
 [data-theme="dark"] .bg::after { opacity: .07; }
-.top__left, .top__right { display: flex; align-items: center; gap: 12px; }
+.top {
+  position: sticky; top: 0; z-index: 20;
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  height: 56px; padding: 0 16px; box-sizing: border-box;
+  background: color-mix(in srgb, var(--d-bg) 86%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--d-line);
+}
+.top__left, .top__right { display: flex; align-items: center; gap: 12px; min-width: 0; }
 .brand { display: flex; align-items: center; gap: 8px; text-decoration: none; font: 700 13px/1 var(--d-sans); letter-spacing: -.01em; }
 [data-theme="dark"] .brand img { filter: invert(1); }
 .ver { font: 500 11px/1 var(--d-mono); color: var(--d-muted); padding: 3px 6px; border: 1px solid var(--d-line-2); border-radius: 999px; }
