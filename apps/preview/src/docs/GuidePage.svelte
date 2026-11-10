@@ -51,6 +51,17 @@
       <p class="type-sample sans">Inter — Build something people want.</p>
       <p class="type-sample mono">SUSE Mono — pnpm build --filter rblez-ui</p>
     </Card>
+  {:else if slug === "acerca"}
+    <p class="eyebrow">Empezar</p>
+    <h1>Acerca de</h1>
+    <p class="lead">rblez-ui es la librería de componentes de rblez: Svelte 5 y React con la misma API, un solo CSS y tokens compartidos.</p>
+    <ul class="list">
+      <li><strong>Autor.</strong> <a href="https://www.rblez.com" target="_blank" rel="noreferrer">rblez</a> · <a href="mailto:hello@rblez.com">hello@rblez.com</a></li>
+      <li><strong>Código.</strong> <a href="https://github.com/rblez/designs" target="_blank" rel="noreferrer">github.com/rblez/designs</a></li>
+      <li><strong>Versión.</strong> v0.1</li>
+      <li><strong>Tipografía.</strong> Inter y SUSE Mono, bajo SIL Open Font License 1.1.</li>
+      <li><strong>Licencia.</strong> Software propietario. © 2026 rblez. Todos los derechos reservados.</li>
+    </ul>
   {:else if slug === "licencia"}
     <p class="eyebrow">Legal</p>
     <h1>Licencia</h1>

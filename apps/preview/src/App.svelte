@@ -87,7 +87,6 @@
     {:else}
       <GuidePage {slug} {go} />
     {/if}
-    <footer class="foot"><span>© 2026 rblez. Todos los derechos reservados. Software propietario.</span><GitHubStars /></footer>
   </main>
 </div>
 
@@ -111,13 +110,13 @@
 </div>
 <nav class="dock" aria-label="Buscar y navegar">
   <label class="dock__find">
-    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4-4"/></svg>
-    <input bind:this={findEl} bind:value={query} type="search" placeholder="Buscar" aria-label="Buscar en la documentación" enterkeyhint="go" autocomplete="off" onfocus={() => (menu = true)} onkeydown={onFind} />
+    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4-4"/></svg>
+    <input bind:this={findEl} bind:value={query} type="search" placeholder="Buscar…" aria-label="Buscar en la documentación" enterkeyhint="go" autocomplete="off" onfocus={() => (menu = true)} onkeydown={onFind} />
   </label>
   <span class="dock__sep" aria-hidden="true"></span>
   <button class="dock__btn" aria-label={menu ? "Cerrar menú" : "Abrir menú"} aria-expanded={menu} onclick={() => (menu ? close() : (menu = true))}>
-    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
-      {#if menu}<path d="M6 6l12 12M18 6 6 18"/>{:else}<path d="M5 9.5h14M5 14.5h14"/>{/if}
+    <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+      {#if menu}<path d="M6 6l12 12M18 6 6 18"/>{:else}<path d="M5 9h14M5 15h14"/>{/if}
     </svg>
   </button>
 </nav>

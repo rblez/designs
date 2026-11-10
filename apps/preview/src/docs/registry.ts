@@ -127,4 +127,5 @@ export const guides = [
   { slug: "instalacion", name: "Instalación" },
   { slug: "tokens", name: "Tokens" },
   { slug: "licencia", name: "Licencia" },
+  { slug: "acerca", name: "Acerca de" },
 ];
