@@ -2,7 +2,7 @@
   "name": "designs",
   "private": true,
   "version": "0.0.0",
-  "description": "Laboratorio de componentes en TypeScript para Svelte, React y React Native",
+  "description": "Laboratorio de componentes en TypeScript web para Svelte y React",
   "packageManager": "pnpm@9.15.0",
   "scripts": {
     "dev": "pnpm --filter @designs/preview dev",

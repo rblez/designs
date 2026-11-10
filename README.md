@@ -1,6 +1,6 @@
 # designs
 
-Laboratorio de componentes web en TypeScript. Un mismo componente, tres runtimes: **Svelte**, **React** y **React Native**, con tokens de diseño compartidos.
+Laboratorio de componentes web en TypeScript. Solo web: un mismo componente en **Svelte** y **React**, con tokens de diseño compartidos.
 
 Preview: https://www.rblez.com/designs/ (también en GitHub Pages)
 
@@ -11,7 +11,6 @@ packages/
   tokens/        colores, espacios, radios, tipografía (TS) + tokens.css para web
   svelte/        componentes Svelte 5 (runes, TS)
   react/         componentes React 18+ (TSX)
-  react-native/  componentes React Native (Pressable + tokens en JS)
 apps/
   preview/       Vite + Svelte + React, se publica con base /designs/
 ```
@@ -33,5 +32,5 @@ apps/
 ## Añadir un componente
 
 1. Tipos y tokens compartidos en `packages/tokens`.
-2. Implementación en `svelte/`, `react/` y `react-native/` con la misma API.
+2. Implementación en `svelte/` y `react/` con la misma API.
 3. Demo en `apps/preview`.

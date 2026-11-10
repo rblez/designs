@@ -1,4 +1,4 @@
-/** Design tokens compartidos por Svelte, React y React Native. */
+/** Design tokens compartidos por Svelte y React. */
 export const color = {
   light: {
     bg: "#f7f7f4",
