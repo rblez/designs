@@ -15,6 +15,7 @@ export const cx = (...c: Array<string | false | null | undefined>) => c.filter(B
 export * from "./icons";
 export * from "./prompt";
 export * from "./notfound-art";
+export * from "./accent";
 
 /* ProfileSettings (estilo Telegram) */
 export type SettingsColor = "blue" | "sky" | "indigo" | "cyan" | "green" | "orange" | "amber" | "red" | "rose" | "violet" | "purple" | "gray";

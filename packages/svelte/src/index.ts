@@ -17,4 +17,5 @@ export { default as BottomSheet } from "./BottomSheet.svelte";
 export { default as Modal } from "./Modal.svelte";
 export { default as Select } from "./Select.svelte";
 export { default as Toaster } from "./Toaster.svelte";
-export { toast } from "@rblez-ui/tokens";
+export { toast, setAccent, getAccent, setNeutral, isAccentPreset, ACCENT_PRESETS, NEUTRAL_PRESETS, accentSwatches } from "@rblez-ui/tokens";
+export type { AccentPreset, AccentValue, NeutralPreset } from "@rblez-ui/tokens";

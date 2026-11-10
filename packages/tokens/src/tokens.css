@@ -1,33 +1,111 @@
-/* @rblez-ui/tokens — paleta crema/tinta + naranja (estilo Cursor / rblez.com). Grano obligatorio en la app. */
-:root, [data-theme="light"] {
-  --d-bg: #f7f7f4; --d-surface: #fcfcfa; --d-surface-2: #efeee9; --d-ink: #26251e; --d-ink-2: #4d4b42;
-  --d-muted: rgba(38,37,30,.58); --d-line: rgba(38,37,30,.1); --d-line-2: rgba(38,37,30,.18); --d-hover: rgba(38,37,30,.05);
-  --d-accent: #26251e; --d-accent-ink: #f7f7f4; --d-ring: rgba(245,78,0,.28);
-  --d-orange: #f54e00; --d-orange-ink: #ffffff;
-  --d-blue: #0070f3; --d-green: #1f8a3b; --d-amber: #c27c0e; --d-red: #d9363e;
+/* @rblez-ui/tokens — neutros crema/tinta + un acento configurable (naranja por defecto). Grano obligatorio en la app.
+ *
+ * Tema:    data-theme="light" | "dark" en <html> o en cualquier subárbol (sin atributo sigue al sistema).
+ * Acento:  data-accent="orange | blue | violet | green | rose | amber | teal | ink" (orange por defecto),
+ *          o cualquier color: style="--d-brand: #0ea5e9" (ambos temas) o --d-brand-l / --d-brand-d (por tema).
+ * Neutros: data-neutral="cream | zinc | slate" (cream por defecto), o --d-bg / --d-surface… directamente.
+ *
+ * Cada valor visual tiene una versión clara (-l) y oscura (-d); los bloques de selección de abajo eligen una
+ * según el tema y derivan el resto del acento (soft, line, ring, ink, text) desde --d-brand con color-mix.
+ */
+:root {
+  /* Acento por defecto: naranja rblez */
+  --d-brand-l: #f54e00; --d-brand-d: #ff6a1f; --d-brand-ink-l: #14120b; --d-brand-ink-d: #14120b;
+  /* Estados (no dependen del acento) */
+  --d-blue-l: #0070f3; --d-green-l: #1f8a3b; --d-amber-l: #c27c0e; --d-red-l: #d9363e;
+  --d-blue-d: #3291ff; --d-green-d: #3ecf8e; --d-amber-d: #f5a524; --d-red-d: #ff6369;
   --d-radius-sm: 6px; --d-radius-md: 8px; --d-radius-lg: 12px; --d-radius-xl: 16px;
-  --d-shadow-sm: 0 1px 2px rgba(38,37,30,.05); --d-shadow-md: 0 1px 2px rgba(38,37,30,.05), 0 6px 20px -6px rgba(38,37,30,.12);
   --d-sans: "Inter", -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;
   --d-mono: "SUSE Mono", ui-monospace, "SF Mono", "Source Code Pro", monospace;
+}
+
+/* ───── Neutros ───── */
+:root, [data-neutral="cream"] {
+  --d-bg-l: #f7f7f4; --d-surface-l: #fcfcfa; --d-surface-2-l: #efeee9; --d-ink-l: #26251e; --d-ink-2-l: #4d4b42;
+  --d-muted-l: rgba(38,37,30,.58); --d-line-l: rgba(38,37,30,.1); --d-line-2-l: rgba(38,37,30,.18); --d-hover-l: rgba(38,37,30,.05);
+  --d-shadow-sm-l: 0 1px 2px rgba(38,37,30,.05); --d-shadow-md-l: 0 1px 2px rgba(38,37,30,.05), 0 6px 20px -6px rgba(38,37,30,.12);
+  --d-bg-d: #14120b; --d-surface-d: #1b1913; --d-surface-2-d: #23211a; --d-ink-d: #edecec; --d-ink-2-d: #c9c7c0;
+  --d-muted-d: rgba(237,236,236,.55); --d-line-d: rgba(237,236,236,.09); --d-line-2-d: rgba(237,236,236,.16); --d-hover-d: rgba(237,236,236,.06);
+}
+[data-neutral="zinc"] {
+  --d-bg-l: #fafafa; --d-surface-l: #ffffff; --d-surface-2-l: #f1f1f2; --d-ink-l: #18181b; --d-ink-2-l: #3f3f46;
+  --d-muted-l: rgba(24,24,27,.58); --d-line-l: rgba(24,24,27,.1); --d-line-2-l: rgba(24,24,27,.18); --d-hover-l: rgba(24,24,27,.05);
+  --d-shadow-sm-l: 0 1px 2px rgba(24,24,27,.05); --d-shadow-md-l: 0 1px 2px rgba(24,24,27,.05), 0 6px 20px -6px rgba(24,24,27,.12);
+  --d-bg-d: #09090b; --d-surface-d: #111113; --d-surface-2-d: #1a1a1d; --d-ink-d: #fafafa; --d-ink-2-d: #d4d4d8;
+  --d-muted-d: rgba(250,250,250,.55); --d-line-d: rgba(250,250,250,.09); --d-line-2-d: rgba(250,250,250,.16); --d-hover-d: rgba(250,250,250,.06);
+}
+[data-neutral="slate"] {
+  --d-bg-l: #f8fafc; --d-surface-l: #ffffff; --d-surface-2-l: #eef2f7; --d-ink-l: #0f172a; --d-ink-2-l: #334155;
+  --d-muted-l: rgba(15,23,42,.58); --d-line-l: rgba(15,23,42,.1); --d-line-2-l: rgba(15,23,42,.18); --d-hover-l: rgba(15,23,42,.05);
+  --d-shadow-sm-l: 0 1px 2px rgba(15,23,42,.05); --d-shadow-md-l: 0 1px 2px rgba(15,23,42,.05), 0 6px 20px -6px rgba(15,23,42,.14);
+  --d-bg-d: #0b1120; --d-surface-d: #0f172a; --d-surface-2-d: #1a2436; --d-ink-d: #f1f5f9; --d-ink-2-d: #cbd5e1;
+  --d-muted-d: rgba(241,245,249,.55); --d-line-d: rgba(241,245,249,.09); --d-line-2-d: rgba(241,245,249,.16); --d-hover-d: rgba(241,245,249,.06);
+}
+
+/* ───── Acentos (claro / oscuro; ink-* es el respaldo sin oklch relativo) ───── */
+[data-accent="orange"] { --d-brand-l: #f54e00; --d-brand-d: #ff6a1f; --d-brand-ink-l: #14120b; --d-brand-ink-d: #14120b; }
+[data-accent="blue"]   { --d-brand-l: #2563eb; --d-brand-d: #5b9bff; --d-brand-ink-l: #ffffff; --d-brand-ink-d: #0b1220; }
+[data-accent="violet"] { --d-brand-l: #7c3aed; --d-brand-d: #a78bfa; --d-brand-ink-l: #ffffff; --d-brand-ink-d: #140b24; }
+[data-accent="green"]  { --d-brand-l: #15803d; --d-brand-d: #4ade80; --d-brand-ink-l: #ffffff; --d-brand-ink-d: #07170d; }
+[data-accent="rose"]   { --d-brand-l: #e11d48; --d-brand-d: #fb7185; --d-brand-ink-l: #ffffff; --d-brand-ink-d: #22070d; }
+[data-accent="amber"]  { --d-brand-l: #d97706; --d-brand-d: #fbbf24; --d-brand-ink-l: #1a1203; --d-brand-ink-d: #1a1203; }
+[data-accent="teal"]   { --d-brand-l: #0f766e; --d-brand-d: #2dd4bf; --d-brand-ink-l: #ffffff; --d-brand-ink-d: #04171a; }
+[data-accent="ink"]    { --d-brand-l: var(--d-ink-l); --d-brand-d: var(--d-ink-d); --d-brand-ink-l: var(--d-bg-l); --d-brand-ink-d: var(--d-bg-d); }
+
+/* ───── Selección por tema + derivados del acento ─────
+ * Se repite en todo elemento que cambie tema, neutros o acento, para que los derivados se recalculen ahí. */
+:root, [data-theme="light"], [data-accent], [data-neutral], [style*="--d-brand"] {
+  --d-bg: var(--d-bg-l); --d-surface: var(--d-surface-l); --d-surface-2: var(--d-surface-2-l); --d-ink: var(--d-ink-l); --d-ink-2: var(--d-ink-2-l);
+  --d-muted: var(--d-muted-l); --d-line: var(--d-line-l); --d-line-2: var(--d-line-2-l); --d-hover: var(--d-hover-l);
+  --d-accent: var(--d-ink-l); --d-accent-ink: var(--d-bg-l);
+  --d-blue: var(--d-blue-l); --d-green: var(--d-green-l); --d-amber: var(--d-amber-l); --d-red: var(--d-red-l);
+  --d-shadow-sm: var(--d-shadow-sm-l); --d-shadow-md: var(--d-shadow-md-l);
+  --d-brand: var(--d-brand-l); --d-brand-ink: var(--d-brand-ink-l); --d-brand-text: var(--d-brand);
+  --d-brand-soft: color-mix(in oklch, var(--d-brand) 14%, transparent);
+  --d-brand-line: color-mix(in oklch, var(--d-brand) 45%, var(--d-line));
+  --d-ring: color-mix(in oklch, var(--d-brand) 30%, transparent);
+  /* Obsoletos: alias de --d-brand / --d-brand-ink (se quitarán en 1.0) */
+  --d-orange: var(--d-brand); --d-orange-ink: var(--d-brand-ink);
   color-scheme: light;
 }
-[data-theme="dark"] {
-  --d-bg: #14120b; --d-surface: #1b1913; --d-surface-2: #23211a; --d-ink: #edecec; --d-ink-2: #c9c7c0;
-    --d-muted: rgba(237,236,236,.55); --d-line: rgba(237,236,236,.09); --d-line-2: rgba(237,236,236,.16); --d-hover: rgba(237,236,236,.06);
-    --d-accent: #edecec; --d-accent-ink: #14120b; --d-ring: rgba(255,106,31,.35);
-    --d-orange: #ff6a1f; --d-orange-ink: #14120b;
-    --d-blue: #3291ff; --d-green: #3ecf8e; --d-amber: #f5a524; --d-red: #ff6369;
+[data-theme="dark"], [data-theme="dark"] :is([data-accent], [data-neutral], [style*="--d-brand"]):not([data-theme="light"]) {
+  --d-bg: var(--d-bg-d); --d-surface: var(--d-surface-d); --d-surface-2: var(--d-surface-2-d); --d-ink: var(--d-ink-d); --d-ink-2: var(--d-ink-2-d);
+  --d-muted: var(--d-muted-d); --d-line: var(--d-line-d); --d-line-2: var(--d-line-2-d); --d-hover: var(--d-hover-d);
+  --d-accent: var(--d-ink-d); --d-accent-ink: var(--d-bg-d);
+  --d-blue: var(--d-blue-d); --d-green: var(--d-green-d); --d-amber: var(--d-amber-d); --d-red: var(--d-red-d);
   --d-shadow-sm: 0 1px 2px rgba(0,0,0,.4); --d-shadow-md: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px -8px rgba(0,0,0,.6);
+  --d-brand: var(--d-brand-d); --d-brand-ink: var(--d-brand-ink-d);
+  --d-ring: color-mix(in oklch, var(--d-brand) 38%, transparent);
   color-scheme: dark;
 }
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --d-bg: #14120b; --d-surface: #1b1913; --d-surface-2: #23211a; --d-ink: #edecec; --d-ink-2: #c9c7c0;
-    --d-muted: rgba(237,236,236,.55); --d-line: rgba(237,236,236,.09); --d-line-2: rgba(237,236,236,.16); --d-hover: rgba(237,236,236,.06);
-    --d-accent: #edecec; --d-accent-ink: #14120b; --d-ring: rgba(255,106,31,.35);
-    --d-orange: #ff6a1f; --d-orange-ink: #14120b;
-    --d-blue: #3291ff; --d-green: #3ecf8e; --d-amber: #f5a524; --d-red: #ff6369;
+  :root:not([data-theme="light"]), :root:not([data-theme="light"]) :is([data-accent], [data-neutral], [style*="--d-brand"]):not([data-theme="light"]) {
+    --d-bg: var(--d-bg-d); --d-surface: var(--d-surface-d); --d-surface-2: var(--d-surface-2-d); --d-ink: var(--d-ink-d); --d-ink-2: var(--d-ink-2-d);
+    --d-muted: var(--d-muted-d); --d-line: var(--d-line-d); --d-line-2: var(--d-line-2-d); --d-hover: var(--d-hover-d);
+    --d-accent: var(--d-ink-d); --d-accent-ink: var(--d-bg-d);
+    --d-blue: var(--d-blue-d); --d-green: var(--d-green-d); --d-amber: var(--d-amber-d); --d-red: var(--d-red-d);
     --d-shadow-sm: 0 1px 2px rgba(0,0,0,.4); --d-shadow-md: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px -8px rgba(0,0,0,.6);
+    --d-brand: var(--d-brand-d); --d-brand-ink: var(--d-brand-ink-d);
+    --d-ring: color-mix(in oklch, var(--d-brand) 38%, transparent);
     color-scheme: dark;
+  }
+}
+
+/* Con oklch relativo: tinta sobre el acento (blanco o casi negro según su luminosidad, contraste ≥ 4.5:1 en los presets)
+ * y texto de acento legible sobre el fondo. Cualquier color personalizado los recibe sin configurar nada;
+ * --d-brand-ink se puede fijar a mano en el mismo elemento. */
+@supports (color: oklch(from red l c h)) {
+  :root, [data-theme="light"], [data-accent], [data-neutral], [style*="--d-brand"] {
+    --d-brand-ink: oklch(from var(--d-brand) clamp(.16, (.6 - l) * 1000, 1) clamp(0, (l - .6) * 1000, .02) h);
+    --d-brand-text: oklch(from var(--d-brand) min(l, .58) c h);
+  }
+  [data-theme="dark"], [data-theme="dark"] :is([data-accent], [data-neutral], [style*="--d-brand"]):not([data-theme="light"]) {
+    --d-brand-ink: oklch(from var(--d-brand) clamp(.16, (.6 - l) * 1000, 1) clamp(0, (l - .6) * 1000, .02) h);
+    --d-brand-text: oklch(from var(--d-brand) max(l, .72) c h);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]), :root:not([data-theme="light"]) :is([data-accent], [data-neutral], [style*="--d-brand"]):not([data-theme="light"]) {
+      --d-brand-text: oklch(from var(--d-brand) max(l, .72) c h);
+    }
   }
 }

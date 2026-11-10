@@ -5,5 +5,7 @@
  {"name":"snap-expanded","state":{"snap":1}},
  {"name":"dragging","state":{"drag":120}},
  {"name":"all-on","state":{"items":[{"id":"notifications","label":"Notificaciones","on":true},{"id":"airplane","label":"Modo avión","on":true},{"id":"data","label":"Ahorro de datos","on":true}]}},
- {"name":"tablet","state":{"viewport":768,"snap":1}}
+ {"name":"tablet","state":{"viewport":768,"snap":1}},
+ {"name":"accent-blue","state":{"accent":"blue"}},
+ {"name":"accent-violet-light","state":{"theme":"light","accent":"violet"}}
 ]}

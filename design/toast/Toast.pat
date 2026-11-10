@@ -1,10 +1,12 @@
 <script lang="ts">
 	// rblez-ui · Toast en Patch: <Toaster> con los toasts de la demo de @rblez-ui/svelte,
 	// para exportar a Figma (`patch snapshot figma`) y tests de estado (`patch test`).
-	import { demo, glyphs, palettes, type Position, type Toast } from './data.ts';
+	import { demo, glyphs, palette, type Position, type Toast, type Accent } from './data.ts';
 
 	type Theme = 'dark' | 'light';
 	let theme: Theme = $state('dark');
+	/** Acento (preset de tokens.css). */
+	let accent: Accent = $state('orange');
 	let toasts: Toast[] = $state(demo);
 	let position: Position = $state('bottom-right');
 	/** Máximo visible (los más recientes). */
@@ -12,7 +14,7 @@
 	let viewport = $state(390);
 	const vh = 800;
 
-	let c = $derived(palettes[theme]);
+	let c = $derived(palette(theme, accent));
 	let mobile = $derived(viewport <= 480);
 	let w = $derived(mobile ? viewport - 24 : Math.min(380, viewport - 24));
 	let x = $derived(mobile ? 12 : position.endsWith('left') ? 16 : position.endsWith('right') ? viewport - 16 - w : (viewport - w) / 2);

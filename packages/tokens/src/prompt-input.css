@@ -1,7 +1,10 @@
-/* PromptInput — clon del composer de bolt.new. Valores tomados de su CSS (light/dark). */
+/* PromptInput — clon del composer de bolt.new. Valores tomados de su CSS (light/dark).
+ * Conserva el azul de bolt por defecto; para usar el acento de rblez-ui define en un ancestro
+ * --d-prompt-brand / --d-prompt-accent / --d-prompt-accent-ink (p. ej. var(--d-brand) y var(--d-brand-ink)). */
 .d-prompt {
   --p-bg: 255 254 254; --p-text: 12 12 15; --p-text-2: 82 82 88; --p-text-3: 115 115 123;
   --p-border: #d6d5de; --p-hover: #1111140a; --p-brand: 20 136 252; --p-accent: 43 166 255;
+  --p-brand-c: var(--d-prompt-brand, rgb(var(--p-brand))); --p-accent-c: var(--d-prompt-accent, rgb(var(--p-accent))); --p-accent-ink: var(--d-prompt-accent-ink, #fff);
   position: relative; width: 100%; max-width: 42rem; margin: 0 auto;
   font-family: Inter, -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;
   color: rgb(var(--p-text));
@@ -21,14 +24,14 @@
   border: 1px solid var(--p-border); box-shadow: 0 0 40px -12px rgba(0,0,0,.35);
   transition: border-color .15s;
 }
-.d-prompt__box:focus-within { border-color: color-mix(in srgb, rgb(var(--p-brand)) 45%, var(--p-border)); }
+.d-prompt__box:focus-within { border-color: color-mix(in srgb, var(--p-brand-c) 45%, var(--p-border)); }
 .d-prompt__field { display: grid; }
 .d-prompt__field > * { grid-area: 1 / 1; }
 .d-prompt__textarea {
   display: block; width: 100%; resize: none; border: 0; outline: 0; background: transparent; margin: 0;
   padding: 1.25rem 1.25rem 0; color: rgb(var(--p-text)); font: inherit; font-size: 1rem; line-height: 1.5rem;
   letter-spacing: .01em; white-space: pre-wrap; word-break: break-word; overflow-x: hidden; overflow-y: auto;
-  caret-color: rgb(var(--p-brand));
+  caret-color: var(--p-brand-c);
 }
 .d-prompt__placeholder {
   pointer-events: none; padding: 1.25rem 1.25rem 0; color: rgb(var(--p-text-3));
@@ -36,7 +39,7 @@
 }
 .d-prompt__caret {
   display: inline-block; width: 0; height: 1.2em; margin-left: 1px; vertical-align: text-bottom;
-  border-left: 1px solid rgb(var(--p-brand)); animation: d-prompt-blink 1s step-end infinite;
+  border-left: 1px solid var(--p-brand-c); animation: d-prompt-blink 1s step-end infinite;
 }
 @keyframes d-prompt-blink { 50% { opacity: 0; } }
 @media (min-width: 768px) {
@@ -56,27 +59,27 @@
   border-radius: 9999px; cursor: pointer; font: inherit; transition: background-color .15s, color .15s;
 }
 .d-prompt__btn:hover:not(:disabled) { background: var(--p-hover); }
-.d-prompt__btn:focus-visible { outline: 2px solid rgb(var(--p-accent)); outline-offset: 1px; }
+.d-prompt__btn:focus-visible { outline: 2px solid var(--p-accent-c); outline-offset: 1px; }
 .d-prompt__btn:disabled { cursor: not-allowed; }
 .d-prompt__add { width: 2rem; border: 1px solid var(--p-border); }
 .d-prompt__mic { width: 2rem; color: rgb(var(--p-text-3)); }
-.d-prompt__mic[aria-pressed="true"] { color: rgb(var(--p-brand)); }
+.d-prompt__mic[aria-pressed="true"] { color: var(--p-brand-c); }
 .d-prompt__mic:disabled { opacity: .5; }
 .d-prompt__plan { padding: 0 .75rem; font-size: .75rem; color: rgb(var(--p-text-3)); }
 .d-prompt__plan:hover { color: rgb(var(--p-text)); }
-.d-prompt__plan[aria-pressed="true"] { color: rgb(var(--p-brand)); background: rgb(var(--p-brand) / .1); }
+.d-prompt__plan[aria-pressed="true"] { color: var(--p-brand-c); background: color-mix(in srgb, var(--p-brand-c) 10%, transparent); }
 .d-prompt__plan-label { display: none; }
 @container (min-width: 330px) { .d-prompt__plan-label { display: inline; } }
 .d-prompt__send {
   display: inline-flex; align-items: center; justify-content: center; gap: .5rem; flex-shrink: 0;
   height: 2.25rem; padding: 0 1rem; border: 0; border-radius: 9999px; cursor: pointer;
-  background: rgb(var(--p-accent)); color: #fff; font: 500 .875rem/1 inherit; font-family: inherit; white-space: nowrap;
+  background: var(--p-accent-c); color: var(--p-accent-ink); font: 500 .875rem/1 inherit; font-family: inherit; white-space: nowrap;
   transition: filter .15s, opacity .15s;
 }
 .d-prompt__send:hover:not(:disabled) { filter: brightness(1.05); }
 .d-prompt__send:active:not(:disabled) { filter: brightness(.95); }
 .d-prompt__send:disabled { opacity: .5; cursor: not-allowed; }
-.d-prompt__send:focus-visible { outline: 2px solid rgb(var(--p-accent)); outline-offset: 2px; }
+.d-prompt__send:focus-visible { outline: 2px solid var(--p-accent-c); outline-offset: 2px; }
 .d-prompt__send-label { display: none; }
 @media (min-width: 640px) { .d-prompt__send-label { display: inline; } }
 .d-prompt__files { display: flex; flex-wrap: wrap; gap: .375rem; padding: .75rem 1.25rem 0; }

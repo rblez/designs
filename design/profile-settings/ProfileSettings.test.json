@@ -5,5 +5,7 @@
  {"name":"tab-chats","state":{"activeTab":"chats"}},
  {"name":"row-selected","state":{"selected":"privacy"}},
  {"name":"long-name","state":{"name":"Raymond Alejandro Blez","username":"rblez"}},
- {"name":"no-meta","state":{"phone":"","username":""}}
+ {"name":"no-meta","state":{"phone":"","username":""}},
+ {"name":"accent-blue","state":{"accent":"blue"}},
+ {"name":"accent-violet-light","state":{"theme":"light","accent":"violet"}}
 ]}

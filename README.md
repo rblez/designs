@@ -39,6 +39,22 @@ import "@rblez-ui/tokens/components.css";
 import { Button } from "@rblez-ui/svelte"; // o "@rblez-ui/react"
 ```
 
+### Tema y acento · Theme and accent
+
+**ES** · Naranja por defecto. Cambia el acento con `data-accent` (`orange` · `blue` · `violet` · `green` · `rose` · `amber` · `teal` · `ink`) o cualquier color con `--d-brand`; los neutros con `data-neutral` (`cream` · `zinc` · `slate`). Todo funciona en claro y oscuro.
+**EN** · Orange by default. Change the accent with `data-accent` or any color with `--d-brand`; neutrals with `data-neutral`. Everything works in light and dark.
+
+```html
+<html data-theme="dark" data-accent="violet" data-neutral="zinc">
+<section style="--d-brand: #0ea5e9">…</section>
+```
+
+```ts
+import { setAccent } from "@rblez-ui/tokens"; // también desde @rblez-ui/svelte y @rblez-ui/react
+setAccent("blue");                               // preset
+setAccent({ light: "#0369a1", dark: "#38bdf8" }); // propio, por tema · custom, per theme
+```
+
 ## Para agentes de IA
 
 Lee [SKILL.md](./SKILL.md): reglas, tokens, API de cada componente, iconos y recetas.

@@ -1,10 +1,12 @@
 <script lang="ts">
 	// rblez-ui · BottomSheet en Patch: la demo de @rblez-ui/svelte («Ajustes rápidos»),
 	// para exportar a Figma (`patch snapshot figma`) y tests de estado (`patch test`).
-	import { palettes, settings, snapPoints, type Setting } from './data.ts';
+	import { palette, settings, snapPoints, type Setting, type Accent } from './data.ts';
 
 	type Theme = 'dark' | 'light';
 	let theme: Theme = $state('dark');
+	/** Acento (preset de tokens.css). */
+	let accent: Accent = $state('orange');
 	let open = $state(true);
 	/** Índice del punto de anclaje (0 = 45%, 1 = 90%). */
 	let snap = $state(0);
@@ -14,7 +16,7 @@
 	let viewport = $state(390);
 	const vh = 800;
 
-	let c = $derived(palettes[theme]);
+	let c = $derived(palette(theme, accent));
 	let sheetW = $derived(Math.min(640, viewport));
 	let height = $derived(Math.min(snapPoints[snapPoints.length - 1] * vh, vh - 24));
 	let visible = $derived(Math.min(snapPoints[Math.max(0, Math.min(snap, snapPoints.length - 1))] * vh, height) - drag);

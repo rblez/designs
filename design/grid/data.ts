@@ -1,14 +1,19 @@
 // Datos y layout de Grid para Patch (Figma y tests de estado).
 // Patch no tiene CSS grid: el layout se calcula aquí con las mismas reglas que
 // .d-grid en components.css (breakpoints de contenedor 480 / 768 / 1024 / 1280).
+import { brandOf, type Accent, type Theme } from '../accents.ts';
 export type Variant = 'auto-fit' | 'auto-fill' | 'columns' | 'masonry' | 'bento' | 'split';
 export type Cols = { base?: number; sm?: number; md?: number; lg?: number; xl?: number };
 export type Rect = { id: string; label: string; x: number; y: number; w: number; h: number; brand?: boolean };
 
 export const palettes = {
-  dark: { bg: '#14120b', surface: '#1c1a13', surface2: '#26231a', line: '#edecec14', line2: '#edecec29', ink: '#edecec', muted: '#edecec8c', brand: '#ff6a1f', brandBg: '#ff6a1f1f' },
-  light: { bg: '#f7f7f4', surface: '#fcfcfa', surface2: '#efeee9', line: '#26251e1a', line2: '#26251e2e', ink: '#26251e', muted: '#26251e94', brand: '#f54e00', brandBg: '#f54e001f' }
+  dark: { bg: '#14120b', surface: '#1c1a13', surface2: '#26231a', line: '#edecec14', line2: '#edecec29', ink: '#edecec', muted: '#edecec8c' },
+  light: { bg: '#f7f7f4', surface: '#fcfcfa', surface2: '#efeee9', line: '#26251e1a', line2: '#26251e2e', ink: '#26251e', muted: '#26251e94' }
 } as const;
+
+export type { Accent, Theme };
+/** Paleta del tema con el acento aplicado (orange por defecto). */
+export const palette = (theme: Theme, accent: Accent = 'orange') => ({ ...palettes[theme], ...brandOf(theme, accent) });
 
 const BPS = [['xl', 1280], ['lg', 1024], ['md', 768], ['sm', 480]] as const;
 export function colsAt(width: number, cols: Cols): number {

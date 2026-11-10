@@ -1,10 +1,12 @@
 <script lang="ts">
 	// rblez-ui · Modal en Patch: la demo de @rblez-ui/svelte («Renombrar proyecto»),
 	// para exportar a Figma (`patch snapshot figma`) y tests de estado (`patch test`).
-	import { palettes, widths, type Size } from './data.ts';
+	import { palette, widths, type Size, type Accent } from './data.ts';
 
 	type Theme = 'dark' | 'light';
 	let theme: Theme = $state('dark');
+	/** Acento (preset de tokens.css). */
+	let accent: Accent = $state('orange');
 	let open = $state(true);
 	let size: Size = $state('sm');
 	let name = $state('rblez-ui');
@@ -14,7 +16,7 @@
 	let viewport = $state(390);
 	const vh = 800;
 
-	let c = $derived(palettes[theme]);
+	let c = $derived(palette(theme, accent));
 	let w = $derived(Math.min(viewport - 32, widths[size]));
 
 	const btn = $style({ height: 36, padding: [0, 14], borderRadius: 8, borderWidth: 1, alignItems: 'center', justifyContent: 'center' });

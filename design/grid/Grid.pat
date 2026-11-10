@@ -1,16 +1,18 @@
 <script lang="ts">
 	// rblez-ui · Grid en Patch: la demo de @rblez-ui/svelte, para exportar a
 	// Figma (`patch snapshot figma`) y tests de estado (`patch test`).
-	import { layout, palettes, type Variant } from './data.ts';
+	import { layout, palette, type Variant, type Accent } from './data.ts';
 
 	type Theme = 'dark' | 'light';
 	let theme: Theme = $state('dark');
+	/** Acento (preset de tokens.css). */
+	let accent: Accent = $state('orange');
 	let variant: Variant = $state('bento');
 	/** Ancho del viewport (360 · 390 · 768 · 1280). */
 	let viewport = $state(390);
 
 	const variants: Variant[] = ['bento', 'auto-fit', 'columns', 'masonry', 'split'];
-	let c = $derived(palettes[theme]);
+	let c = $derived(palette(theme, accent));
 	let inner = $derived(Math.min(1200, viewport - 32));
 	let rects = $derived(layout(variant, inner));
 	let height = $derived(Math.max(0, ...rects.map((r) => r.y + r.h)));
@@ -38,7 +40,7 @@
 					borderColor: r.brand ? c.brand : c.line2, background: r.brand ? c.brandBg : c.surface, alignItems: 'center', justifyContent: 'center'
 				}}
 			>
-				<p style={{ fontFamily: 'SUSE Mono', fontSize: 12, fontWeight: 500, color: r.brand ? c.brand : c.muted, textAlign: 'center' }}>{r.label}</p>
+				<p style={{ fontFamily: 'SUSE Mono', fontSize: 12, fontWeight: 500, color: r.brand ? c.brandText : c.muted, textAlign: 'center' }}>{r.label}</p>
 			</div>
 		{/each}
 	</div>

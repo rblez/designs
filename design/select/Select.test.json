@@ -11,5 +11,7 @@
  {"name":"error","state":{"value":null,"error":"Elige una región para continuar."}},
  {"name":"size-sm","state":{"size":"sm"}},
  {"name":"size-lg","state":{"size":"lg"}},
- {"name":"disabled","state":{"disabled":true}}
+ {"name":"disabled","state":{"disabled":true}},
+ {"name":"accent-blue","state":{"accent":"blue"}},
+ {"name":"accent-violet-light","state":{"theme":"light","accent":"violet"}}
 ]}

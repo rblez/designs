@@ -23,7 +23,7 @@ const dict = {
     copy: "Copiar", copied: "Copiado", search: "Buscar…", searchLabel: "Buscar en la documentación",
     noResults: (q: string) => `Sin resultados para “${q}”.`, openMenu: "Abrir menú", closeMenu: "Cerrar menú",
     close: "Cerrar", nav: "Navegación", docs: "Documentación", theme: "Tema", light: "Claro", dark: "Oscuro",
-    toggleTheme: "Cambiar tema", language: "Idioma", new: "Nuevo",
+    toggleTheme: "Cambiar tema", language: "Idioma", new: "Nuevo", accent: "Acento",
   },
   en: {
     getStarted: "Get started", components: "Components", base: "Foundations", legal: "Legal",
@@ -33,7 +33,7 @@ const dict = {
     copy: "Copy", copied: "Copied", search: "Search…", searchLabel: "Search documentation",
     noResults: (q: string) => `No results for “${q}”.`, openMenu: "Open menu", closeMenu: "Close menu",
     close: "Close", nav: "Navigation", docs: "Documentation", theme: "Theme", light: "Light", dark: "Dark",
-    toggleTheme: "Toggle theme", language: "Language", new: "New",
+    toggleTheme: "Toggle theme", language: "Language", new: "New", accent: "Accent",
   },
 } as const;
 

@@ -2,9 +2,12 @@
 	// rblez-ui · ProfileSettings en Patch: misma pantalla que @rblez-ui/svelte, para
 	// exportar a Figma (`patch snapshot figma`) y tests de estado (`patch test`).
 	import { sections, tabs, tile, type Item } from './data.ts';
+	import { brandOf, type Accent } from '../accents.ts';
 
 	type Theme = 'dark' | 'light';
 	let theme: Theme = $state('dark');
+	/** Acento (preset de tokens.css). */
+	let accent: Accent = $state('orange');
 	let activeTab = $state('settings');
 	let name = $state('Ray');
 	let phone = $state('+1 555 010 0199');
@@ -16,8 +19,8 @@
 		dark: { bg: '#14120b', surface: '#1c1a13', surface2: '#26231a', line: '#edecec14', line2: '#edecec24', ink: '#edecec', muted: '#edecec8c' },
 		light: { bg: '#f7f7f4', surface: '#ffffff', surface2: '#f0efea', line: '#26251e14', line2: '#26251e24', ink: '#26251e', muted: '#26251e8c' }
 	} as const;
-	const accent = '#f54e00';
 	let c = $derived(palettes[theme]);
+	let a = $derived(brandOf(theme, accent));
 	let meta = $derived([phone, username && `@${username}`].filter(Boolean).join(' • '));
 
 	const pill = (bg: string, line: string) => $style({ flexDirection: 'row', alignItems: 'center', height: 44, padding: [0, 6], gap: 2, borderRadius: 22, background: bg, borderWidth: 1, borderColor: line });
@@ -42,8 +45,8 @@
 			<div style={{ width: 96, height: 96, borderRadius: 48, background: '#000000', alignItems: 'center', justifyContent: 'center' }}>
 				<p style={{ fontSize: 36, fontWeight: 700, color: '#ffffff' }}>{name.slice(0, 1).toUpperCase()}</p>
 			</div>
-			<div style={{ position: 'absolute', left: 66, top: 64, width: 34, height: 34, borderRadius: 17, background: accent, borderWidth: 3, borderColor: c.bg, alignItems: 'center', justifyContent: 'center' }}>
-				<p style={{ fontSize: 13, fontWeight: 700, color: '#ffffff' }}>◉</p>
+			<div style={{ position: 'absolute', left: 66, top: 64, width: 34, height: 34, borderRadius: 17, background: a.brand, borderWidth: 3, borderColor: c.bg, alignItems: 'center', justifyContent: 'center' }}>
+				<p style={{ fontSize: 13, fontWeight: 700, color: a.brandInk }}>◉</p>
 			</div>
 		</div>
 		<p style={{ fontSize: 24, fontWeight: 700, letterSpacing: -0.5 }}>{name}</p>
@@ -54,7 +57,7 @@
 	<div style={{ width: 'fill', gap: 12, padding: [0, 12, 20, 12] }}>
 		{#each sections as s, i (s.title ?? i)}
 			<div style={{ width: 'fill', padding: [6, 0], borderRadius: 20, background: c.surface, borderWidth: 1, borderColor: c.line, overflow: 'hidden' }}>
-				{#if s.title}<p style={{ marginLeft: 18, marginTop: 6, marginBottom: 4, fontSize: 13, fontWeight: 600, color: accent }}>{s.title}</p>{/if}
+				{#if s.title}<p style={{ marginLeft: 18, marginTop: 6, marginBottom: 4, fontSize: 13, fontWeight: 600, color: a.brandText }}>{s.title}</p>{/if}
 				{#each s.items as it (it.id)}
 					<button
 						style={{ width: 'fill', minHeight: 52, flexDirection: 'row', alignItems: 'center', gap: 16, padding: [8, 16], background: selected === it.id ? c.surface2 : '#0000' }}
@@ -68,8 +71,8 @@
 							{#if it.description}<p style={{ width: 'fill', fontSize: 13, fontWeight: 500, color: c.muted, textOverflow: 'ellipsis' }}>{it.description}</p>{/if}
 						</div>
 						{#if it.badge != null}
-							<div style={{ minWidth: 22, height: 22, padding: [0, 7], borderRadius: 11, background: accent, alignItems: 'center', justifyContent: 'center' }}>
-								<p style={{ fontSize: 12, fontWeight: 600, color: '#ffffff' }}>{it.badge}</p>
+							<div style={{ minWidth: 22, height: 22, padding: [0, 7], borderRadius: 11, background: a.brand, alignItems: 'center', justifyContent: 'center' }}>
+								<p style={{ fontSize: 12, fontWeight: 600, color: a.brandInk }}>{it.badge}</p>
 							</div>
 						{/if}
 						{#if it.chevron}<p style={{ fontSize: 16, color: c.muted }}>›</p>{/if}
@@ -84,14 +87,14 @@
 	<div style={{ width: 366, flexDirection: 'row', gap: 2, padding: 5, margin: [0, 12, 12, 12], borderRadius: 32, background: c.surface, borderWidth: 1, borderColor: c.line2, boxShadow: { y: 10, blur: 30, color: '#00000040' } }}>
 		{#each tabs as t (t.id)}
 			<button
-				style={{ width: 'fill', alignItems: 'center', gap: 3, padding: [7, 4, 6, 4], borderRadius: 26, background: activeTab === t.id ? '#f54e0029' : '#0000', color: activeTab === t.id ? accent : c.ink }}
+				style={{ width: 'fill', alignItems: 'center', gap: 3, padding: [7, 4, 6, 4], borderRadius: 26, background: activeTab === t.id ? `${a.brand}29` : '#0000', color: activeTab === t.id ? a.brandText : c.ink }}
 				onclick={() => (activeTab = t.id)}
 			>
 				<p style={{ fontSize: 18, fontWeight: activeTab === t.id ? 800 : 400 }}>{activeTab === t.id ? t.glyphFill : t.glyph}</p>
 				<p style={{ fontSize: 11.5, fontWeight: 600 }}>{t.label}</p>
 				{#if t.badge}
-					<div style={{ position: 'absolute', left: 48, top: 2, minWidth: 18, height: 18, padding: [0, 5], borderRadius: 9, background: accent, alignItems: 'center', justifyContent: 'center' }}>
-						<p style={{ fontSize: 10.5, fontWeight: 600, color: '#ffffff' }}>{t.badge}</p>
+					<div style={{ position: 'absolute', left: 48, top: 2, minWidth: 18, height: 18, padding: [0, 5], borderRadius: 9, background: a.brand, alignItems: 'center', justifyContent: 'center' }}>
+						<p style={{ fontSize: 10.5, fontWeight: 600, color: a.brandInk }}>{t.badge}</p>
 					</div>
 				{/if}
 			</button>

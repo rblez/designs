@@ -120,7 +120,7 @@ svg = (
     f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {fmt(W)} {fmt(H)}" width="{fmt(W)}" height="{fmt(H)}" fill="none" aria-hidden="true">'
     '<defs>'
     f'<linearGradient id="nf-face" x1="0" y1="0" x2="{fmt(W)}" y2="{fmt(H)}" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="var(--nf-face-1)"/><stop offset="1" stop-color="var(--nf-face-2)"/></linearGradient>'
-    f'<linearGradient id="nf-glow" x1="{fmt(cx + 40)}" y1="{fmt(cy - 150)}" x2="{fmt(cx - 40)}" y2="{fmt(cy + 150)}" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#f2b56b"/><stop offset=".45" stop-color="#e79ab8"/><stop offset="1" stop-color="#a99be0"/></linearGradient>'
+    f'<linearGradient id="nf-glow" x1="{fmt(cx + 40)}" y1="{fmt(cy - 150)}" x2="{fmt(cx - 40)}" y2="{fmt(cy + 150)}" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="var(--nf-glow-1)"/><stop offset=".45" stop-color="var(--nf-glow-2)"/><stop offset="1" stop-color="var(--nf-glow-3)"/></linearGradient>'
     f'<radialGradient id="nf-fade" cx="{fmt(cx)}" cy="{fmt(cy)}" r="190" gradientUnits="userSpaceOnUse"><stop offset=".55" stop-color="#fff"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>'
     f'<mask id="nf-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="{fmt(W)}" height="{fmt(H)}"><rect width="{fmt(W)}" height="{fmt(H)}" fill="url(#nf-fade)"/></mask>'
     '</defs>'

@@ -33,4 +33,5 @@ export { Select } from "./Select";
 export type { SelectProps } from "./Select";
 export { Toaster } from "./Toaster";
 export type { ToasterProps } from "./Toaster";
-export { toast } from "@rblez-ui/tokens";
+export { toast, setAccent, getAccent, setNeutral, isAccentPreset, ACCENT_PRESETS, NEUTRAL_PRESETS, accentSwatches } from "@rblez-ui/tokens";
+export type { AccentPreset, AccentValue, NeutralPreset } from "@rblez-ui/tokens";

@@ -1,11 +1,13 @@
 <script lang="ts">
 	// rblez-ui · Select en Patch: el campo «Región» de la demo de @rblez-ui/svelte,
 	// para exportar a Figma (`patch snapshot figma`) y tests de estado (`patch test`).
-	import { match, palettes, regions, type Option } from './data.ts';
+	import { match, palette, regions, type Option, type Accent } from './data.ts';
 
 	type Theme = 'dark' | 'light';
 	type Size = 'sm' | 'md' | 'lg';
 	let theme: Theme = $state('dark');
+	/** Acento (preset de tokens.css). */
+	let accent: Accent = $state('orange');
 	let open = $state(false);
 	let value: string | null = $state('mad');
 	/** Opción resaltada (aria-activedescendant), índice en la lista filtrada. */
@@ -17,7 +19,7 @@
 	let disabled = $state(false);
 	let trigger = $state<HTMLButtonElement>();
 
-	let c = $derived(palettes[theme]);
+	let c = $derived(palette(theme, accent));
 	let filtered: Option[] = $derived(searchable && query ? regions.filter((o) => match(o, query)) : regions);
 	let selected = $derived(regions.find((o) => o.value === value));
 	let h = $derived(size === 'sm' ? 30 : size === 'lg' ? 42 : 36);
@@ -61,7 +63,7 @@
 							>
 								{#if o.glyph}<p style={{ fontSize: 14 }}>{o.glyph}</p>{/if}
 								<p style={{ width: 'fill', fontSize: 13, fontWeight: 600 }}>{o.label}</p>
-								{#if o.value === value}<p style={{ fontSize: 13, fontWeight: 700, color: c.brand }}>✓</p>{/if}
+								{#if o.value === value}<p style={{ fontSize: 13, fontWeight: 700, color: c.brandText }}>✓</p>{/if}
 							</button>
 						{/each}
 						{#if filtered.length === 0}
