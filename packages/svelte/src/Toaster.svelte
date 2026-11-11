@@ -1,6 +1,6 @@
 <script lang="ts">
   import { toaster, type ToastItem, type ToastPosition } from "@rblez-ui/tokens";
-  import { checkCircle, exclamationCircle, exclamationTriangle, informationCircle } from "@rblez-ui/tokens/heroicons";
+  import { checkmarkCircle, alertCircle, warning, informationCircle } from "@rblez-ui/tokens/ionicons";
   import Icon from "./Icon.svelte";
 
   interface Props {
@@ -18,7 +18,7 @@
   let items = $state<ToastItem[]>([]);
   $effect(() => toaster.subscribe((next) => (items = next)));
   const visible = $derived(items.slice(-Math.max(1, max)).reverse());
-  const iconOf = { default: informationCircle, success: checkCircle, warning: exclamationTriangle, danger: exclamationCircle };
+  const iconOf = { default: informationCircle, success: checkmarkCircle, warning: warning, danger: alertCircle };
 </script>
 
 <section class="d-toaster-region" aria-label={label}>

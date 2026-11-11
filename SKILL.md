@@ -39,7 +39,7 @@ Accent: orange by default. Set `data-accent="orange | blue | violet | green | ro
 3. **Typography:** Inter Bold (700) for headings, Inter SemiBold (600) for everything else, **SUSE Mono** for code, versions and meta. No other families.
 4. **Look:** one accent, always through `--d-brand` and its derived tokens (`--d-brand-ink`, `--d-brand-text`, `--d-brand-soft`, `--d-brand-line`, `--d-ring`); the default is orange `#f54e00` (dark `#ff6a1f`) on the cream/ink neutrals. Never hard-code the accent or assume it is orange: the user may pick any preset or color. Gradients and glows mix `var(--d-brand)` (`color-mix(in oklch, var(--d-brand) 20%, transparent)`). Subtle grain, generous radius (12–20px), thin 1px lines (`--d-line`), no heavy shadows. Text on an accent fill uses `--d-brand-ink`; accent-colored text on a background uses `--d-brand-text`.
 5. **Accessibility is not optional:** real `<button>`/`<a>`, `aria-*` labels on icon-only controls, visible focus (`outline: 2px solid var(--d-brand)`), keyboard paths for everything, `prefers-reduced-motion` respected.
-6. **Icons are Heroicons** through `<Icon>`; never paste raw SVGs into components.
+6. **Icons are Ionicons** through `<Icon>`; never paste raw SVGs into components.
 7. **Mobile first:** test at 360, 390 and 768px. Nothing may overflow horizontally.
 8. **Bilingual copy:** user-facing text in the docs exists in Spanish and English.
 
@@ -85,25 +85,25 @@ Light: bg `#f7f7f4`, ink `#26251e`. Dark: bg `#14120b`, ink `#edecec` (cream neu
 | `PromptInput` | `value`, `plan`, `placeholder` (string or rotating string[]), `submitLabel`, `theme`, `onsubmit(d: { value, plan, files })`, `ondictate` | AI composer: attachments, plan mode, dictation; Enter sends, Shift+Enter new line. |
 | `ProfileSettings` | `profile`, `sections`, `tabs`, `activeTab`, `title`, `footer`, `onselect`, `onavatar`, `onqr`, `onsearch`, `onmore`, `ontab` | Telegram-style settings screen; title compacts on scroll; floating tab bar. Tile icons are filled (white on the color tile); the active tab icon is filled, inactive tabs and top pills stay line. Row colors: `blue sky indigo cyan green orange amber red rose violet purple gray`. |
 | `NotFound` | `title`, `description`, `actionLabel`, `href`, `grid`, `onaction` | 404 page: isometric 3D "404" vector + isometric grid. Regenerate the art with `python3 scripts/notfound/gen.py`. |
-| `Icon` | `name` (curated) or `icon` (any Heroicon), `variant: line · fill`, `size`, `strokeWidth`, `label` | See §5. |
+| `Icon` | `name` (curated) or `icon` (any Ionicon), `variant: line · fill`, `size`, `strokeWidth`, `label` | See §5. |
 
 Types live in `@rblez-ui/tokens` (`ButtonVariant`, `SidebarSection`, `FooterColumn`, `SettingsSection`, `SettingsItem`, `SettingsTab`, `SettingsProfile`, `PromptSubmit`, `IconName`, `IconNode`, `GridVariant`, `GridCols`, `ModalSize`, `SelectOption`, `ToastOptions`, `ToastVariant`, `ToastPosition`, …).
 
-## 5. Icons (Heroicons)
+## 5. Icons (Ionicons)
 
 ```svelte
 <script lang="ts">
   import { Icon } from "@rblez-ui/svelte";
-  import { rocketLaunch } from "@rblez-ui/tokens/heroicons"; // any of the 324 Heroicons, tree-shakeable
+  import { rocket } from "@rblez-ui/tokens/ionicons"; // any of the 421 Ionicons, tree-shakeable
 </script>
-<Icon name="search" />                     <!-- curated set, stable names; line = outline 24 -->
-<Icon name="heart" variant="fill" />       <!-- fill: micro (≤16px), mini (≤20px), solid (24) -->
-<Icon icon={rocketLaunch} size={20} label="Deploy" />
+<Icon name="search" />                     <!-- curated set, stable names; line = outline -->
+<Icon name="heart" variant="fill" />       <!-- fill = Ionicons filled -->
+<Icon icon={rocket} size={20} label="Deploy" />
 ```
 
 Curated names: plus, lightbulb, microphone, send, search, menu, close, sun, moon, star, arrowUpRight, check, clipboard, chevronRight, userCircle, chatBubble, key, speakerWave, chartPie, folder, computer, battery, globe, sparkles, gift, storefront, chatEllipsis, question, shieldCheck, camera, qrCode, ellipsisVertical, cog, users, chats, bell, lock, arrowLeft, bug, play, share, externalLink, heart, copy, home, user, trash, pencil, link, paperclip, photo, chevronDown, chevronLeft, arrowRight, eye, eyeSlash, info, warning, bolt.
 
-Line icons use stroke 2 at ≤16px and 1.5 above. Icon-only buttons need `aria-label`.
+Line icons use stroke 1.75 at ≤16px and 1.5 above (Ionicons' 32/512); `strokeWidth` is in px at 24. Icon-only buttons need `aria-label`.
 
 ## 6. Recipes
 

@@ -1,7 +1,7 @@
 <script lang="ts">
   import { tick } from "svelte";
   import { cx, matchOption, nextEnabled, typeahead, type SelectOption, type Size } from "@rblez-ui/tokens";
-  import { chevronUpDown, magnifyingGlass } from "@rblez-ui/tokens/heroicons";
+  import { chevronExpand, search as searchIcon } from "@rblez-ui/tokens/ionicons";
   import Icon from "./Icon.svelte";
 
   interface Props {
@@ -110,14 +110,14 @@
         onclick={() => (isOpen ? hide() : show())} onkeydown={onkey}>
         {#if selected?.icon}<Icon name={selected.icon} size={16} />{/if}
         <span class="d-select__value" data-placeholder={!selected || undefined}>{selected?.label ?? placeholder}</span>
-        <Icon icon={chevronUpDown} size={16} class="d-icon d-select__chev" />
+        <Icon icon={chevronExpand} size={16} class="d-icon d-select__chev" />
       </button>
     </div>
     {#if isOpen}
       <div class="d-select__pop" data-side={side}>
         {#if searchable}
           <div class="d-select__search">
-            <Icon icon={magnifyingGlass} size={16} />
+            <Icon icon={searchIcon} size={16} />
             <input bind:this={search} value={query} oninput={(e) => { query = e.currentTarget.value; active = nextEnabled(filtered, -1, 1); }} type="text" role="combobox" aria-expanded="true" aria-controls={listId} aria-autocomplete="list"
               aria-activedescendant={active >= 0 ? optId(active) : undefined} aria-label={searchPlaceholder} placeholder={searchPlaceholder} autocomplete="off" spellcheck="false" onkeydown={onkey} />
           </div>

@@ -4,7 +4,7 @@ export const tile = {
   blue: '#2f97ee', sky: '#1d96e8', indigo: '#4f78e6', cyan: '#2fb6cc', green: '#38bb45',
   orange: '#f0861c', amber: '#f0a01a', red: '#e8505b', rose: '#e33f57', violet: '#a75ae4', purple: '#8a6cff', gray: '#8e8e93'
 } as const;
-/** glyph: icono relleno (Heroicons solid en Svelte/React), blanco sobre la baldosa de color. */
+/** glyph: icono relleno (Ionicons rellenos en Svelte/React), blanco sobre la baldosa de color. */
 export type Item = { id: string; label: string; description?: string; color: Color; glyph: string; badge?: number; chevron?: boolean };
 export type Section = { title?: string; items: Item[] };
 /** glyph = icono de línea (pestaña inactiva); glyphFill = icono relleno (pestaña activa). */

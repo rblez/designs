@@ -4,6 +4,9 @@ Todos los cambios notables de rblez-ui. Formato basado en [Keep a Changelog](htt
 
 ## [Unreleased]
 
+### Changed
+- Iconos: de Heroicons a Ionicons (MIT), con línea (outline) y relleno (filled) en cada icono. Los 421 iconos en `@rblez-ui/tokens/ionicons` (antes `/heroicons`); los nombres del set curado no cambian. `strokeWidth` sigue en px a 24.
+
 ### Added
 - `GuideGrid` y `GuideCell`: rejilla con guías visibles al estilo Geist. Columnas fijas o `{ sm, md, lg }` por ancho del contenedor, celdas `solid` que tapan las guías, cruces en las esquinas (`cross`), guías discontinuas (`dashed`) y `hideRowGuides` / `hideColumnGuides`.
 - `Spinner`, `LoadingDots` y `Skeleton` (página Loading): spinner de 12 barras con tamaño y color, puntos con texto delante (`aria-live=polite`) y esqueleto con ancho, alto, forma (`rounded | pill | circle | square`), brillo y `show` para mostrar el contenido real. Respetan `prefers-reduced-motion`.
@@ -13,6 +16,8 @@ Todos los cambios notables de rblez-ui. Formato basado en [Keep a Changelog](htt
 - Móvil: las tablas de props y de paquetes se apilan como lista (nombre, tipo, valor por defecto y descripción) en vez de cortarse con scroll lateral.
 - Móvil: la demo de NotFound deja aire para el botón Preview y ya no corta el 404 por los lados.
 - Móvil: la landing reserva espacio al final para el buscador flotante.
+- Móvil y tablet: las tarjetas flotantes y el halo del acento de la landing se ven también por debajo de 1180 px, así el color elegido se nota.
+- Móvil: el anillo del acento elegido ya no se corta en el menú.
 
 ### Added (anterior)
 - Temas y acentos: el acento ya no está atado al naranja. `data-accent="orange | blue | violet | green | rose | amber | teal | ink"` (naranja por defecto) en `<html>` o en cualquier contenedor, cada preset con valor claro y oscuro, o cualquier color con `--d-brand` (ambos temas) o `--d-brand-l` / `--d-brand-d` (uno por tema).

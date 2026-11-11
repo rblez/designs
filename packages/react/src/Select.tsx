@@ -1,6 +1,6 @@
 import { useEffect, useId, useRef, useState, type KeyboardEvent as RKeyboardEvent } from "react";
 import { cx, matchOption, nextEnabled, typeahead, type SelectOption, type Size } from "@rblez-ui/tokens";
-import { chevronUpDown, magnifyingGlass } from "@rblez-ui/tokens/heroicons";
+import { chevronExpand, search as searchIcon } from "@rblez-ui/tokens/ionicons";
 import { Icon } from "./Icon";
 
 export interface SelectProps {
@@ -112,14 +112,14 @@ export function Select({ value: valueProp, defaultValue, onChange, options, labe
             onClick={() => (isOpen ? hide() : show())} onKeyDown={onKey}>
             {selected?.icon && <Icon name={selected.icon} size={16} />}
             <span className="d-select__value" data-placeholder={!selected || undefined}>{selected?.label ?? placeholder}</span>
-            <Icon icon={chevronUpDown} size={16} className="d-icon d-select__chev" />
+            <Icon icon={chevronExpand} size={16} className="d-icon d-select__chev" />
           </button>
         </div>
         {isOpen && (
           <div className="d-select__pop" data-side={side}>
             {searchable && (
               <div className="d-select__search">
-                <Icon icon={magnifyingGlass} size={16} />
+                <Icon icon={searchIcon} size={16} />
                 <input ref={search} value={query} type="text" role="combobox" aria-expanded="true" aria-controls={listId} aria-autocomplete="list"
                   aria-activedescendant={active >= 0 ? optId(active) : undefined} aria-label={searchPlaceholder} placeholder={searchPlaceholder} autoComplete="off" spellCheck={false}
                   onChange={(e) => { const q = e.target.value; setQuery(q); setActive(nextEnabled(options.filter((o) => matchOption(o, q)), -1, 1)); }} onKeyDown={onKey} />

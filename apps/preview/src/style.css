@@ -427,7 +427,12 @@ code, pre, .hl, .eyebrow, th, .ver, .divider__file, .foot, .d-sidebar__title, .g
 .lp-ai__item .ai-logo { width: 44px; height: 44px; object-fit: contain; }
 .lp-foot { margin-top: 40px; border-top: 1px solid var(--d-line); }
 .lp-foot .d-footer { max-width: 1120px; margin: 0 auto; }
-@media (max-width: 1000px) { .lp-cards { display: none; } .lp-feats { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 1180px) {
+  .lp-cards { position: relative; right: auto; top: auto; translate: none; width: auto; height: auto; max-width: 1120px; margin: 40px auto 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 14px 12px; }
+  .lp-card { position: relative; inset: auto; }
+  .lp-glow { width: 150vw; height: 150vw; right: -50%; top: -15%; opacity: .6; }
+}
+@media (max-width: 1000px) { .lp-feats { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 620px) {
   .lp-hero { min-height: auto; padding: 48px 18px 64px; } .lp-sec { padding: 44px 18px; }
   .lp-feats { grid-template-columns: 1fr; } .lp-ai__row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -466,7 +471,7 @@ code, pre, .hl, .eyebrow, th, .ver, .divider__file, .foot, .d-sidebar__title, .g
 @media (max-width: 620px) {
   .ab-meta { grid-template-columns: repeat(2, minmax(0, 1fr)); } .ab-ai { grid-template-columns: 1fr; }
   .ab-mock { padding: 16px 16px 0; } }
-@media (max-width: 1180px) { .lp-cards { display: none; } }
+
 .lp-cta .d-btn { opacity: 1; }
 
 /* ───────── Slider de componentes + paginador ───────── */

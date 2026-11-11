@@ -1,6 +1,6 @@
 import { useSyncExternalStore } from "react";
 import { toaster, type ToastItem, type ToastPosition } from "@rblez-ui/tokens";
-import { checkCircle, exclamationCircle, exclamationTriangle, informationCircle } from "@rblez-ui/tokens/heroicons";
+import { checkmarkCircle, alertCircle, warning, informationCircle } from "@rblez-ui/tokens/ionicons";
 import { Icon } from "./Icon";
 
 export interface ToasterProps {
@@ -14,7 +14,7 @@ export interface ToasterProps {
   icons?: boolean;
 }
 
-const iconOf = { default: informationCircle, success: checkCircle, warning: exclamationTriangle, danger: exclamationCircle };
+const iconOf = { default: informationCircle, success: checkmarkCircle, warning: warning, danger: alertCircle };
 const empty: ToastItem[] = [];
 
 export function Toaster({ position = "bottom-right", max = 3, label = "Notificaciones", closeLabel = "Cerrar", icons = true }: ToasterProps) {

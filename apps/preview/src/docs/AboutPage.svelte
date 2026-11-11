@@ -22,7 +22,7 @@
     lead: "rblez-ui is rblez's component library: Svelte 5 and React with the same API, one stylesheet and shared tokens. Built for interfaces that feel made by hand.",
     meta: ["Version", "Build", "Date", "License"],
     mock: "Docs on desktop", mockLead: "Three-column documentation with live previews, code per framework and ⌘K search.",
-    pk: "Packages", pkRows: [["@rblez-ui/tokens", "Tokens, CSS, Heroicons and shared types."], ["@rblez-ui/svelte", "Svelte 5 components (runes)."], ["@rblez-ui/react", "React 18+ components."]],
+    pk: "Packages", pkRows: [["@rblez-ui/tokens", "Tokens, CSS, Ionicons and shared types."], ["@rblez-ui/svelte", "Svelte 5 components (runes)."], ["@rblez-ui/react", "React 18+ components."]],
     comps: "Components", ai: "Send to AI", aiLead: "Every component page has a Send to AI button. It copies the prompt to your clipboard and opens the tool with the code already written.",
     docs: "Documentation", docsList: [
       ["Its own URL", "Every component lives at /ui/<slug>/ with its own title, description and Open Graph image."],
@@ -35,14 +35,14 @@
     ],
     stack: "Stack and credits", design: "Design workflow", designP: "Components are also written in Patch to export editable layers to Figma and to run snapshot tests per state (theme, selected tab, long names…) in CI.",
     ver: "Versions", verP: "SemVer and Keep a Changelog. Every vX.Y.Z tag publishes a release with notes and a zip of the docs. The header shows the version and commit of each build.",
-    lic: "License", licP: "Proprietary software. © 2026 rblez. All rights reserved. The source is visible but may not be copied, modified, distributed, sublicensed or used, in whole or in part, without written permission from rblez. Use for training AI models is prohibited. Fonts under SIL OFL 1.1; Heroicons under ISC.",
+    lic: "License", licP: "Proprietary software. © 2026 rblez. All rights reserved. The source is visible but may not be copied, modified, distributed, sublicensed or used, in whole or in part, without written permission from rblez. Use for training AI models is prohibited. Fonts under SIL OFL 1.1; Ionicons under MIT.",
     contact: "Contact", repo: "Source", rel: "Releases", chg: "Changelog",
   } : {
     eyebrow: "Acerca de", title: "Acerca de rblez-ui",
     lead: "rblez-ui es la librería de componentes de rblez: Svelte 5 y React con la misma API, un solo CSS y tokens compartidos. Hecha para interfaces que se sienten hechas a mano.",
     meta: ["Versión", "Build", "Fecha", "Licencia"],
     mock: "Las docs en escritorio", mockLead: "Documentación a tres columnas con vista previa en vivo, código por framework y búsqueda ⌘K.",
-    pk: "Paquetes", pkRows: [["@rblez-ui/tokens", "Tokens, CSS, iconos Heroicons y tipos compartidos."], ["@rblez-ui/svelte", "Componentes Svelte 5 (runes)."], ["@rblez-ui/react", "Componentes React 18+."]],
+    pk: "Paquetes", pkRows: [["@rblez-ui/tokens", "Tokens, CSS, iconos Ionicons y tipos compartidos."], ["@rblez-ui/svelte", "Componentes Svelte 5 (runes)."], ["@rblez-ui/react", "Componentes React 18+."]],
     comps: "Componentes", ai: "Enviar a IA", aiLead: "Cada página de componente tiene el botón Enviar a IA. Copia el prompt al portapapeles y abre la herramienta con el código ya escrito.",
     docs: "Documentación", docsList: [
       ["URL propia", "Cada componente vive en /ui/<slug>/ con su título, descripción e imagen Open Graph."],
@@ -55,12 +55,12 @@
     ],
     stack: "Stack y créditos", design: "Flujo de diseño", designP: "Los componentes también se escriben en Patch para exportar capas editables a Figma y correr tests de snapshot por estado (tema, pestaña activa, nombres largos…) en CI.",
     ver: "Versiones", verP: "SemVer y Keep a Changelog. Cada tag vX.Y.Z publica una release con notas y un zip de las docs. La cabecera muestra la versión y el commit de cada build.",
-    lic: "Licencia", licP: "Software propietario. © 2026 rblez. Todos los derechos reservados. El código es visible pero no puede copiarse, modificarse, distribuirse, sublicenciarse ni usarse, total o parcialmente, sin permiso escrito de rblez. Se prohíbe su uso para entrenar modelos de IA. Fuentes bajo SIL OFL 1.1; iconos Heroicons bajo ISC.",
+    lic: "Licencia", licP: "Software propietario. © 2026 rblez. Todos los derechos reservados. El código es visible pero no puede copiarse, modificarse, distribuirse, sublicenciarse ni usarse, total o parcialmente, sin permiso escrito de rblez. Se prohíbe su uso para entrenar modelos de IA. Fuentes bajo SIL OFL 1.1; iconos Ionicons bajo MIT.",
     contact: "Contacto", repo: "Código", rel: "Releases", chg: "Changelog",
   });
 
   const stack = [
-    ["Svelte 5", "MIT"], ["React 18+", "MIT"], ["Vite", "MIT"], ["TypeScript", "Apache-2.0"], ["Shiki", "MIT"], ["Heroicons", "MIT"],
+    ["Svelte 5", "MIT"], ["React 18+", "MIT"], ["Vite", "MIT"], ["TypeScript", "Apache-2.0"], ["Shiki", "MIT"], ["Ionicons", "MIT"],
     ["Inter", "OFL 1.1"], ["SUSE Mono", "OFL 1.1"], ["GSAP", "Standard"], ["Motion", "MIT"], ["Patch", "—"], ["GitHub Pages · Cloudflare", "—"],
   ];
 
