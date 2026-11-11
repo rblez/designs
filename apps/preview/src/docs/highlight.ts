@@ -16,7 +16,7 @@ export async function highlight(code: string, lang: string): Promise<string> {
   if (hit) return hit;
   const h = await get();
   const html = h.codeToHtml(code, {
-    lang: lang === "ts" ? "typescript" : lang === "html" ? "svelte" : lang, // HTML va con la gramática de Svelte
+    lang: lang === "ts" ? "typescript" : lang,
     themes: { light: "github-light-default", dark: "vitesse-dark" },
     defaultColor: false,
   });

@@ -10,7 +10,6 @@
   import PreviewPage from "./docs/PreviewPage.svelte";
   import GitHubStars from "./docs/GitHubStars.svelte";
   import { i18n, setLang, t } from "./docs/i18n.svelte";
-  import AccentPicker from "./docs/AccentPicker.svelte";
 
   const BASE = import.meta.env.BASE_URL; // "/ui/"
   const href = (slug: string) => `${BASE}${slug}/`;
@@ -25,8 +24,6 @@
   let framework = $state<"svelte" | "react">((localStorage.getItem("d-fw") as "svelte" | "react") ?? "svelte");
   let theme = $state<"light" | "dark">((localStorage.getItem("d-theme") as "light" | "dark") ?? (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"));
   let menu = $state(false);
-  let accentOpen = $state(false);
-  let accentEl: HTMLDivElement | undefined = $state();
   let query = $state("");
   let findEl: HTMLInputElement | undefined = $state();
   let palette = $state(false);
@@ -36,13 +33,6 @@
 
   $effect(() => { document.documentElement.dataset.theme = theme; localStorage.setItem("d-theme", theme); });
   $effect(() => { localStorage.setItem("d-fw", framework); });
-  $effect(() => {
-    if (!accentOpen) return;
-    const down = (e: PointerEvent) => { if (!accentEl?.contains(e.target as Node)) accentOpen = false; };
-    const key = (e: KeyboardEvent) => { if (e.key === "Escape") { accentOpen = false; accentEl?.querySelector<HTMLButtonElement>(".accent-pop__btn")?.focus(); } };
-    addEventListener("pointerdown", down); addEventListener("keydown", key);
-    return () => { removeEventListener("pointerdown", down); removeEventListener("keydown", key); };
-  });
   $effect(() => { document.body.classList.toggle("menu-open", menu); });
   $effect(() => {
     const k = (e: KeyboardEvent) => {
@@ -65,7 +55,7 @@
     return () => { removeEventListener("popstate", on); removeEventListener("click", click); };
   });
 
-  const groups = ["IA", "Formularios", "Layout", "Overlay", "Feedback"] as const;
+  const groups = ["IA", "Formularios", "Layout", "Feedback"] as const;
   const L = $derived(t());
   $effect(() => { document.documentElement.lang = i18n.lang; });
   const sections: SidebarSection[] = $derived([
@@ -117,14 +107,6 @@
       <button aria-pressed={i18n.lang === "en"} onclick={() => setLang("en")}>EN</button>
     </div>
     <GitHubStars />
-    <div class="accent-pop" bind:this={accentEl}>
-      <button type="button" class="theme accent-pop__btn" aria-label={L.accent} title={L.accent} aria-expanded={accentOpen} aria-haspopup="dialog" onclick={() => (accentOpen = !accentOpen)}>
-        <span class="accent-dot"></span>
-      </button>
-      {#if accentOpen}
-        <div class="accent-pop__panel" role="dialog" aria-label={L.accent}><AccentPicker neutrals /></div>
-      {/if}
-    </div>
     <button class="theme" aria-label={L.toggleTheme} onclick={() => (theme = theme === "dark" ? "light" : "dark")}>
       {#if theme === "dark"}
         <Icon name="sun" size={14} />
@@ -181,7 +163,6 @@
       <p class="sheet__empty">{L.noResults(query)}</p>
     {/if}
   </div>
-  <div class="sheet__accent"><AccentPicker /></div>
   <div class="sheet__foot">
     <span class="sheet__meta">rblez-ui · v{__VERSION__}{__COMMIT__ ? ` · ${__COMMIT__}` : ""}</span>
     <div class="seg seg--lang" role="group" aria-label={L.language}>

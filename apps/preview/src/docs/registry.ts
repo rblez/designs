@@ -51,33 +51,12 @@ import rKbd from "../demos/react/KbdDemo.tsx?raw";
 import rSidebar from "../demos/react/SidebarDemo.tsx?raw";
 import rPrompt from "../demos/react/PromptInputDemo.tsx?raw";
 
-import SGrid from "../demos/svelte/GridDemo.svelte";
-import sGrid from "../demos/svelte/GridDemo.svelte?raw";
-import RGrid from "../demos/react/GridDemo";
-import rGrid from "../demos/react/GridDemo.tsx?raw";
-import SSheet from "../demos/svelte/BottomSheetDemo.svelte";
-import sSheet from "../demos/svelte/BottomSheetDemo.svelte?raw";
-import RSheet from "../demos/react/BottomSheetDemo";
-import rSheet from "../demos/react/BottomSheetDemo.tsx?raw";
-import SModal from "../demos/svelte/ModalDemo.svelte";
-import sModal from "../demos/svelte/ModalDemo.svelte?raw";
-import RModal from "../demos/react/ModalDemo";
-import rModal from "../demos/react/ModalDemo.tsx?raw";
-import SSelect from "../demos/svelte/SelectDemo.svelte";
-import sSelect from "../demos/svelte/SelectDemo.svelte?raw";
-import RSelect from "../demos/react/SelectDemo";
-import rSelect from "../demos/react/SelectDemo.tsx?raw";
-import SToast from "../demos/svelte/ToastDemo.svelte";
-import sToast from "../demos/svelte/ToastDemo.svelte?raw";
-import RToast from "../demos/react/ToastDemo";
-import rToast from "../demos/react/ToastDemo.tsx?raw";
-
 export type Prop = [name: string, type: string, def: string, desc: string];
 
 export interface ComponentDoc {
   slug: string;
   name: string;
-  group: "Formularios" | "Layout" | "Overlay" | "Feedback" | "IA";
+  group: "Formularios" | "Layout" | "Feedback" | "IA";
   badge?: string;
   description: string;
   svelte: Component; react: ComponentType;
@@ -119,19 +98,6 @@ export const components: ComponentDoc[] = [
       ["label", "string", "—", "Texto al lado."],
       ["disabled", "boolean", "false", "Desactiva el control."],
     ] },
-  { slug: "select", name: "Select", group: "Formularios", badge: "Nuevo", description: "Select accesible con listbox propio: teclado completo, búsqueda por tecleo, iconos, búsqueda opcional y el mismo aspecto que Input.",
-    svelte: SSelect, react: RSelect, svelteSrc: sSelect, reactSrc: rSelect,
-    props: [
-      ["value", "string", "—", "bind:value en Svelte; value/onChange (o defaultValue) en React."],
-      ["options", "SelectOption[]", "—", "{ value, label, disabled?, icon? }[]"],
-      ["label / hint / error", "string", "—", "Igual que Input; error marca aria-invalid."],
-      ["placeholder", "string", '"Selecciona…"', "Texto sin selección."],
-      ["size", '"sm" | "md" | "lg"', '"md"', "Altura del control."],
-      ["searchable", "boolean", "false", "Campo de búsqueda que filtra (sin tildes ni mayúsculas)."],
-      ["searchPlaceholder / emptyText", "string", '"Buscar…" / "Sin resultados"', "Textos de la búsqueda."],
-      ["disabled / required / name", "boolean / boolean / string", "—", "name añade un input oculto para formularios."],
-      ["onchange / onChange", "(value: string) => void", "—", "Al elegir una opción."],
-    ] },
   { slug: "prompt-input", name: "PromptInput", group: "IA", badge: "Nuevo", surface: "gradient",
     description: "Composer de IA: autosize, placeholder animado, adjuntos, Plan, dictado y envío.",
     svelte: SPrompt, react: RPrompt, svelteSrc: sPrompt, reactSrc: rPrompt,
@@ -143,18 +109,6 @@ export const components: ComponentDoc[] = [
       ["theme", '"light" | "dark" | "auto"', '"auto"', "auto sigue al documento."],
       ["onsubmit / onSubmit", "(d: PromptSubmit) => void", "—", "Recibe value, plan y files."],
       ["ondictate / onDictate", "() => void", "—", "Activa el micrófono si existe."],
-    ] },
-  { slug: "grid", name: "Grid", group: "Layout", badge: "Nuevo", description: "Rejillas responsive: auto-fit / auto-fill por ancho mínimo, columnas por breakpoint, masonry, bento con spans y split con columna lateral.",
-    svelte: SGrid, react: RGrid, svelteSrc: sGrid, reactSrc: rGrid,
-    props: [
-      ["variant", '"auto-fit" | "auto-fill" | "columns" | "masonry" | "bento" | "split"', '"auto-fit"', "Tipo de rejilla."],
-      ["cols", "number | { base, sm, md, lg, xl }", "{ base: 1, sm: 2, lg: 3 }", "Columnas por ancho del contenedor (480 / 768 / 1024 / 1280px). bento: { base: 2, md: 4 }."],
-      ["min", "number | string", "220", "Ancho mínimo del item en auto-fit / auto-fill."],
-      ["gap", "number | string", "16", "Separación (px si es número)."],
-      ["sidebar / side", 'number | string / "start" | "end"', '280 / "start"', "Columna lateral del split; se apila por debajo de 768px."],
-      ["rowHeight", "number | string", "120", "Alto mínimo de fila en bento."],
-      ["as", "string | ElementType", '"div"', "Elemento de la rejilla (p. ej. ul)."],
-      ["GridItem: colSpan / rowSpan", "number", "1", "Spans en bento / columns; los anchos ocupan la fila entera en móvil."],
     ] },
   { slug: "card", name: "Card", group: "Layout", description: "Contenedor con cabecera, cuerpo y pie.",
     svelte: SCard, react: RCard, svelteSrc: sCard, reactSrc: rCard,
@@ -203,44 +157,11 @@ export const components: ComponentDoc[] = [
       ["grid", "boolean", "true", "Rejilla isométrica de fondo."],
       ["onaction / onAction", "(e) => void", "—", "Al pulsar el enlace (p. ej. navegación del router)."],
     ] },
-  { slug: "modal", name: "Modal", group: "Overlay", badge: "Nuevo", description: "Diálogo modal sobre <dialog> nativo: focus trap, devuelve el foco, Esc y clic en el fondo configurables, tres tamaños y pie de acciones.",
-    svelte: SModal, react: RModal, svelteSrc: sModal, reactSrc: rModal,
-    props: [
-      ["open", "boolean", "false", "bind:open en Svelte; open/onClose en React."],
-      ["title / description", "string", "—", "Enlazados con aria-labelledby / aria-describedby."],
-      ["size", '"sm" | "md" | "lg"', '"md"', "Ancho máximo 380 / 480 / 720px."],
-      ["closeOnBackdrop / closeOnEsc", "boolean", "true", "Cerrar con clic en el fondo o con Esc."],
-      ["showClose / closeLabel", "boolean / string", 'true / "Cerrar"', "Botón × de la cabecera."],
-      ["footer", "Snippet | ReactNode", "—", "Acciones del pie."],
-      ["onclose / onClose", "() => void", "—", "Al pedir el cierre (Esc, fondo, ×)."],
-    ] },
-  { slug: "bottom-sheet", name: "BottomSheet", group: "Overlay", badge: "Nuevo", description: "Hoja inferior para móvil: asa para arrastrar, puntos de anclaje, cerrar arrastrando, fondo, focus trap, Esc, bloqueo de scroll y safe-area.",
-    svelte: SSheet, react: RSheet, svelteSrc: sSheet, reactSrc: rSheet,
-    props: [
-      ["open", "boolean", "false", "bind:open en Svelte; open/onClose en React."],
-      ["title / description", "string", "—", "Cabecera; también sirve para arrastrar."],
-      ["snapPoints", "number[]", "—", "Alturas en fracción del viewport, p. ej. [0.45, 0.9]. Sin ellas, alto automático."],
-      ["snap", "number", "0", "Anclaje activo: bind:snap en Svelte; snap/onSnapChange (o defaultSnap) en React. Flechas ↑/↓ en el asa."],
-      ["dismissible", "boolean", "true", "Cerrar arrastrando, con Esc o con el fondo."],
-      ["showClose / closeLabel / handleLabel", "boolean / string / string", 'true / "Cerrar" / "Cambiar tamaño"', "Botón × y etiqueta del asa."],
-      ["footer", "Snippet | ReactNode", "—", "Acciones fijas abajo (con safe-area)."],
-      ["onclose / onClose", "() => void", "—", "Al pedir el cierre."],
-    ] },
   { slug: "badge", name: "Badge", group: "Feedback", description: "Etiquetas de estado con punto opcional.",
     svelte: SBadge, react: RBadge, svelteSrc: sBadge, reactSrc: rBadge,
     props: [
       ["variant", '"default" | "secondary" | "outline" | "brand" | "success" | "warning" | "danger"', '"secondary"', "Color."],
       ["dot", "boolean", "false", "Punto de estado."],
-    ] },
-  { slug: "toast", name: "Toast", group: "Feedback", badge: "Nuevo", description: "Notificaciones con <Toaster> y la función toast(): variantes de estado, acción, duración, apilado y pausa al pasar el ratón.",
-    svelte: SToast, react: RToast, svelteSrc: sToast, reactSrc: rToast,
-    props: [
-      ["position", '"top-left" | "top-center" | "top-right" | "bottom-left" | "bottom-center" | "bottom-right"', '"bottom-right"', "Esquina del Toaster; ancho completo en móvil."],
-      ["max", "number", "3", "Toasts visibles a la vez (los más recientes)."],
-      ["label / closeLabel", "string", '"Notificaciones" / "Cerrar"', "Región aria-live=polite y botón cerrar."],
-      ["icons", "boolean", "true", "Icono de estado."],
-      ["toast(title, opts?)", "(string | ToastOptions) => id", "—", "También toast.success / warning / danger y toast.dismiss(id?)."],
-      ["ToastOptions", "{ id?, title?, description?, variant?, duration?, action?, dismissible? }", "duration 5000", "duration 0 = no se cierra solo; action { label, onClick }."],
     ] },
   { slug: "kbd", name: "Kbd", group: "Feedback", description: "Atajos de teclado.",
     svelte: SKbd, react: RKbd, svelteSrc: sKbd, reactSrc: rKbd, props: [["children", "Snippet | ReactNode", "—", "Tecla."]] },
