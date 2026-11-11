@@ -545,7 +545,8 @@ html { -webkit-tap-highlight-color: transparent; -webkit-text-size-adjust: 100%;
 .accent-pop__panel { position: absolute; right: 0; top: calc(100% + 8px); z-index: 40; width: max-content; max-width: min(320px, calc(100vw - 24px)); padding: 12px;
   border: 1px solid var(--d-line-2); border-radius: var(--d-radius-lg); background: var(--d-surface); box-shadow: var(--d-shadow-md); animation: d-pop-in .14s ease-out; transform-origin: 100% 0; }
 .accent-pop__panel .ap__row { max-width: 296px; }
-.sheet__accent { padding: 10px 8px 2px 14px; border-top: 1px solid var(--d-line); }
+.sheet__accent { padding: 12px 10px 12px 14px; border-top: 1px solid var(--d-line); }
+.sheet__accent .ap__row { padding: 4px 2px; }
 .look { display: grid; gap: 14px; margin-top: 16px; padding: 16px; border: 1px solid var(--d-line); border-radius: var(--d-radius-lg); background: var(--d-surface); }
 .look__demo { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
 @media (max-width: 860px) { .top .accent-pop { display: none; } }
