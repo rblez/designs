@@ -33,7 +33,7 @@
   const Demo = $derived(doc.svelte);
   const src = $derived((framework === "svelte" ? doc.svelteSrc : doc.reactSrc).trim());
   const file = $derived(`${doc.name}Demo.${framework === "svelte" ? "svelte" : "tsx"}`);
-  const importLine = $derived(`import { ${doc.name} } from "@rblez-ui/${framework}";`);
+  const importLine = $derived(`import { ${(doc.exports ?? [doc.name]).join(", ")} } from "@rblez-ui/${framework}";`);
   const L = $derived(t());
   const isEn = $derived(i18n.lang === "en");
   const description = $derived(isEn ? en[doc.slug]?.description ?? doc.description : doc.description);
@@ -105,12 +105,12 @@
   <CodeBlock lang="ts" code={importLine} />
 
   <h2>{L.props}</h2>
-  <div class="table-wrap">
+  <div class="table-wrap props">
     <table>
       <thead><tr><th>{L.prop}</th><th>{L.type}</th><th>{L.def}</th><th>{L.desc}</th></tr></thead>
       <tbody>
         {#each doc.props as [name, type, def, desc] (name)}
-          <tr><td><code>{name}</code></td><td><code class="t">{type}</code></td><td><code>{def}</code></td><td>{desc}</td></tr>
+          <tr><td data-label={L.prop}><code>{name}</code></td><td data-label={L.type}><code class="t">{type}</code></td><td data-label={L.def}><code>{def}</code></td><td data-label={L.desc}>{desc}</td></tr>
         {/each}
       </tbody>
     </table>

@@ -72,6 +72,15 @@ import sToast from "../demos/svelte/ToastDemo.svelte?raw";
 import RToast from "../demos/react/ToastDemo";
 import rToast from "../demos/react/ToastDemo.tsx?raw";
 
+import SGG from "../demos/svelte/GuideGridDemo.svelte";
+import sGG from "../demos/svelte/GuideGridDemo.svelte?raw";
+import RGG from "../demos/react/GuideGridDemo";
+import rGG from "../demos/react/GuideGridDemo.tsx?raw";
+import SLoad from "../demos/svelte/LoadingDemo.svelte";
+import sLoad from "../demos/svelte/LoadingDemo.svelte?raw";
+import RLoad from "../demos/react/LoadingDemo";
+import rLoad from "../demos/react/LoadingDemo.tsx?raw";
+
 export type Prop = [name: string, type: string, def: string, desc: string];
 
 export interface ComponentDoc {
@@ -79,6 +88,8 @@ export interface ComponentDoc {
   name: string;
   group: "Formularios" | "Layout" | "Overlay" | "Feedback" | "IA";
   badge?: string;
+  /** Nombres exportados que muestra Uso (por defecto, name). */
+  exports?: string[];
   description: string;
   svelte: Component; react: ComponentType;
   svelteSrc: string; reactSrc: string;
@@ -155,6 +166,19 @@ export const components: ComponentDoc[] = [
       ["rowHeight", "number | string", "120", "Alto mínimo de fila en bento."],
       ["as", "string | ElementType", '"div"', "Elemento de la rejilla (p. ej. ul)."],
       ["GridItem: colSpan / rowSpan", "number", "1", "Spans en bento / columns; los anchos ocupan la fila entera en móvil."],
+    ] },
+  { slug: "guide-grid", name: "GuideGrid", group: "Layout", badge: "Nuevo", exports: ["GuideGrid", "GuideCell"], description: "Rejilla con guías visibles al estilo Geist: celdas sólidas que tapan las guías, cruces en las esquinas, guías discontinuas u ocultas por eje y columnas por ancho del contenedor.",
+    svelte: SGG, react: RGG, svelteSrc: sGG, reactSrc: rGG,
+    props: [
+      ["columns", "number | { sm, md, lg }", "3", "Columnas fijas o por ancho del contenedor (< 640 · 640 · 960px)."],
+      ["rowHeight", "number | string", "120", "Alto mínimo de fila."],
+      ["dashed", "boolean", "false", "Guías discontinuas."],
+      ["hideRowGuides / hideColumnGuides", "boolean", "false", "Oculta las guías de un eje."],
+      ["cross", "boolean", "false", "Cruces en las esquinas de la rejilla."],
+      ["as", "string | ElementType", '"div"', "Elemento de la rejilla (p. ej. ul)."],
+      ["GuideCell: colSpan / rowSpan", "number", "1", "Celdas que ocupa; con columnas responsive, las anchas llenan la fila en móvil."],
+      ["GuideCell: solid", "boolean", "false", "Fondo opaco que tapa las guías que cruza."],
+      ["GuideCell: cross", "boolean", "false", "Cruz en la esquina superior izquierda."],
     ] },
   { slug: "card", name: "Card", group: "Layout", description: "Contenedor con cabecera, cuerpo y pie.",
     svelte: SCard, react: RCard, svelteSrc: sCard, reactSrc: rCard,
@@ -241,6 +265,19 @@ export const components: ComponentDoc[] = [
       ["icons", "boolean", "true", "Icono de estado."],
       ["toast(title, opts?)", "(string | ToastOptions) => id", "—", "También toast.success / warning / danger y toast.dismiss(id?)."],
       ["ToastOptions", "{ id?, title?, description?, variant?, duration?, action?, dismissible? }", "duration 5000", "duration 0 = no se cierra solo; action { label, onClick }."],
+    ] },
+  { slug: "loading", name: "Loading", group: "Feedback", badge: "Nuevo", exports: ["Spinner", "LoadingDots", "Skeleton"], description: "Indicadores de carga: Spinner para acciones del usuario, LoadingDots para texto en curso y Skeleton para reservar el espacio del contenido.",
+    svelte: SLoad, react: RLoad, svelteSrc: sLoad, reactSrc: rLoad,
+    props: [
+      ["Spinner: size", "number", "20", "Lado en px."],
+      ["Spinner: color", "string", "--d-muted", "Cualquier color CSS."],
+      ["Spinner: label", "string", '"Cargando"', "role=status con aria-label."],
+      ["LoadingDots: size", "number", "4", "Diámetro de cada punto en px."],
+      ["LoadingDots: children", "Snippet | ReactNode", "—", "Texto delante (Guardando, Desplegando…); aria-live=polite."],
+      ["Skeleton: width / height", "number | string", '"100%" / 24', "Tamaño (px si es número)."],
+      ["Skeleton: shape", '"rounded" | "pill" | "circle" | "square"', '"rounded"', "Forma; circle usa height como diámetro."],
+      ["Skeleton: animated", "boolean", "true", "Brillo animado; se desactiva con reduced-motion."],
+      ["Skeleton: show", "boolean", "true", "false muestra el contenido real (children)."],
     ] },
   { slug: "kbd", name: "Kbd", group: "Feedback", description: "Atajos de teclado.",
     svelte: SKbd, react: RKbd, svelteSrc: sKbd, reactSrc: rKbd, props: [["children", "Snippet | ReactNode", "—", "Tecla."]] },

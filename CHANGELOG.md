@@ -5,6 +5,16 @@ Todos los cambios notables de rblez-ui. Formato basado en [Keep a Changelog](htt
 ## [Unreleased]
 
 ### Added
+- `GuideGrid` y `GuideCell`: rejilla con guías visibles al estilo Geist. Columnas fijas o `{ sm, md, lg }` por ancho del contenedor, celdas `solid` que tapan las guías, cruces en las esquinas (`cross`), guías discontinuas (`dashed`) y `hideRowGuides` / `hideColumnGuides`.
+- `Spinner`, `LoadingDots` y `Skeleton` (página Loading): spinner de 12 barras con tamaño y color, puntos con texto delante (`aria-live=polite`) y esqueleto con ancho, alto, forma (`rounded | pill | circle | square`), brillo y `show` para mostrar el contenido real. Respetan `prefers-reduced-motion`.
+- Docs: `exports` en el registro para que Uso importe todos los nombres de un componente compuesto.
+
+### Fixed
+- Móvil: las tablas de props y de paquetes se apilan como lista (nombre, tipo, valor por defecto y descripción) en vez de cortarse con scroll lateral.
+- Móvil: la demo de NotFound deja aire para el botón Preview y ya no corta el 404 por los lados.
+- Móvil: la landing reserva espacio al final para el buscador flotante.
+
+### Added (anterior)
 - Temas y acentos: el acento ya no está atado al naranja. `data-accent="orange | blue | violet | green | rose | amber | teal | ink"` (naranja por defecto) en `<html>` o en cualquier contenedor, cada preset con valor claro y oscuro, o cualquier color con `--d-brand` (ambos temas) o `--d-brand-l` / `--d-brand-d` (uno por tema).
 - Tokens semánticos del acento derivados de `--d-brand` con `color-mix(in oklch, …)`: `--d-brand-ink` (tinta sobre el acento, blanca o casi negra según su luminosidad, contraste ≥ 4.5:1, sobrescribible), `--d-brand-text` (acento como texto legible sobre el fondo), `--d-brand-soft`, `--d-brand-line` y `--d-ring`.
 - Neutros intercambiables: `data-neutral="cream | zinc | slate"` (crema por defecto). Cada token con tema tiene fuentes `-l` / `-d` (`--d-bg-l`, `--d-bg-d`…) que se pueden sobrescribir.

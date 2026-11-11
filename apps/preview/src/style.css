@@ -553,3 +553,32 @@ html { -webkit-tap-highlight-color: transparent; -webkit-text-size-adjust: 100%;
 .look-table table { table-layout: fixed; min-width: 0; }
 .look-table th:first-child, .look-table td:first-child { width: 38%; }
 .look-table code { overflow-wrap: anywhere; }
+
+/* Móvil: tablas de props y paquetes como lista apilada, sin scroll lateral */
+@media (max-width: 640px) {
+  .props table, .pk-table table { min-width: 0; }
+  .props thead { display: none; }
+  .props tr, .pk-table tr { display: grid; grid-template-columns: 72px minmax(0, 1fr); gap: 6px 12px; padding: 14px; border-top: 1px solid var(--d-line); }
+  .props tr:first-child, .pk-table tr:first-child { border-top: 0; }
+  .props td, .pk-table td { display: block; padding: 0; border: 0; min-width: 0; overflow-wrap: anywhere; }
+  .props td:first-child { grid-column: 1 / -1; font-size: 13px; }
+  .props td:first-child code { font-weight: 600; }
+  .props td:not(:first-child)::before { content: attr(data-label); display: block; font: 600 10px/1.6 var(--d-mono); letter-spacing: .04em; text-transform: uppercase; color: var(--d-muted); }
+  .props td:not(:first-child) { display: contents; }
+  .props td:not(:first-child) > code, .props td:last-child { min-width: 0; }
+  .pk-table tr { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+  .pk-table td:last-child { color: var(--d-muted); }
+}
+/* NotFound en la demo móvil: deja aire para el botón Preview */
+@media (max-width: 860px) { .canvas--wide:has(.d-404) { padding-top: 56px; } .canvas .d-404 { min-height: 0; padding: 12px 28px 40px; } .canvas .d-404__art { padding: 0 6px; } }
+/* El dock flotante no tapa el final de la página */
+@media (max-width: 860px) { .shell--landing .main { padding-bottom: 72px; } }
+/* Demos: GuideGrid y Loading */
+.demo-gg { display: grid; gap: 28px; width: 100%; max-width: 700px; margin: 0 auto; padding: 12px; }
+.demo-gg .d-gg__cell { font: 500 13px/1.4 var(--d-mono); color: var(--d-muted); }
+.demo-gg .d-gg__cell[data-solid] { color: var(--d-ink); }
+.demo-load { display: grid; gap: 28px; width: 100%; max-width: 420px; margin: 0 auto; }
+.demo-load .demo-row { justify-content: center; align-items: center; gap: 18px; }
+.demo-skel { display: grid; grid-template-columns: 40px minmax(0, 1fr); align-items: center; gap: 12px 14px; padding: 16px; border: 1px solid var(--d-line); border-radius: var(--d-radius-lg); background: var(--d-surface); }
+.demo-skel > div { display: grid; gap: 8px; }
+.demo-skel__img, .demo-skel > .d-skel:last-child { grid-column: 1 / -1; }

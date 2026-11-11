@@ -111,7 +111,7 @@
   <p class="ab-cap">{T.mock}. {T.mockLead}</p>
 
   <h2>{T.pk}</h2>
-  <div class="table-wrap ab-reveal"><table><tbody>
+  <div class="table-wrap ab-reveal pk-table"><table><tbody>
     {#each T.pkRows as [n, d] (n)}<tr><td><code>{n}</code></td><td>{d}</td></tr>{/each}
   </tbody></table></div>
 
