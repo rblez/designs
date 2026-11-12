@@ -33,4 +33,7 @@ licencia propietaria no se aplica a ellas.
 Los iconos de packages/tokens/src/icons.ts y packages/tokens/src/ionicons.ts
 provienen de Ionicons (https://ionic.io/ionicons), MIT License,
 Copyright (c) 2015-present Ionic. El aviso MIT completo está en
-packages/tokens/IONICONS-LICENSE (salvo arrowUpRight, dibujo propio). Esta licencia propietaria no se aplica a ellos.
+packages/tokens/IONICONS-LICENSE. Esta licencia propietaria no se aplica a ellos.
+
+Los iconos de packages/tokens/src/rblez-icons.ts (y arrowUpRight del set curado) son
+dibujos propios de rblez y sí están cubiertos por esta licencia propietaria.

@@ -287,5 +287,6 @@ export const guides = [
   { slug: "introduccion", name: "Introducción" },
   { slug: "instalacion", name: "Instalación" },
   { slug: "tokens", name: "Tokens" },
+  { slug: "iconos", name: "Iconos" },
   { slug: "acerca", name: "Acerca de" },
 ];

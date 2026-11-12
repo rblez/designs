@@ -10,7 +10,8 @@
     "./css": "./src/tokens.css",
     "./components.css": "./src/components.css",
     "./prompt-input.css": "./src/prompt-input.css",
-    "./ionicons": "./src/ionicons.ts"
+    "./ionicons": "./src/ionicons.ts",
+    "./rblez-icons": "./src/rblez-icons.ts"
   },
   "scripts": {
     "typecheck": "tsc -p ."

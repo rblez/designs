@@ -8,6 +8,7 @@ const SITE = "https://www.rblez.com/ui/";
 const GUIDES: PageMeta[] = [
   { group: "Docs", slug: "instalacion", name: "Instalación", description: "Cómo instalar rblez-ui en Svelte 5 y React.", descriptionEn: "How to install rblez-ui in Svelte 5 and React." },
   { group: "Docs", slug: "tokens", name: "Tokens", description: "Color, tipografía y tema de rblez-ui.", descriptionEn: "rblez-ui color, typography and theming." },
+  { group: "Docs", slug: "iconos", name: "Iconos", description: "Ionicons completo y los iconos propios de rblez-ui, con línea y relleno.", descriptionEn: "The full Ionicons set and rblez-ui's own icons, in line and fill." },
   { group: "Docs", slug: "acerca", name: "Acerca de", description: "Qué es rblez-ui y quién lo hace.", descriptionEn: "What rblez-ui is and who makes it." },
 ];
 

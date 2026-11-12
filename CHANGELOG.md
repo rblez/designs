@@ -4,6 +4,14 @@ Todos los cambios notables de rblez-ui. Formato basado en [Keep a Changelog](htt
 
 ## [Unreleased]
 
+### Added
+- Página **Iconos** en la documentación: los 421 Ionicons y los iconos propios, con búsqueda, cambio entre línea y relleno, y copia del import con un clic.
+- Iconos propios de rblez en `@rblez-ui/tokens/rblez-icons`, en línea y relleno: `arrowUpRight`, `arrowDownLeft`, `sidebar`, `panelBottom`, `columns`, `command`, `gripVertical` y `textCursor`. Están dibujados con la geometría de Ionicons y cubiertos por la licencia del repositorio, no por MIT.
+
+### Fixed
+- Iconos: chevrons, flechas y demás iconos con trazo propio de Ionicons (48, 44…) ahora respetan `strokeWidth`. El grosor se guarda como factor `k` relativo al estándar.
+- Iconos: en `variant="fill"`, los iconos que solo tienen trazo y no tienen versión rellena (plus, check, chevrons, flechas) se dibujan 1,3× más gruesos (campo `b`), así la pestaña activa se distingue.
+
 ### Changed
 - Iconos: de Heroicons a Ionicons (MIT), con línea (outline) y relleno (filled) en cada icono. Los 421 iconos en `@rblez-ui/tokens/ionicons` (antes `/heroicons`); los nombres del set curado no cambian. `strokeWidth` sigue en px a 24.
 

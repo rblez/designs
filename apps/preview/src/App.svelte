@@ -4,6 +4,7 @@
   import { components, guides } from "./docs/registry";
   import ComponentPage from "./docs/ComponentPage.svelte";
   import GuidePage from "./docs/GuidePage.svelte";
+  import IconsPage from "./docs/IconsPage.svelte";
   import Landing from "./docs/Landing.svelte";
   import AboutPage from "./docs/AboutPage.svelte";
   import { NotFound } from "@rblez-ui/svelte";
@@ -146,6 +147,8 @@
       <ComponentPage {doc} bind:framework />
     {:else if slug === "acerca"}
       <AboutPage />
+    {:else if slug === "iconos"}
+      <IconsPage />
     {:else if lost}
       <NotFound title={i18n.lang === "en" ? "The page you’re looking for has wandered off, but don’t worry!" : "La página que buscas se ha perdido, pero no te preocupes."}
         description={i18n.lang === "en" ? "Let’s get you back on track." : "Vamos a devolverte al buen camino."}

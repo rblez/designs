@@ -18,7 +18,7 @@ const dict = {
   es: {
     getStarted: "Empezar", components: "Componentes", base: "Base", legal: "Legal",
     groups: { IA: "IA", Formularios: "Formularios", Layout: "Layout", Overlay: "Overlay", Feedback: "Feedback" },
-    guides: { introduccion: "Introducción", instalacion: "Instalación", tokens: "Tokens", licencia: "Licencia", acerca: "Acerca de" },
+    guides: { introduccion: "Introducción", instalacion: "Instalación", tokens: "Tokens", iconos: "Iconos", licencia: "Licencia", acerca: "Acerca de" },
     usage: "Uso", props: "Props", prop: "Prop", type: "Tipo", def: "Por defecto", desc: "Descripción",
     copy: "Copiar", copied: "Copiado", search: "Buscar…", searchLabel: "Buscar en la documentación",
     noResults: (q: string) => `Sin resultados para “${q}”.`, openMenu: "Abrir menú", closeMenu: "Cerrar menú",
@@ -28,7 +28,7 @@ const dict = {
   en: {
     getStarted: "Get started", components: "Components", base: "Foundations", legal: "Legal",
     groups: { IA: "AI", Formularios: "Forms", Layout: "Layout", Overlay: "Overlay", Feedback: "Feedback" },
-    guides: { introduccion: "Introduction", instalacion: "Installation", tokens: "Tokens", licencia: "License", acerca: "About" },
+    guides: { introduccion: "Introduction", instalacion: "Installation", tokens: "Tokens", iconos: "Icons", licencia: "License", acerca: "About" },
     usage: "Usage", props: "Props", prop: "Prop", type: "Type", def: "Default", desc: "Description",
     copy: "Copy", copied: "Copied", search: "Search…", searchLabel: "Search documentation",
     noResults: (q: string) => `No results for “${q}”.`, openMenu: "Open menu", closeMenu: "Close menu",
